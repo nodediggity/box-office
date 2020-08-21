@@ -15,6 +15,9 @@
 		6A5075CE24F0408100B25D4F /* NowPlayingFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075CD24F0408100B25D4F /* NowPlayingFeed.swift */; };
 		6A5075D624F0551F00B25D4F /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075D524F0551F00B25D4F /* HTTPClient.swift */; };
 		6A5075D824F055EB00B25D4F /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075D724F055EB00B25D4F /* HTTPClientSpy.swift */; };
+		6A5075DB24F0588B00B25D4F /* RemoteNowPlayingLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075DA24F0588B00B25D4F /* RemoteNowPlayingLoader.swift */; };
+		6A5075DD24F058CD00B25D4F /* NowPlayingItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075DC24F058CD00B25D4F /* NowPlayingItemsMapper.swift */; };
+		6A5075E024F0591B00B25D4F /* HTTPURLResponse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075DF24F0591B00B25D4F /* HTTPURLResponse+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +42,9 @@
 		6A5075CD24F0408100B25D4F /* NowPlayingFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingFeed.swift; sourceTree = "<group>"; };
 		6A5075D524F0551F00B25D4F /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		6A5075D724F055EB00B25D4F /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
+		6A5075DA24F0588B00B25D4F /* RemoteNowPlayingLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNowPlayingLoader.swift; sourceTree = "<group>"; };
+		6A5075DC24F058CD00B25D4F /* NowPlayingItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingItemsMapper.swift; sourceTree = "<group>"; };
+		6A5075DF24F0591B00B25D4F /* HTTPURLResponse+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +87,8 @@
 		6A5075A724F028F800B25D4F /* BoxOfficeNowPlaying */ = {
 			isa = PBXGroup;
 			children = (
-				6A5075D324F0550F00B25D4F /* API */,
 				6A5075A924F028F800B25D4F /* Info.plist */,
+				6A5075D324F0550F00B25D4F /* API */,
 				6A5075C324F02CB600B25D4F /* Feature */,
 			);
 			path = BoxOfficeNowPlaying;
@@ -121,8 +127,19 @@
 			isa = PBXGroup;
 			children = (
 				6A5075D524F0551F00B25D4F /* HTTPClient.swift */,
+				6A5075DC24F058CD00B25D4F /* NowPlayingItemsMapper.swift */,
+				6A5075DA24F0588B00B25D4F /* RemoteNowPlayingLoader.swift */,
+				6A5075DE24F0590F00B25D4F /* Helpers */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		6A5075DE24F0590F00B25D4F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6A5075DF24F0591B00B25D4F /* HTTPURLResponse+Ext.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,8 +254,11 @@
 			files = (
 				6A5075C224F02B2500B25D4F /* NowPlayingLoader.swift in Sources */,
 				6A5075C024F029C300B25D4F /* NowPlayingCard.swift in Sources */,
+				6A5075E024F0591B00B25D4F /* HTTPURLResponse+Ext.swift in Sources */,
 				6A5075D624F0551F00B25D4F /* HTTPClient.swift in Sources */,
+				6A5075DD24F058CD00B25D4F /* NowPlayingItemsMapper.swift in Sources */,
 				6A5075CE24F0408100B25D4F /* NowPlayingFeed.swift in Sources */,
+				6A5075DB24F0588B00B25D4F /* RemoteNowPlayingLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
