@@ -19,9 +19,9 @@ class RemoteNowPlayingLoader: NowPlayingLoader {
   public typealias Result = NowPlayingLoader.Result
 
   private let baseURL: URL
-  private let client: LoadNowPlayingFromRemoteUseCaseTests.HTTPClientSpy
+  private let client: HTTPClient
 
-  init(baseURL: URL, client: LoadNowPlayingFromRemoteUseCaseTests.HTTPClientSpy) {
+  init(baseURL: URL, client: HTTPClient) {
     self.baseURL = baseURL
     self.client = client
   }
@@ -147,7 +147,7 @@ class LoadNowPlayingFromRemoteUseCaseTests: XCTestCase {
     let (sut, client) = makeSUT()
     let error = makeError()
     expect(sut, toCompleteWith: failure(.connectivity), when: {
-      client.completes(with: .failure(error))
+      client.completes(with: error)
     })
   }
 
@@ -273,28 +273,4 @@ extension LoadNowPlayingFromRemoteUseCaseTests {
 
     return (model, json)
   }
-
-  class HTTPClientSpy {
-
-    var requestedURLs: [URL] {
-      return messages.compactMap { $0.request.url }
-    }
-
-    private var messages: [(request: URLRequest, completion: (Result<(data: Data, resp: HTTPURLResponse), Error>) -> Void)] = []
-
-    func dispatch(_ request: URLRequest, completion: @escaping (Result<(data: Data, resp: HTTPURLResponse), Error>) -> Void) {
-      messages.append((request, completion))
-    }
-
-    func completes(with result: Result<(data: Data, resp: HTTPURLResponse), Error>, at index: Int = 0) {
-      messages[index].completion(result)
-    }
-
-    func completes(withStatusCode code: Int, data: Data, at index: Int = 0) {
-      let response = HTTPURLResponse(url: requestedURLs[index], statusCode: code, httpVersion: nil, headerFields: nil)!
-      messages[index].completion(.success((data, response)))
-    }
-
-  }
-
 }
