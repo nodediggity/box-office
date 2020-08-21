@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BoxOfficeNetworking
 
 public final class RemoteNowPlayingLoader: NowPlayingLoader {
 

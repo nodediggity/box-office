@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6AC55BFC24F05BEB003F6056 /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC55BF224F05BEB003F6056 /* BoxOfficeNetworking.framework */; };
 		6AD4CBE724F062D0001A400E /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD4CBE624F062D0001A400E /* XCTestCase+Ext.swift */; };
+		6AD4CBE924F06396001A400E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD4CBE824F06396001A400E /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		6AC55BFB24F05BEB003F6056 /* BoxOfficeNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC55C0224F05BEB003F6056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AD4CBE624F062D0001A400E /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
+		6AD4CBE824F06396001A400E /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				6AC55BF624F05BEB003F6056 /* Info.plist */,
+				6AD4CBE824F06396001A400E /* HTTPClient.swift */,
 			);
 			path = BoxOfficeNetworking;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				TargetAttributes = {
 					6AC55BF124F05BEB003F6056 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					6AC55BFA24F05BEB003F6056 = {
 						CreatedOnToolsVersion = 11.6;
@@ -192,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD4CBE924F06396001A400E /* HTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +341,7 @@
 		6AC55C0724F05BEB003F6056 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -353,6 +359,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.networking";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -360,6 +367,7 @@
 		6AC55C0824F05BEB003F6056 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -384,6 +392,7 @@
 		6AC55C0A24F05BEB003F6056 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -404,6 +413,7 @@
 		6AC55C0B24F05BEB003F6056 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

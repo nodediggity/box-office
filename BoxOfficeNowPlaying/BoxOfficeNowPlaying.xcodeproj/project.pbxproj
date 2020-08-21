@@ -13,11 +13,12 @@
 		6A5075C924F02D8F00B25D4F /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075C824F02D8F00B25D4F /* XCTestCase+Ext.swift */; };
 		6A5075CC24F02DD000B25D4F /* LoadNowPlayingFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075CB24F02DD000B25D4F /* LoadNowPlayingFromRemoteUseCaseTests.swift */; };
 		6A5075CE24F0408100B25D4F /* NowPlayingFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075CD24F0408100B25D4F /* NowPlayingFeed.swift */; };
-		6A5075D624F0551F00B25D4F /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075D524F0551F00B25D4F /* HTTPClient.swift */; };
 		6A5075D824F055EB00B25D4F /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075D724F055EB00B25D4F /* HTTPClientSpy.swift */; };
 		6A5075DB24F0588B00B25D4F /* RemoteNowPlayingLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075DA24F0588B00B25D4F /* RemoteNowPlayingLoader.swift */; };
 		6A5075DD24F058CD00B25D4F /* NowPlayingItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075DC24F058CD00B25D4F /* NowPlayingItemsMapper.swift */; };
 		6A5075E024F0591B00B25D4F /* HTTPURLResponse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075DF24F0591B00B25D4F /* HTTPURLResponse+Ext.swift */; };
+		6AD4CBEC24F063BC001A400E /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */; };
+		6AD4CBED24F063BC001A400E /* BoxOfficeNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6AD4CBEE24F063BC001A400E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6AD4CBED24F063BC001A400E /* BoxOfficeNetworking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6A5075A524F028F800B25D4F /* BoxOfficeNowPlaying.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxOfficeNowPlaying.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A5075A924F028F800B25D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,11 +55,11 @@
 		6A5075C824F02D8F00B25D4F /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
 		6A5075CB24F02DD000B25D4F /* LoadNowPlayingFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadNowPlayingFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		6A5075CD24F0408100B25D4F /* NowPlayingFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingFeed.swift; sourceTree = "<group>"; };
-		6A5075D524F0551F00B25D4F /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		6A5075D724F055EB00B25D4F /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		6A5075DA24F0588B00B25D4F /* RemoteNowPlayingLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNowPlayingLoader.swift; sourceTree = "<group>"; };
 		6A5075DC24F058CD00B25D4F /* NowPlayingItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingItemsMapper.swift; sourceTree = "<group>"; };
 		6A5075DF24F0591B00B25D4F /* HTTPURLResponse+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Ext.swift"; sourceTree = "<group>"; };
+		6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD4CBEC24F063BC001A400E /* BoxOfficeNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +88,7 @@
 				6A5075A724F028F800B25D4F /* BoxOfficeNowPlaying */,
 				6A5075B224F028F800B25D4F /* BoxOfficeNowPlayingTests */,
 				6A5075A624F028F800B25D4F /* Products */,
+				6AD4CBEA24F063BC001A400E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,7 +143,6 @@
 		6A5075D324F0550F00B25D4F /* API */ = {
 			isa = PBXGroup;
 			children = (
-				6A5075D524F0551F00B25D4F /* HTTPClient.swift */,
 				6A5075DC24F058CD00B25D4F /* NowPlayingItemsMapper.swift */,
 				6A5075DA24F0588B00B25D4F /* RemoteNowPlayingLoader.swift */,
 				6A5075DE24F0590F00B25D4F /* Helpers */,
@@ -140,6 +156,14 @@
 				6A5075DF24F0591B00B25D4F /* HTTPURLResponse+Ext.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		6AD4CBEA24F063BC001A400E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +187,7 @@
 				6A5075A124F028F800B25D4F /* Sources */,
 				6A5075A224F028F800B25D4F /* Frameworks */,
 				6A5075A324F028F800B25D4F /* Resources */,
+				6AD4CBEE24F063BC001A400E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -255,7 +280,6 @@
 				6A5075C224F02B2500B25D4F /* NowPlayingLoader.swift in Sources */,
 				6A5075C024F029C300B25D4F /* NowPlayingCard.swift in Sources */,
 				6A5075E024F0591B00B25D4F /* HTTPURLResponse+Ext.swift in Sources */,
-				6A5075D624F0551F00B25D4F /* HTTPClient.swift in Sources */,
 				6A5075DD24F058CD00B25D4F /* NowPlayingItemsMapper.swift in Sources */,
 				6A5075CE24F0408100B25D4F /* NowPlayingFeed.swift in Sources */,
 				6A5075DB24F0588B00B25D4F /* RemoteNowPlayingLoader.swift in Sources */,
