@@ -13,6 +13,7 @@ class RemoteNowPlayingLoader: NowPlayingLoader {
 
   public enum Error: Swift.Error {
     case connectivity
+    case invalidResponse
   }
 
   public typealias Result = NowPlayingLoader.Result
@@ -29,8 +30,8 @@ class RemoteNowPlayingLoader: NowPlayingLoader {
     let request = URLRequest(url: enrich(baseURL, with: req))
     client.dispatch(request, completion: { result in
       switch result {
+        case .success: completion(.failure(Error.invalidResponse))
         case .failure: completion(.failure(Error.connectivity))
-        default: break
       }
     })
   }
@@ -91,6 +92,16 @@ class LoadNowPlayingFromRemoteUseCaseTests: XCTestCase {
     })
   }
 
+  func test_execute_delivers_error_on_non_success_response() {
+    let (sut, client) = makeSUT()
+    let samples = [299, 300, 399, 400, 418, 499, 500]
+    let data = makeData()
+    samples.indices.forEach { index in
+      expect(sut, toCompleteWith: failure(.invalidResponse), when: {
+        client.completes(withStatusCode: samples[index], data: data, at: index)
+      })
+    }
+  }
 }
 
 extension LoadNowPlayingFromRemoteUseCaseTests {
@@ -139,6 +150,11 @@ extension LoadNowPlayingFromRemoteUseCaseTests {
 
     func completes(with result: Result<(data: Data, resp: HTTPURLResponse), Error>, at index: Int = 0) {
       messages[index].completion(result)
+    }
+
+    func completes(withStatusCode code: Int, data: Data, at index: Int = 0) {
+      let response = HTTPURLResponse(url: requestedURLs[index], statusCode: code, httpVersion: nil, headerFields: nil)!
+      messages[index].completion(.success((data, response)))
     }
 
   }
