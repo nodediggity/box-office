@@ -72,8 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				6A5075A924F028F800B25D4F /* Info.plist */,
-				6A5075BF24F029C300B25D4F /* NowPlayingCard.swift */,
-				6A5075C124F02B2500B25D4F /* NowPlayingLoader.swift */,
+				6A5075C324F02CB600B25D4F /* Feature */,
 			);
 			path = BoxOfficeNowPlaying;
 			sourceTree = "<group>";
@@ -84,6 +83,15 @@
 				6A5075B524F028F800B25D4F /* Info.plist */,
 			);
 			path = BoxOfficeNowPlayingTests;
+			sourceTree = "<group>";
+		};
+		6A5075C324F02CB600B25D4F /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				6A5075BF24F029C300B25D4F /* NowPlayingCard.swift */,
+				6A5075C124F02B2500B25D4F /* NowPlayingLoader.swift */,
+			);
+			path = Feature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
