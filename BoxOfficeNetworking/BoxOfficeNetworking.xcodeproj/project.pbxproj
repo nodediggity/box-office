@@ -79,7 +79,7 @@
 			children = (
 				6AC55BF624F05BEB003F6056 /* Info.plist */,
 				6AD4CBE824F06396001A400E /* HTTPClient.swift */,
-				6AD4CBF424F066C2001A400E /* URLSessionHTTPClient.swift */,
+				6AD4CBF624F066F5001A400E /* URLSession */,
 			);
 			path = BoxOfficeNetworking;
 			sourceTree = "<group>";
@@ -87,10 +87,10 @@
 		6AC55BFF24F05BEB003F6056 /* BoxOfficeNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
-				6AD4CBF124F064F0001A400E /* URLSession */,
 				6AC55C0224F05BEB003F6056 /* Info.plist */,
-				6AD4CBE624F062D0001A400E /* XCTestCase+Ext.swift */,
 				6AD4CBEF24F064CD001A400E /* URLProtocolStub.swift */,
+				6AD4CBE624F062D0001A400E /* XCTestCase+Ext.swift */,
+				6AD4CBF124F064F0001A400E /* URLSession */,
 			);
 			path = BoxOfficeNetworkingTests;
 			sourceTree = "<group>";
@@ -99,6 +99,14 @@
 			isa = PBXGroup;
 			children = (
 				6AD4CBF224F06504001A400E /* URLSessionHTTPClientTests.swift */,
+			);
+			path = URLSession;
+			sourceTree = "<group>";
+		};
+		6AD4CBF624F066F5001A400E /* URLSession */ = {
+			isa = PBXGroup;
+			children = (
+				6AD4CBF424F066C2001A400E /* URLSessionHTTPClient.swift */,
 			);
 			path = URLSession;
 			sourceTree = "<group>";
