@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BoxOfficeNetworking
 import BoxOfficeNowPlaying
 
 class HTTPClientSpy: HTTPClient {

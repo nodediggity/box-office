@@ -4,18 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BoxOfficeNowPlaying.xcscheme_^#shared#^_</key>
+		<key>CI_iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
-	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>6A5075A424F028F800B25D4F</key>
+		<key>CI_macOS.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>primary</key>
-			<true/>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 </dict>

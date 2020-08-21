@@ -4,15 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BoxOfficeNowPlaying.xcscheme_^#shared#^_</key>
+		<key>BoxOfficeNetworking.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6A5075A424F028F800B25D4F</key>
+		<key>6AC55BF124F05BEB003F6056</key>
 		<dict>
 			<key>primary</key>
 			<true/>
