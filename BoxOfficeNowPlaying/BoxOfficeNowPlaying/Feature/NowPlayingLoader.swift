@@ -19,6 +19,6 @@ public struct PagedNowPlayingRequest {
 }
 
 public protocol NowPlayingLoader {
-  typealias Result = Swift.Result<[NowPlayingCard], Error>
+  typealias Result = Swift.Result<NowPlayingFeed, Error>
   func execute(_ req: PagedNowPlayingRequest, completion: @escaping (Result) -> Void)
 }

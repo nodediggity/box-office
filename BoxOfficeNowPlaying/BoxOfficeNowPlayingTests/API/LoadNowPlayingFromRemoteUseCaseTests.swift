@@ -30,7 +30,12 @@ class RemoteNowPlayingLoader: NowPlayingLoader {
     let request = URLRequest(url: enrich(baseURL, with: req))
     client.dispatch(request, completion: { result in
       switch result {
-        case .success: completion(.failure(Error.invalidResponse))
+        case let .success(body):
+          if body.resp.statusCode == 200, let _ = try? JSONSerialization.jsonObject(with: body.data) {
+            completion(.success(NowPlayingFeed(items: [], page: 1, totalPages: 1)))
+          } else {
+            completion(.failure(Error.invalidResponse))
+        }
         case .failure: completion(.failure(Error.connectivity))
       }
     })
@@ -106,9 +111,17 @@ class LoadNowPlayingFromRemoteUseCaseTests: XCTestCase {
   func test_execute_delivers_error_on_success_response_with_invalid_json() {
     let (sut, client) = makeSUT()
     let invalidJSONData = Data("invalid json".utf8)
-
     expect(sut, toCompleteWith: failure(.invalidResponse), when: {
       client.completes(withStatusCode: 200, data: invalidJSONData)
+    })
+  }
+
+  func test_execute_delivers_empty_collection_on_success_response_with_no_items() {
+    let (sut, client) = makeSUT()
+    let emptyPage = makeNowPlayingFeed(items: [], pageNumber: 1, totalPages: 1)
+    let emptyPageData = makeItemsJSONData(for: emptyPage.json)
+    expect(sut, toCompleteWith: .success(emptyPage.model), when: {
+      client.completes(withStatusCode: 200, data: emptyPageData)
     })
   }
 }
@@ -130,6 +143,9 @@ extension LoadNowPlayingFromRemoteUseCaseTests {
     let req = PagedNowPlayingRequest(page: 1)
     sut.execute(req, completion: { receivedResult in
       switch (receivedResult, expectedResult) {
+        case let (.success(receivedItems), .success(expectedItems)):
+          XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+        
         case let (.failure(receivedError as RemoteNowPlayingLoader.Error), .failure(expectedError as RemoteNowPlayingLoader.Error)):
           XCTAssertEqual(receivedError, expectedError, file: file, line: line)
         default:
@@ -143,6 +159,28 @@ extension LoadNowPlayingFromRemoteUseCaseTests {
 
   func failure(_ error: RemoteNowPlayingLoader.Error) -> NowPlayingLoader.Result {
     return .failure(error)
+  }
+
+  private func makeItemsJSONData(for items: [String: Any]) -> Data {
+    let data = try! JSONSerialization.data(withJSONObject: items)
+    return data
+  }
+
+  func makeNowPlayingFeed(items: [NowPlayingCard] = [], pageNumber: Int = 0, totalPages: Int = 1) -> (model: NowPlayingFeed, json: [String: Any]) {
+
+    let model = NowPlayingFeed(
+      items: items,
+      page: pageNumber,
+      totalPages: totalPages
+    )
+
+    let json: [String: Any] = [
+      "results": model.items,
+      "number": pageNumber,
+      "total_pages": totalPages
+    ]
+
+    return (model, json.compactMapValues { $0 })
   }
 
   class HTTPClientSpy {
