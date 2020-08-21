@@ -10,6 +10,7 @@
 		6A5075AF24F028F800B25D4F /* BoxOfficeNowPlaying.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5075A524F028F800B25D4F /* BoxOfficeNowPlaying.framework */; };
 		6A5075C024F029C300B25D4F /* NowPlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075BF24F029C300B25D4F /* NowPlayingCard.swift */; };
 		6A5075C224F02B2500B25D4F /* NowPlayingLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075C124F02B2500B25D4F /* NowPlayingLoader.swift */; };
+		6A5075C924F02D8F00B25D4F /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075C824F02D8F00B25D4F /* XCTestCase+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		6A5075B524F028F800B25D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A5075BF24F029C300B25D4F /* NowPlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCard.swift; sourceTree = "<group>"; };
 		6A5075C124F02B2500B25D4F /* NowPlayingLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingLoader.swift; sourceTree = "<group>"; };
+		6A5075C824F02D8F00B25D4F /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				6A5075B524F028F800B25D4F /* Info.plist */,
+				6A5075C824F02D8F00B25D4F /* XCTestCase+Ext.swift */,
 			);
 			path = BoxOfficeNowPlayingTests;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 					};
 					6A5075AD24F028F800B25D4F = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 				};
 			};
@@ -212,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A5075C924F02D8F00B25D4F /* XCTestCase+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
@@ -411,6 +417,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeNowPlayingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -419,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
