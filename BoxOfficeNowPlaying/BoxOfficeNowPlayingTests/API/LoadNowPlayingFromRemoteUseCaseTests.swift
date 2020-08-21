@@ -30,17 +30,11 @@ class RemoteNowPlayingLoader: NowPlayingLoader {
     let request = URLRequest(url: enrich(baseURL, with: req))
     client.dispatch(request, completion: { result in
       switch result {
-        case let .success(body):
-          if body.resp.statusCode == 200, let _ = try? JSONSerialization.jsonObject(with: body.data) {
-            completion(.success(NowPlayingFeed(items: [], page: 1, totalPages: 1)))
-          } else {
-            completion(.failure(Error.invalidResponse))
-        }
+        case let .success((data, response)): completion(RemoteNowPlayingLoader.map(data, from: response))
         case .failure: completion(.failure(Error.connectivity))
       }
     })
   }
-
 }
 
 private extension RemoteNowPlayingLoader {
@@ -57,6 +51,65 @@ private extension RemoteNowPlayingLoader {
       URLQueryItem(name: "page", value: "\(req.page)")
     ]
     return urlComponents?.url ?? requestURL
+  }
+
+  static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
+    do {
+      let items = try NowPlayingItemsMapper.map(data, from: response)
+      return .success(items.asPageDTO)
+    } catch {
+      return .failure(error)
+    }
+  }
+}
+
+private extension RemoteNowPlayingFeed {
+  var asPageDTO: NowPlayingFeed {
+    return NowPlayingFeed(
+      items: results.asCardDTO,
+      page: number,
+      totalPages: total_pages
+    )
+  }
+}
+
+private extension Array where Element == RemoteNowPlayingFeed.RemoteNowPlayingCard {
+  var asCardDTO: [NowPlayingCard] {
+    return map { item in NowPlayingCard(id: item.id, title: item.original_title, imagePath: item.poster_path) }
+  }
+}
+
+final class NowPlayingItemsMapper {
+
+  private static var OK_200: Int { return 200 }
+
+  static func map(_ data: Data, from response: HTTPURLResponse) throws -> RemoteNowPlayingFeed {
+    guard response.statusCode == OK_200, let page = try? JSONDecoder().decode(RemoteNowPlayingFeed.self, from: data) else {
+      throw RemoteNowPlayingLoader.Error.invalidResponse
+    }
+
+    return page
+  }
+}
+
+struct RemoteNowPlayingFeed: Decodable {
+
+  struct RemoteNowPlayingCard: Decodable {
+    let id: Int
+    let original_title: String
+    let poster_path: String
+  }
+
+  let results: [RemoteNowPlayingCard]
+  let number: Int
+  let total_pages: Int
+}
+
+extension HTTPURLResponse {
+  private static var OK_200: Int { return 200 }
+
+  var isOK: Bool {
+    return statusCode == HTTPURLResponse.OK_200
   }
 }
 
@@ -124,6 +177,16 @@ class LoadNowPlayingFromRemoteUseCaseTests: XCTestCase {
       client.completes(withStatusCode: 200, data: emptyPageData)
     })
   }
+
+  func test_execute_delivers_now_playing_feed_on_success_response_with_items() {
+    let (sut, client) = makeSUT()
+    let items = Array(0..<5).map { index in makeNowPlayingCard(id: index) }
+    let page = makeNowPlayingFeed(items: items, pageNumber: 1, totalPages: 1)
+    let pageData = makeItemsJSONData(for: page.json)
+    expect(sut, toCompleteWith: .success(page.model), when: {
+      client.completes(withStatusCode: 200, data: pageData)
+    })
+  }
 }
 
 extension LoadNowPlayingFromRemoteUseCaseTests {
@@ -145,7 +208,6 @@ extension LoadNowPlayingFromRemoteUseCaseTests {
       switch (receivedResult, expectedResult) {
         case let (.success(receivedItems), .success(expectedItems)):
           XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
-        
         case let (.failure(receivedError as RemoteNowPlayingLoader.Error), .failure(expectedError as RemoteNowPlayingLoader.Error)):
           XCTAssertEqual(receivedError, expectedError, file: file, line: line)
         default:
@@ -166,21 +228,37 @@ extension LoadNowPlayingFromRemoteUseCaseTests {
     return data
   }
 
-  func makeNowPlayingFeed(items: [NowPlayingCard] = [], pageNumber: Int = 0, totalPages: Int = 1) -> (model: NowPlayingFeed, json: [String: Any]) {
+  func makeNowPlayingFeed(items: [(model: NowPlayingCard, json: [String : Any])] = [], pageNumber: Int = 0, totalPages: Int = 1) -> (model: NowPlayingFeed, json: [String: Any]) {
 
     let model = NowPlayingFeed(
-      items: items,
+      items: items.map { $0.model },
       page: pageNumber,
       totalPages: totalPages
     )
 
     let json: [String: Any] = [
-      "results": model.items,
+      "results": items.map { $0.json },
       "number": pageNumber,
       "total_pages": totalPages
     ]
 
     return (model, json.compactMapValues { $0 })
+  }
+
+  func makeNowPlayingCard(id: Int, title: String? = nil, imagePath: String? = nil ) -> (model: NowPlayingCard, json: [String: Any]) {
+    let model = NowPlayingCard(
+      id: id,
+      title: title ?? UUID().uuidString,
+      imagePath: imagePath ?? "\(UUID().uuidString).jpg"
+    )
+
+    let json: [String: Any] = [
+      "id": model.id,
+      "original_title": model.title,
+      "poster_path": model.imagePath
+    ]
+
+    return (model, json)
   }
 
   class HTTPClientSpy {
