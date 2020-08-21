@@ -102,6 +102,15 @@ class LoadNowPlayingFromRemoteUseCaseTests: XCTestCase {
       })
     }
   }
+
+  func test_execute_delivers_error_on_success_response_with_invalid_json() {
+    let (sut, client) = makeSUT()
+    let invalidJSONData = Data("invalid json".utf8)
+
+    expect(sut, toCompleteWith: failure(.invalidResponse), when: {
+      client.completes(withStatusCode: 200, data: invalidJSONData)
+    })
+  }
 }
 
 extension LoadNowPlayingFromRemoteUseCaseTests {
