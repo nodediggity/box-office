@@ -11,6 +11,10 @@ import BoxOfficeNowPlaying
 
 class RemoteNowPlayingLoader: NowPlayingLoader {
 
+  public enum Error: Swift.Error {
+    case connectivity
+  }
+
   public typealias Result = NowPlayingLoader.Result
 
   private let baseURL: URL
@@ -21,9 +25,14 @@ class RemoteNowPlayingLoader: NowPlayingLoader {
     self.client = client
   }
 
-func execute(_ req: PagedNowPlayingRequest, completion: @escaping (Result) -> Void) {
+  func execute(_ req: PagedNowPlayingRequest, completion: @escaping (Result) -> Void) {
     let request = URLRequest(url: enrich(baseURL, with: req))
-    client.dispatch(request)
+    client.dispatch(request, completion: { result in
+      switch result {
+        case .failure: completion(.failure(Error.connectivity))
+        default: break
+      }
+    })
   }
 
 }
@@ -74,6 +83,14 @@ class LoadNowPlayingFromRemoteUseCaseTests: XCTestCase {
     XCTAssertEqual(client.requestedURLs, [expectedURL, expectedURL])
   }
 
+  func test_execute_delivers_error_on_client_error() {
+    let (sut, client) = makeSUT()
+    let error = makeError()
+    expect(sut, toCompleteWith: failure(.connectivity), when: {
+      client.completes(with: .failure(error))
+    })
+  }
+
 }
 
 extension LoadNowPlayingFromRemoteUseCaseTests {
@@ -88,16 +105,40 @@ extension LoadNowPlayingFromRemoteUseCaseTests {
     return (sut, client)
   }
 
+  func expect(_ sut: NowPlayingLoader, toCompleteWith expectedResult: NowPlayingLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    let exp = expectation(description: "Wait for load completion")
+    let req = PagedNowPlayingRequest(page: 1)
+    sut.execute(req, completion: { receivedResult in
+      switch (receivedResult, expectedResult) {
+        case let (.failure(receivedError as RemoteNowPlayingLoader.Error), .failure(expectedError as RemoteNowPlayingLoader.Error)):
+          XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+        default:
+          XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
+      }
+      exp.fulfill()
+    })
+    action()
+    wait(for: [exp], timeout: 1.0)
+  }
+
+  func failure(_ error: RemoteNowPlayingLoader.Error) -> NowPlayingLoader.Result {
+    return .failure(error)
+  }
+
   class HTTPClientSpy {
 
     var requestedURLs: [URL] {
-      return messages.compactMap { $0.url }
+      return messages.compactMap { $0.request.url }
     }
 
-    private var messages: [URLRequest] = []
+    private var messages: [(request: URLRequest, completion: (Result<(data: Data, resp: HTTPURLResponse), Error>) -> Void)] = []
 
-    func dispatch(_ request: URLRequest) {
-      messages.append(request)
+    func dispatch(_ request: URLRequest, completion: @escaping (Result<(data: Data, resp: HTTPURLResponse), Error>) -> Void) {
+      messages.append((request, completion))
+    }
+
+    func completes(with result: Result<(data: Data, resp: HTTPURLResponse), Error>, at index: Int = 0) {
+      messages[index].completion(result)
     }
 
   }
