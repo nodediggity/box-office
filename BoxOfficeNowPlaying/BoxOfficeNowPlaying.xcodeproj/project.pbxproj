@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A5075AF24F028F800B25D4F /* BoxOfficeNowPlaying.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5075A524F028F800B25D4F /* BoxOfficeNowPlaying.framework */; };
+		6A5075C024F029C300B25D4F /* NowPlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075BF24F029C300B25D4F /* NowPlayingCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +26,7 @@
 		6A5075A924F028F800B25D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A5075AE24F028F800B25D4F /* BoxOfficeNowPlayingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeNowPlayingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A5075B524F028F800B25D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A5075BF24F029C300B25D4F /* NowPlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				6A5075A924F028F800B25D4F /* Info.plist */,
+				6A5075BF24F029C300B25D4F /* NowPlayingCard.swift */,
 			);
 			path = BoxOfficeNowPlaying;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				TargetAttributes = {
 					6A5075A424F028F800B25D4F = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					6A5075AD24F028F800B25D4F = {
 						CreatedOnToolsVersion = 11.6;
@@ -188,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A5075C024F029C300B25D4F /* NowPlayingCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +336,7 @@
 		6A5075BA24F028F800B25D4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -348,6 +354,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.now-playing";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -355,6 +362,7 @@
 		6A5075BB24F028F800B25D4F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -379,6 +387,7 @@
 		6A5075BD24F028F800B25D4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
@@ -397,6 +406,7 @@
 		6A5075BE24F028F800B25D4F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
