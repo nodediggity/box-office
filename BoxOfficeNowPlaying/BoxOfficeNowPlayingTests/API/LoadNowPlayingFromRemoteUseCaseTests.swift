@@ -9,7 +9,9 @@
 import XCTest
 import BoxOfficeNowPlaying
 
-class RemoteNowPlayingLoader {
+class RemoteNowPlayingLoader: NowPlayingLoader {
+
+  public typealias Result = NowPlayingLoader.Result
 
   private let baseURL: URL
   private let client: LoadNowPlayingFromRemoteUseCaseTests.HTTPClientSpy
@@ -19,7 +21,7 @@ class RemoteNowPlayingLoader {
     self.client = client
   }
 
-  func execute(_ req: PagedNowPlayingRequest, completion: @escaping (Result<Void, Error>) -> Void = { _ in }) {
+func execute(_ req: PagedNowPlayingRequest, completion: @escaping (Result) -> Void) {
     let request = URLRequest(url: enrich(baseURL, with: req))
     client.dispatch(request)
   }
@@ -55,7 +57,7 @@ class LoadNowPlayingFromRemoteUseCaseTests: XCTestCase {
     let expectedURL = makeURL("https://some-remote-svc.com/3/movie/now_playing?language=\(request.language)&page=\(request.page)")
     let baseURL = makeURL("https://some-remote-svc.com")
     let (sut, client) = makeSUT(baseURL: baseURL)
-    sut.execute(request)
+    sut.execute(request) { _ in }
 
     XCTAssertEqual(client.requestedURLs, [expectedURL])
   }
@@ -66,8 +68,8 @@ class LoadNowPlayingFromRemoteUseCaseTests: XCTestCase {
     let baseURL = makeURL("https://some-remote-svc.com")
     let (sut, client) = makeSUT(baseURL: baseURL)
 
-    sut.execute(request)
-    sut.execute(request)
+    sut.execute(request) { _ in }
+    sut.execute(request) { _ in }
 
     XCTAssertEqual(client.requestedURLs, [expectedURL, expectedURL])
   }
@@ -76,7 +78,7 @@ class LoadNowPlayingFromRemoteUseCaseTests: XCTestCase {
 
 extension LoadNowPlayingFromRemoteUseCaseTests {
 
-  func makeSUT(baseURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> (RemoteNowPlayingLoader, HTTPClientSpy) {
+  func makeSUT(baseURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> (NowPlayingLoader, HTTPClientSpy) {
     let client = HTTPClientSpy()
     let sut = RemoteNowPlayingLoader(baseURL: baseURL ?? makeURL(), client: client)
 
