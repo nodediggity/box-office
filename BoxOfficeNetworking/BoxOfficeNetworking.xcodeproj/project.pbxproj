@@ -10,6 +10,7 @@
 		6AC55BFC24F05BEB003F6056 /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC55BF224F05BEB003F6056 /* BoxOfficeNetworking.framework */; };
 		6AD4CBE724F062D0001A400E /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD4CBE624F062D0001A400E /* XCTestCase+Ext.swift */; };
 		6AD4CBE924F06396001A400E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD4CBE824F06396001A400E /* HTTPClient.swift */; };
+		6AD4CBF024F064CD001A400E /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD4CBEF24F064CD001A400E /* URLProtocolStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		6AC55C0224F05BEB003F6056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AD4CBE624F062D0001A400E /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
 		6AD4CBE824F06396001A400E /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		6AD4CBEF24F064CD001A400E /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				6AC55C0224F05BEB003F6056 /* Info.plist */,
 				6AD4CBE624F062D0001A400E /* XCTestCase+Ext.swift */,
+				6AD4CBEF24F064CD001A400E /* URLProtocolStub.swift */,
 			);
 			path = BoxOfficeNetworkingTests;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AD4CBE724F062D0001A400E /* XCTestCase+Ext.swift in Sources */,
+				6AD4CBF024F064CD001A400E /* URLProtocolStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
