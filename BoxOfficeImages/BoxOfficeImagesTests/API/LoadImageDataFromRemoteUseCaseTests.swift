@@ -21,7 +21,7 @@ class LoadImageDataFromRemoteUseCaseTests: XCTestCase {
     let requestURL = makeURL("https://some-remote-image.com")
     let (sut, client) = makeSUT()
 
-    sut.load(from: requestURL) { _ in }
+    _ = sut.load(from: requestURL) { _ in }
 
     XCTAssertEqual(client.requestedURLs, [requestURL])
   }
@@ -30,8 +30,8 @@ class LoadImageDataFromRemoteUseCaseTests: XCTestCase {
     let requestURL = makeURL("https://some-remote-image.com")
     let (sut, client) = makeSUT()
 
-    sut.load(from: requestURL) { _ in }
-    sut.load(from: requestURL) { _ in }
+    _ = sut.load(from: requestURL) { _ in }
+    _ = sut.load(from: requestURL) { _ in }
 
     XCTAssertEqual(client.requestedURLs, [requestURL, requestURL])
   }
@@ -70,6 +70,17 @@ class LoadImageDataFromRemoteUseCaseTests: XCTestCase {
       client.completes(withStatusCode: 200, data: nonEmptyData)
     })
   }
+
+  func test_cancel_pending_task_cancels_client_request() {
+    let requestURL = makeURL("https://some-remote-image.com")
+    let (sut, client) = makeSUT()
+
+    let task = sut.load(from: requestURL, completion: { _ in })
+    XCTAssertTrue(client.cancelledURLs.isEmpty)
+
+    task.cancel()
+    XCTAssertEqual(client.cancelledURLs, [requestURL])
+  }
 }
 
 private extension LoadImageDataFromRemoteUseCaseTests {
@@ -90,7 +101,7 @@ private extension LoadImageDataFromRemoteUseCaseTests {
     let exp = expectation(description: "Wait for load completion")
     let imageURL = makeURL()
 
-    sut.load(from: imageURL, completion: { receivedResult in
+    _ = sut.load(from: imageURL, completion: { receivedResult in
       switch (receivedResult, expectedResult) {
         case let (.success(receivedData), .success(expectedData)): XCTAssertEqual(receivedData, expectedData, file: file, line: line)
         case let (.failure(receivedError as RemoteImageDataLoader.Error), .failure(expectedError as RemoteImageDataLoader.Error)): XCTAssertEqual(receivedError, expectedError, file: file, line: line)
