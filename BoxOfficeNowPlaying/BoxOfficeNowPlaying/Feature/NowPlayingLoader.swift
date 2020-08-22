@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct PagedNowPlayingRequest {
+public struct PagedNowPlayingRequest: Equatable {
   public let page: Int
   public let language: String
 
