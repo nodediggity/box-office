@@ -37,6 +37,16 @@ class LoadImageDataFromRemoteUseCaseTests: XCTestCase {
 
     XCTAssertEqual(client.requestedURLs, [requestURL])
   }
+
+  func test_load_requests_data_from_remote_on_each_call() {
+    let requestURL = makeURL("https://some-remote-image.com")
+    let (sut, client) = makeSUT()
+
+    sut.load(from: requestURL)
+    sut.load(from: requestURL)
+
+    XCTAssertEqual(client.requestedURLs, [requestURL, requestURL])
+  }
 }
 
 private extension LoadImageDataFromRemoteUseCaseTests {
