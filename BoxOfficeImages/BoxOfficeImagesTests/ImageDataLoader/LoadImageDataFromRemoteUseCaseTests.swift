@@ -8,38 +8,7 @@
 
 import XCTest
 import BoxOfficeNetworking
-
-class RemoteImageDataLoader {
-
-  enum Error: Swift.Error {
-    case connectivity
-    case invalidResponse
-  }
-
-  typealias Result = Swift.Result<Data, Error>
-
-  private let client: HTTPClient
-
-  init(client: HTTPClient) {
-    self.client = client
-  }
-
-  func load(from imageURL: URL, completion: @escaping (Result) -> Void = { _ in }) {
-    client.dispatch(URLRequest(url: imageURL), completion: { result in
-      switch result {
-        case let .success(body):
-
-          if body.data.count > 0 && body.response.statusCode == 200 {
-            completion(.success(body.data))
-          } else {
-            completion(.failure(Error.invalidResponse))
-          }
-
-        case .failure: completion(.failure(Error.connectivity))
-      }
-    })
-  }
-}
+import BoxOfficeImages
 
 class LoadImageDataFromRemoteUseCaseTests: XCTestCase {
 

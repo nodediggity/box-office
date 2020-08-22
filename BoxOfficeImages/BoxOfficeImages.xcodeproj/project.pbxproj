@@ -13,6 +13,7 @@
 		6A4983C424F18F3D00111B62 /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983C324F18F3D00111B62 /* XCTestCase+Ext.swift */; };
 		6A4983C724F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983C624F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift */; };
 		6A4983C924F18FDA00111B62 /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983C824F18FDA00111B62 /* HTTPClientSpy.swift */; };
+		6A4983CB24F1953900111B62 /* RemoteImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983CA24F1953900111B62 /* RemoteImageDataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		6A4983C324F18F3D00111B62 /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
 		6A4983C624F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageDataFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		6A4983C824F18FDA00111B62 /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
+		6A4983CA24F1953900111B62 /* RemoteImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				6A4983A624F18B6400111B62 /* Info.plist */,
+				6A4983CA24F1953900111B62 /* RemoteImageDataLoader.swift */,
 			);
 			path = BoxOfficeImages;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				TargetAttributes = {
 					6A4983A124F18B6400111B62 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					6A4983AA24F18B6400111B62 = {
 						CreatedOnToolsVersion = 11.6;
@@ -234,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A4983CB24F1953900111B62 /* RemoteImageDataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +385,7 @@
 		6A4983B724F18B6400111B62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -397,6 +403,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.images";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -404,6 +411,7 @@
 		6A4983B824F18B6400111B62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -428,6 +436,7 @@
 		6A4983BA24F18B6400111B62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -448,6 +457,7 @@
 		6A4983BB24F18B6400111B62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
