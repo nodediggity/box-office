@@ -42,10 +42,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6A4983A124F18B6400111B62"
-               BuildableName = "BoxOfficeImages.framework"
-               BlueprintName = "BoxOfficeImages"
-               ReferencedContainer = "container:BoxOfficeImages/BoxOfficeImages.xcodeproj">
+               BlueprintIdentifier = "6AFD447324F1144100E7A1F7"
+               BuildableName = "BoxOfficeNowPlayingiOS.framework"
+               BlueprintName = "BoxOfficeNowPlayingiOS"
+               ReferencedContainer = "container:BoxOfficeNowPlaying/BoxOfficeNowPlaying.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -74,10 +74,10 @@
          </BuildableReference>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6A4983A124F18B6400111B62"
-            BuildableName = "BoxOfficeImages.framework"
-            BlueprintName = "BoxOfficeImages"
-            ReferencedContainer = "container:BoxOfficeImages/BoxOfficeImages.xcodeproj">
+            BlueprintIdentifier = "6AFD447324F1144100E7A1F7"
+            BuildableName = "BoxOfficeNowPlayingiOS.framework"
+            BlueprintName = "BoxOfficeNowPlayingiOS"
+            ReferencedContainer = "container:BoxOfficeNowPlaying/BoxOfficeNowPlaying.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -108,10 +108,10 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6A4983AA24F18B6400111B62"
-               BuildableName = "BoxOfficeImagesTests.xctest"
-               BlueprintName = "BoxOfficeImagesTests"
-               ReferencedContainer = "container:BoxOfficeImages/BoxOfficeImages.xcodeproj">
+               BlueprintIdentifier = "6AFD447B24F1144100E7A1F7"
+               BuildableName = "BoxOfficeNowPlayingiOSTests.xctest"
+               BlueprintName = "BoxOfficeNowPlayingiOSTests"
+               ReferencedContainer = "container:BoxOfficeNowPlaying/BoxOfficeNowPlaying.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
