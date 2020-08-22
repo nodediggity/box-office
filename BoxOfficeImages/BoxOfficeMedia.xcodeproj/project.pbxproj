@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A4983AC24F18B6400111B62 /* BoxOfficeImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4983A224F18B6400111B62 /* BoxOfficeImages.framework */; };
+		6A4983AC24F18B6400111B62 /* BoxOfficeMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4983A224F18B6400111B62 /* BoxOfficeMedia.framework */; };
 		6A4983BE24F18E6400111B62 /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4983BD24F18E6400111B62 /* BoxOfficeNetworking.framework */; };
 		6A4983BF24F18E6400111B62 /* BoxOfficeNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4983BD24F18E6400111B62 /* BoxOfficeNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A4983C424F18F3D00111B62 /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983C324F18F3D00111B62 /* XCTestCase+Ext.swift */; };
@@ -42,9 +42,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6A4983A224F18B6400111B62 /* BoxOfficeImages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxOfficeImages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A4983A224F18B6400111B62 /* BoxOfficeMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxOfficeMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4983A624F18B6400111B62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A4983AB24F18B6400111B62 /* BoxOfficeImagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeImagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A4983AB24F18B6400111B62 /* BoxOfficeMediaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeMediaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4983B224F18B6400111B62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A4983BD24F18E6400111B62 /* BoxOfficeNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4983C324F18F3D00111B62 /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A4983AC24F18B6400111B62 /* BoxOfficeImages.framework in Frameworks */,
+				6A4983AC24F18B6400111B62 /* BoxOfficeMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,8 +77,8 @@
 		6A49839824F18B6400111B62 = {
 			isa = PBXGroup;
 			children = (
-				6A4983A424F18B6400111B62 /* BoxOfficeImages */,
-				6A4983AF24F18B6400111B62 /* BoxOfficeImagesTests */,
+				6A4983A424F18B6400111B62 /* BoxOfficeMedia */,
+				6A4983AF24F18B6400111B62 /* BoxOfficeMediaTests */,
 				6A4983BC24F18E6400111B62 /* Frameworks */,
 				6A4983A324F18B6400111B62 /* Products */,
 			);
@@ -87,23 +87,23 @@
 		6A4983A324F18B6400111B62 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A4983A224F18B6400111B62 /* BoxOfficeImages.framework */,
-				6A4983AB24F18B6400111B62 /* BoxOfficeImagesTests.xctest */,
+				6A4983A224F18B6400111B62 /* BoxOfficeMedia.framework */,
+				6A4983AB24F18B6400111B62 /* BoxOfficeMediaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6A4983A424F18B6400111B62 /* BoxOfficeImages */ = {
+		6A4983A424F18B6400111B62 /* BoxOfficeMedia */ = {
 			isa = PBXGroup;
 			children = (
 				6A4983A624F18B6400111B62 /* Info.plist */,
 				6A4983CD24F195F500111B62 /* API */,
 				6A4983CF24F1971200111B62 /* Feature */,
 			);
-			path = BoxOfficeImages;
+			path = BoxOfficeMedia;
 			sourceTree = "<group>";
 		};
-		6A4983AF24F18B6400111B62 /* BoxOfficeImagesTests */ = {
+		6A4983AF24F18B6400111B62 /* BoxOfficeMediaTests */ = {
 			isa = PBXGroup;
 			children = (
 				6A4983B224F18B6400111B62 /* Info.plist */,
@@ -111,7 +111,7 @@
 				6A4983C324F18F3D00111B62 /* XCTestCase+Ext.swift */,
 				6A4983CE24F1960C00111B62 /* API */,
 			);
-			path = BoxOfficeImagesTests;
+			path = BoxOfficeMediaTests;
 			sourceTree = "<group>";
 		};
 		6A4983BC24F18E6400111B62 /* Frameworks */ = {
@@ -159,9 +159,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6A4983A124F18B6400111B62 /* BoxOfficeImages */ = {
+		6A4983A124F18B6400111B62 /* BoxOfficeMedia */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A4983B624F18B6400111B62 /* Build configuration list for PBXNativeTarget "BoxOfficeImages" */;
+			buildConfigurationList = 6A4983B624F18B6400111B62 /* Build configuration list for PBXNativeTarget "BoxOfficeMedia" */;
 			buildPhases = (
 				6A49839D24F18B6400111B62 /* Headers */,
 				6A49839E24F18B6400111B62 /* Sources */,
@@ -173,14 +173,14 @@
 			);
 			dependencies = (
 			);
-			name = BoxOfficeImages;
+			name = BoxOfficeMedia;
 			productName = BoxOfficeImages;
-			productReference = 6A4983A224F18B6400111B62 /* BoxOfficeImages.framework */;
+			productReference = 6A4983A224F18B6400111B62 /* BoxOfficeMedia.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6A4983AA24F18B6400111B62 /* BoxOfficeImagesTests */ = {
+		6A4983AA24F18B6400111B62 /* BoxOfficeMediaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A4983B924F18B6400111B62 /* Build configuration list for PBXNativeTarget "BoxOfficeImagesTests" */;
+			buildConfigurationList = 6A4983B924F18B6400111B62 /* Build configuration list for PBXNativeTarget "BoxOfficeMediaTests" */;
 			buildPhases = (
 				6A4983A724F18B6400111B62 /* Sources */,
 				6A4983A824F18B6400111B62 /* Frameworks */,
@@ -191,9 +191,9 @@
 			dependencies = (
 				6A4983AE24F18B6400111B62 /* PBXTargetDependency */,
 			);
-			name = BoxOfficeImagesTests;
+			name = BoxOfficeMediaTests;
 			productName = BoxOfficeImagesTests;
-			productReference = 6A4983AB24F18B6400111B62 /* BoxOfficeImagesTests.xctest */;
+			productReference = 6A4983AB24F18B6400111B62 /* BoxOfficeMediaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -216,7 +216,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6A49839C24F18B6400111B62 /* Build configuration list for PBXProject "BoxOfficeImages" */;
+			buildConfigurationList = 6A49839C24F18B6400111B62 /* Build configuration list for PBXProject "BoxOfficeMedia" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -229,8 +229,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6A4983A124F18B6400111B62 /* BoxOfficeImages */,
-				6A4983AA24F18B6400111B62 /* BoxOfficeImagesTests */,
+				6A4983A124F18B6400111B62 /* BoxOfficeMedia */,
+				6A4983AA24F18B6400111B62 /* BoxOfficeMediaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -277,7 +277,7 @@
 /* Begin PBXTargetDependency section */
 		6A4983AE24F18B6400111B62 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6A4983A124F18B6400111B62 /* BoxOfficeImages */;
+			target = 6A4983A124F18B6400111B62 /* BoxOfficeMedia */;
 			targetProxy = 6A4983AD24F18B6400111B62 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -413,14 +413,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = BoxOfficeImages/Info.plist;
+				INFOPLIST_FILE = BoxOfficeMedia/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.images";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.media";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -439,14 +439,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = BoxOfficeImages/Info.plist;
+				INFOPLIST_FILE = BoxOfficeMedia/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.images";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.media";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -461,13 +461,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
-				INFOPLIST_FILE = BoxOfficeImagesTests/Info.plist;
+				INFOPLIST_FILE = BoxOfficeMediaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeImagesTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeMediaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -482,13 +482,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
-				INFOPLIST_FILE = BoxOfficeImagesTests/Info.plist;
+				INFOPLIST_FILE = BoxOfficeMediaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeImagesTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeMediaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -497,7 +497,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6A49839C24F18B6400111B62 /* Build configuration list for PBXProject "BoxOfficeImages" */ = {
+		6A49839C24F18B6400111B62 /* Build configuration list for PBXProject "BoxOfficeMedia" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A4983B424F18B6400111B62 /* Debug */,
@@ -506,7 +506,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A4983B624F18B6400111B62 /* Build configuration list for PBXNativeTarget "BoxOfficeImages" */ = {
+		6A4983B624F18B6400111B62 /* Build configuration list for PBXNativeTarget "BoxOfficeMedia" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A4983B724F18B6400111B62 /* Debug */,
@@ -515,7 +515,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A4983B924F18B6400111B62 /* Build configuration list for PBXNativeTarget "BoxOfficeImagesTests" */ = {
+		6A4983B924F18B6400111B62 /* Build configuration list for PBXNativeTarget "BoxOfficeMediaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A4983BA24F18B6400111B62 /* Debug */,
