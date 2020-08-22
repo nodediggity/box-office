@@ -95,6 +95,17 @@ class NowPlayingViewControllerTests: XCTestCase {
     XCTAssertFalse(sut.loadingIndicatorIsVisible)
   }
 
+  func test_load_completion_renders_successfully_loaded_now_playing_feed() {
+    let (sut, loader) = makeSUT()
+    let items = Array(0..<10).map { index in makeNowPlayingCard(id: index, title: "Card #\(index)") }
+    let feedPage = makeNowPlayingFeed(items: items, pageNumber: 1, totalPages: 1)
+
+    sut.loadViewIfNeeded()
+    assertThat(sut, isRendering: [])
+
+    loader.loadFeedCompletes(with: .success(feedPage))
+  }
+
 }
 
 private extension NowPlayingViewControllerTests {
@@ -114,6 +125,12 @@ private extension NowPlayingViewControllerTests {
 
   func makeNowPlayingCard(id: Int, title: String? = nil, imagePath: String? = nil ) -> NowPlayingCard {
     return NowPlayingCard(id: id, title: title ?? UUID().uuidString, imagePath: imagePath ?? "\(UUID().uuidString).jpg")
+  }
+
+  func assertThat(_ sut: NowPlayingViewController, isRendering feed: [NowPlayingCard], file: StaticString = #file, line: UInt = #line) {
+    guard sut.numberOfRenderedCards == feed.count else {
+      return XCTFail("Expected \(feed.count) cards, got \(sut.numberOfRenderedCards) instead.", file: file, line: line)
+    }
   }
 
   class LoaderSpy: NowPlayingLoader {
@@ -144,6 +161,10 @@ extension NowPlayingViewController {
 
   var loadingIndicatorIsVisible: Bool {
     return refreshControl.isRefreshing
+  }
+
+  var numberOfRenderedCards: Int {
+    return collectionView.numberOfItems(inSection: 0)
   }
 }
 
