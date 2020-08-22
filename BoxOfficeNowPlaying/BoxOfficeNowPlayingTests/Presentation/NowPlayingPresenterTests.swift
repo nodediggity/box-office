@@ -9,67 +9,6 @@
 import XCTest
 import BoxOfficeNowPlaying
 
-struct NowPlayingLoadingViewModel: Equatable {
-  let isLoading: Bool
-}
-
-struct NowPlayingErrorViewModel: Equatable {
-  let message: String?
-
-  static var noError: NowPlayingErrorViewModel {
-    return NowPlayingErrorViewModel(message: nil)
-  }
-
-  static func error(message: String) -> NowPlayingErrorViewModel {
-    return NowPlayingErrorViewModel(message: message)
-  }
-}
-
-struct NowPlayingViewModel: Equatable {
-  let items: [NowPlayingCard]
-}
-
-protocol NowPlayingLoadingView {
-  func display(_ viewModel: NowPlayingLoadingViewModel)
-}
-
-protocol NowPlayingErrorView {
-  func display(_ viewModel: NowPlayingErrorViewModel)
-}
-
-protocol NowPlayingView {
-  func display(_ viewModel: NowPlayingViewModel)
-}
-
-class NowPlayingPresenter {
-
-  private let view: NowPlayingView
-  private let loadingView: NowPlayingLoadingView
-  private let errorView: NowPlayingErrorView
-
-  init(view: NowPlayingView, loadingView: NowPlayingLoadingView, errorView: NowPlayingErrorView) {
-    self.view = view
-    self.loadingView = loadingView
-    self.errorView = errorView
-  }
-
-  func didStartLoading() {
-    loadingView.display(.init(isLoading: true))
-    errorView.display(.noError)
-  }
-
-  func didFinishLoading(with feed: NowPlayingFeed) {
-    loadingView.display(.init(isLoading: false))
-    view.display(.init(items: feed.items))
-  }
-
-  func didFinishLoading(with error: Error) {
-    loadingView.display(.init(isLoading: false))
-    errorView.display(.error(message: error.localizedDescription))
-  }
-
-}
-
 class NowPlayingPresenterTests: XCTestCase {
 
   func test_on_init_does_not_message_view() {
