@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import BoxOfficeMedia
 import BoxOfficeNowPlaying
 
 public enum NowPlayingUIComposer {
-  public static func compose(loader: NowPlayingLoader) -> NowPlayingViewController {
+  public static func compose(loader: NowPlayingLoader, imageLoader: ImageDataLoader) -> NowPlayingViewController {
 
     let adapter = NowPlayingPresentationAdapter(loader: loader)
     let refreshController = NowPlayingRefreshController(delegate: adapter)

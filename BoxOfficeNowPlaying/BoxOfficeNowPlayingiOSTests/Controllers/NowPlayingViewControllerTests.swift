@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import BoxOfficeMedia
 import BoxOfficeNowPlaying
 import BoxOfficeNowPlayingiOS
 
@@ -59,7 +60,7 @@ class NowPlayingViewControllerTests: XCTestCase {
 private extension NowPlayingViewControllerTests {
   func makeSUT(file: StaticString = #file, line: UInt = #line) -> (NowPlayingViewController, LoaderSpy) {
     let loader = LoaderSpy()
-    let sut = NowPlayingUIComposer.compose(loader: loader)
+    let sut = NowPlayingUIComposer.compose(loader: loader, imageLoader: loader)
 
     checkForMemoryLeaks(loader, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
@@ -91,7 +92,7 @@ private extension NowPlayingViewControllerTests {
     }
   }
 
-  class LoaderSpy: NowPlayingLoader {
+  class LoaderSpy: NowPlayingLoader, ImageDataLoader {
 
     enum Message: Equatable {
       case load(PagedNowPlayingRequest)
@@ -107,6 +108,35 @@ private extension NowPlayingViewControllerTests {
 
     func loadFeedCompletes(with result: NowPlayingLoader.Result, at index: Int = 0) {
       loadCompletions[index](result)
+    }
+
+    private struct TaskSpy: ImageDataLoaderTask {
+      let cancelCallback: () -> Void
+      func cancel() {
+        cancelCallback()
+      }
+    }
+
+    private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
+
+    var loadedImageURLs: [URL] {
+      return imageRequests.map { $0.url }
+    }
+
+    private(set) var cancelledImageURLs = [URL]()
+
+    func load(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
+      imageRequests.append((url, completion))
+      return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
+    }
+
+    func completeImageLoading(with imageData: Data = Data(), at index: Int = 0) {
+      imageRequests[index].completion(.success(imageData))
+    }
+
+    func completeImageLoadingWithError(at index: Int = 0) {
+      let error = NSError(domain: "an error", code: 0)
+      imageRequests[index].completion(.failure(error))
     }
   }
 }

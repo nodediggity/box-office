@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A2D96A824F1A97C00F05CD6 /* BoxOfficeMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */; };
+		6A2D96A924F1A97C00F05CD6 /* BoxOfficeMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A3DF11C24F17AA800ACCA99 /* WeakRefVirtualProxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3DF11B24F17AA800ACCA99 /* WeakRefVirtualProxyTests.swift */; };
 		6A3DF11F24F17B8200ACCA99 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3DF11E24F17B8200ACCA99 /* WeakRefVirtualProxy.swift */; };
 		6A3DF12224F181AA00ACCA99 /* NowPlayingPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3DF12124F181AA00ACCA99 /* NowPlayingPresentationAdapter.swift */; };
@@ -70,6 +72,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				6AD4CBED24F063BC001A400E /* BoxOfficeNetworking.framework in Embed Frameworks */,
+				6A2D96A924F1A97C00F05CD6 /* BoxOfficeMedia.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +91,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A3DF11B24F17AA800ACCA99 /* WeakRefVirtualProxyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxyTests.swift; sourceTree = "<group>"; };
 		6A3DF11E24F17B8200ACCA99 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		6A3DF12124F181AA00ACCA99 /* NowPlayingPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingPresentationAdapter.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AD4CBEC24F063BC001A400E /* BoxOfficeNetworking.framework in Frameworks */,
+				6A2D96A824F1A97C00F05CD6 /* BoxOfficeMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +273,7 @@
 		6AD4CBEA24F063BC001A400E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */,
 				6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */,
 			);
 			name = Frameworks;
