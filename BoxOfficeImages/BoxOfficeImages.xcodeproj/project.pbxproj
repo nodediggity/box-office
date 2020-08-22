@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				6A4983A624F18B6400111B62 /* Info.plist */,
-				6A4983CA24F1953900111B62 /* RemoteImageDataLoader.swift */,
+				6A4983CD24F195F500111B62 /* API */,
 			);
 			path = BoxOfficeImages;
 			sourceTree = "<group>";
@@ -106,7 +106,7 @@
 				6A4983B224F18B6400111B62 /* Info.plist */,
 				6A4983C824F18FDA00111B62 /* HTTPClientSpy.swift */,
 				6A4983C324F18F3D00111B62 /* XCTestCase+Ext.swift */,
-				6A4983C524F18F7400111B62 /* ImageDataLoader */,
+				6A4983CE24F1960C00111B62 /* API */,
 			);
 			path = BoxOfficeImagesTests;
 			sourceTree = "<group>";
@@ -119,12 +119,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6A4983C524F18F7400111B62 /* ImageDataLoader */ = {
+		6A4983CD24F195F500111B62 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6A4983CA24F1953900111B62 /* RemoteImageDataLoader.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		6A4983CE24F1960C00111B62 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				6A4983C624F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift */,
 			);
-			path = ImageDataLoader;
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
