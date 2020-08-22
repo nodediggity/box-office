@@ -21,7 +21,7 @@ class LoadImageDataFromRemoteUseCaseTests: XCTestCase {
     let requestURL = makeURL("https://some-remote-image.com")
     let (sut, client) = makeSUT()
 
-    sut.load(from: requestURL)
+    sut.load(from: requestURL) { _ in }
 
     XCTAssertEqual(client.requestedURLs, [requestURL])
   }
@@ -30,8 +30,8 @@ class LoadImageDataFromRemoteUseCaseTests: XCTestCase {
     let requestURL = makeURL("https://some-remote-image.com")
     let (sut, client) = makeSUT()
 
-    sut.load(from: requestURL)
-    sut.load(from: requestURL)
+    sut.load(from: requestURL) { _ in }
+    sut.load(from: requestURL) { _ in }
 
     XCTAssertEqual(client.requestedURLs, [requestURL, requestURL])
   }

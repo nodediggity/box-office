@@ -14,6 +14,7 @@
 		6A4983C724F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983C624F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift */; };
 		6A4983C924F18FDA00111B62 /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983C824F18FDA00111B62 /* HTTPClientSpy.swift */; };
 		6A4983CB24F1953900111B62 /* RemoteImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983CA24F1953900111B62 /* RemoteImageDataLoader.swift */; };
+		6A4983D124F1972100111B62 /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983D024F1972100111B62 /* ImageDataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		6A4983C624F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageDataFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		6A4983C824F18FDA00111B62 /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		6A4983CA24F1953900111B62 /* RemoteImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataLoader.swift; sourceTree = "<group>"; };
+		6A4983D024F1972100111B62 /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				6A4983A624F18B6400111B62 /* Info.plist */,
 				6A4983CD24F195F500111B62 /* API */,
+				6A4983CF24F1971200111B62 /* Feature */,
 			);
 			path = BoxOfficeImages;
 			sourceTree = "<group>";
@@ -133,6 +136,14 @@
 				6A4983C624F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		6A4983CF24F1971200111B62 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				6A4983D024F1972100111B62 /* ImageDataLoader.swift */,
+			);
+			path = Feature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A4983D124F1972100111B62 /* ImageDataLoader.swift in Sources */,
 				6A4983CB24F1953900111B62 /* RemoteImageDataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

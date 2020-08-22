@@ -9,14 +9,14 @@
 import Foundation
 import BoxOfficeNetworking
 
-public final class RemoteImageDataLoader {
+public final class RemoteImageDataLoader: ImageDataLoader {
 
   public enum Error: Swift.Error {
     case connectivity
     case invalidResponse
   }
 
-  public typealias Result = Swift.Result<Data, Error>
+  public typealias Result = ImageDataLoader.Result
 
   private let client: HTTPClient
 
@@ -24,19 +24,43 @@ public final class RemoteImageDataLoader {
     self.client = client
   }
 
-  public func load(from imageURL: URL, completion: @escaping (Result) -> Void = { _ in }) {
-    client.dispatch(URLRequest(url: imageURL), completion: { result in
-      switch result {
-        case let .success(body):
+  public func load(from imageURL: URL, completion: @escaping (Result) -> Void) -> ImageDataLoaderTask {
+    let task = HTTPClientTaskWrapper(completion)
 
-          if body.data.count > 0 && body.response.statusCode == 200 {
-            completion(.success(body.data))
-          } else {
-            completion(.failure(Error.invalidResponse))
-        }
-
-        case .failure: completion(.failure(Error.connectivity))
-      }
+    task.wrapped = client.dispatch(URLRequest(url: imageURL), completion: { [weak self] result in
+      guard self != nil else { return }
+      task.complete(with: result
+        .mapError { _ in Error.connectivity }
+        .flatMap { (data, response) in
+          let isValidResponse = response.statusCode == 200 && !data.isEmpty
+          return isValidResponse ? .success(data) : .failure(Error.invalidResponse)
+      })
     })
+
+    return task
+  }
+}
+
+private final class HTTPClientTaskWrapper: ImageDataLoaderTask {
+  
+  private var completion: ((ImageDataLoader.Result) -> Void)?
+
+  var wrapped: HTTPClientTask?
+
+  init(_ completion: @escaping (ImageDataLoader.Result) -> Void) {
+    self.completion = completion
+  }
+
+  func complete(with result: ImageDataLoader.Result) {
+    completion?(result)
+  }
+
+  func cancel() {
+    preventFurtherCompletions()
+    wrapped?.cancel()
+  }
+
+  private func preventFurtherCompletions() {
+    completion = nil
   }
 }
