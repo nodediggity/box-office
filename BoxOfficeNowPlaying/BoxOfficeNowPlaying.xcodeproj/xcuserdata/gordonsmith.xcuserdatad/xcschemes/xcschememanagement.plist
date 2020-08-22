@@ -9,10 +9,25 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>BoxOfficeNowPlayingiOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>6A5075A424F028F800B25D4F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AFD447324F1144100E7A1F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AFD447B24F1144100E7A1F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
