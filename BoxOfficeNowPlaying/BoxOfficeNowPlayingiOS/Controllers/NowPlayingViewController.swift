@@ -20,10 +20,6 @@ public final class NowPlayingViewController: UICollectionViewController {
   convenience init(refreshController: NowPlayingRefreshController) {
     self.init(collectionViewLayout: UICollectionViewFlowLayout())
     self.refreshController = refreshController
-
-    refreshController.onRefresh = { [weak self] items in
-      self?.items = items
-    }
   }
 
   public override func viewDidLoad() {
@@ -48,4 +44,14 @@ public final class NowPlayingViewController: UICollectionViewController {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NowPlayingCardFeedCell", for: indexPath) as! NowPlayingCardFeedCell
     return cell
   }
+}
+
+extension NowPlayingViewController: NowPlayingView {
+  public func display(_ viewModel: NowPlayingViewModel) {
+    items = viewModel.items
+  }
+}
+
+extension NowPlayingViewController: NowPlayingErrorView {
+  public func display(_ viewModel: NowPlayingErrorViewModel) { }
 }

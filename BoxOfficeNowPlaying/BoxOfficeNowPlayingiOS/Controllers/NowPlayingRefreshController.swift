@@ -9,28 +9,30 @@
 import UIKit
 import BoxOfficeNowPlaying
 
+protocol NowPlayingRefreshControllerDelegate {
+  func didRequestLoad()
+}
+
 final class NowPlayingRefreshController: NSObject {
 
-  var onRefresh: (([NowPlayingCard]) -> Void)?
-
-  private let loader: NowPlayingLoader
+  private let delegate: NowPlayingRefreshControllerDelegate
 
   private(set) lazy var view = loadView()
 
-  init(loader: NowPlayingLoader) {
-    self.loader = loader
+  init(delegate: NowPlayingRefreshControllerDelegate) {
+    self.delegate = delegate
   }
 
   @objc func load() {
-    view.beginRefreshing()
-    loader.execute(PagedNowPlayingRequest(page: 1), completion: { [weak self] result in
-      if let page = try? result.get() {
-        self?.onRefresh?(page.items)
-      }
-      self?.view.endRefreshing()
-    })
+    delegate.didRequestLoad()
   }
 
+}
+
+extension NowPlayingRefreshController: NowPlayingLoadingView {
+  func display(_ viewModel: NowPlayingLoadingViewModel) {
+    viewModel.isLoading ? view.beginRefreshing() : view.endRefreshing()
+  }
 }
 
 private extension NowPlayingRefreshController {
