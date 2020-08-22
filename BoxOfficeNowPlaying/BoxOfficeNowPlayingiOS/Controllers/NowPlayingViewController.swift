@@ -9,8 +9,6 @@
 import UIKit
 import BoxOfficeNowPlaying
 
-public final class NowPlayingCardFeedCell: UICollectionViewCell { }
-
 public final class NowPlayingViewController: UIViewController {
 
   public let refreshControl = UIRefreshControl(frame: .zero)
