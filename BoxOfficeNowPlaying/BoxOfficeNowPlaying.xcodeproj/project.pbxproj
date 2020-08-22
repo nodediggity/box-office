@@ -24,6 +24,7 @@
 		6AFD448C24F114D600E7A1F7 /* BoxOfficeNowPlaying.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5075A524F028F800B25D4F /* BoxOfficeNowPlaying.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6AFD449124F1207400E7A1F7 /* NowPlayingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD449024F1207400E7A1F7 /* NowPlayingViewControllerTests.swift */; };
 		6AFD449224F120C300E7A1F7 /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075C824F02D8F00B25D4F /* XCTestCase+Ext.swift */; };
+		6AFD449524F13D7500E7A1F7 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD449424F13D7500E7A1F7 /* NowPlayingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		6AFD447C24F1144100E7A1F7 /* BoxOfficeNowPlayingiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeNowPlayingiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFD448324F1144100E7A1F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AFD449024F1207400E7A1F7 /* NowPlayingViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewControllerTests.swift; sourceTree = "<group>"; };
+		6AFD449424F13D7500E7A1F7 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 		6AFD447524F1144100E7A1F7 /* BoxOfficeNowPlayingiOS */ = {
 			isa = PBXGroup;
 			children = (
+				6AFD449324F13D6C00E7A1F7 /* Controllers */,
 				6AFD447724F1144100E7A1F7 /* Info.plist */,
 			);
 			path = BoxOfficeNowPlayingiOS;
@@ -236,6 +239,14 @@
 				6AFD449024F1207400E7A1F7 /* NowPlayingViewControllerTests.swift */,
 			);
 			path = BoxOfficeNowPlayingiOSTests;
+			sourceTree = "<group>";
+		};
+		6AFD449324F13D6C00E7A1F7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6AFD449424F13D7500E7A1F7 /* NowPlayingViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +364,7 @@
 					};
 					6AFD447324F1144100E7A1F7 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					6AFD447B24F1144100E7A1F7 = {
 						CreatedOnToolsVersion = 11.6;
@@ -440,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AFD449524F13D7500E7A1F7 /* NowPlayingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +711,7 @@
 		6AFD448524F1144100E7A1F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
@@ -716,6 +730,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -724,6 +739,7 @@
 		6AFD448624F1144100E7A1F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
@@ -751,6 +767,7 @@
 		6AFD448724F1144100E7A1F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
@@ -773,6 +790,7 @@
 		6AFD448824F1144100E7A1F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBUNS24C9F;

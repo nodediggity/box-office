@@ -8,76 +8,7 @@
 
 import XCTest
 import BoxOfficeNowPlaying
-
-final class NowPlayingCardFeedCell: UICollectionViewCell { }
-
-final class NowPlayingViewController: UIViewController {
-
-  let refreshControl = UIRefreshControl(frame: .zero)
-  private(set) lazy var collectionView: UICollectionView = {
-    let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
-    collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    collectionView.backgroundColor = .systemBackground
-    collectionView.dataSource = self
-    collectionView.delegate = self
-
-    collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")
-
-    refreshControl.addTarget(self, action: #selector(load), for: .valueChanged)
-
-    collectionView.refreshControl = refreshControl
-    return collectionView
-  }()
-
-  private var loader: NowPlayingLoader?
-
-  private var items: [NowPlayingCard] = [] {
-    didSet { collectionView.reloadData() }
-  }
-
-  convenience init(loader: NowPlayingLoader) {
-    self.init()
-    self.loader = loader
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.addSubview(collectionView)
-    load()
-  }
-}
-
-private extension NowPlayingViewController {
-  @objc func load() {
-    refreshControl.beginRefreshing()
-    loader?.execute(PagedNowPlayingRequest(page: 1), completion: { [weak self] result in
-
-      if let page = try? result.get() {
-        self?.items = page.items
-      }
-
-      self?.refreshControl.endRefreshing()
-    })
-  }
-}
-
-extension NowPlayingViewController: UICollectionViewDelegateFlowLayout {
-  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    guard refreshControl.isRefreshing == true else { return }
-    load()
-  }
-}
-
-extension NowPlayingViewController: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return items.count
-  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NowPlayingCardFeedCell", for: indexPath)
-    return cell
-  }
-}
+import BoxOfficeNowPlayingiOS
 
 class NowPlayingViewControllerTests: XCTestCase {
 
