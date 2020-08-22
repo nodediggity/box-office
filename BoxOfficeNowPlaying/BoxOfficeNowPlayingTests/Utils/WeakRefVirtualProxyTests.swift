@@ -7,15 +7,7 @@
 //
 
 import XCTest
-
-final class WeakRefVirtualProxy<T: AnyObject> {
-
-  private(set) weak var object: T?
-
-  init(_ object: T) {
-    self.object = object
-  }
-}
+import BoxOfficeNowPlaying
 
 class WeakRefVirtualProxyTests: XCTestCase {
 
