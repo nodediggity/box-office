@@ -97,6 +97,18 @@ class LoadImageDataFromRemoteUseCaseTests: XCTestCase {
 
     XCTAssertTrue(output.isEmpty)
   }
+
+  func test_does_not_invoke_completion_once_instance_has_been_deallocated() {
+    let client = HTTPClientSpy()
+    var sut: ImageDataLoader? = RemoteImageDataLoader(client: client)
+
+    var output: Any? = nil
+    let _ = sut?.load(from: makeURL(), completion: { output = $0 })
+    sut = nil
+
+    client.completes(withStatusCode: 200, data: makeData())
+    XCTAssertNil(output)
+  }
 }
 
 private extension LoadImageDataFromRemoteUseCaseTests {
