@@ -226,8 +226,8 @@
 		6AFD447524F1144100E7A1F7 /* BoxOfficeNowPlayingiOS */ = {
 			isa = PBXGroup;
 			children = (
-				6AFD449324F13D6C00E7A1F7 /* Controllers */,
 				6AFD447724F1144100E7A1F7 /* Info.plist */,
+				6AFD449324F13D6C00E7A1F7 /* Controllers */,
 			);
 			path = BoxOfficeNowPlayingiOS;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				6AFD448324F1144100E7A1F7 /* Info.plist */,
-				6AFD449024F1207400E7A1F7 /* NowPlayingViewControllerTests.swift */,
+				6AFD449624F13EE200E7A1F7 /* Controllers */,
 			);
 			path = BoxOfficeNowPlayingiOSTests;
 			sourceTree = "<group>";
@@ -245,6 +245,14 @@
 			isa = PBXGroup;
 			children = (
 				6AFD449424F13D7500E7A1F7 /* NowPlayingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6AFD449624F13EE200E7A1F7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6AFD449024F1207400E7A1F7 /* NowPlayingViewControllerTests.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
