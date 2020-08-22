@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6A4983A124F18B6400111B62"
-               BuildableName = "BoxOfficeImages.framework"
-               BlueprintName = "BoxOfficeImages"
-               ReferencedContainer = "container:BoxOfficeImages.xcodeproj">
+               BuildableName = "BoxOfficeMedia.framework"
+               BlueprintName = "BoxOfficeMedia"
+               ReferencedContainer = "container:BoxOfficeMedia.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6A4983A124F18B6400111B62"
-            BuildableName = "BoxOfficeImages.framework"
-            BlueprintName = "BoxOfficeImages"
-            ReferencedContainer = "container:BoxOfficeImages.xcodeproj">
+            BuildableName = "BoxOfficeMedia.framework"
+            BlueprintName = "BoxOfficeMedia"
+            ReferencedContainer = "container:BoxOfficeMedia.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -45,9 +45,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6A4983AA24F18B6400111B62"
-               BuildableName = "BoxOfficeImagesTests.xctest"
-               BlueprintName = "BoxOfficeImagesTests"
-               ReferencedContainer = "container:BoxOfficeImages.xcodeproj">
+               BuildableName = "BoxOfficeMediaTests.xctest"
+               BlueprintName = "BoxOfficeMediaTests"
+               ReferencedContainer = "container:BoxOfficeMedia.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -73,9 +73,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6A4983A124F18B6400111B62"
-            BuildableName = "BoxOfficeImages.framework"
-            BlueprintName = "BoxOfficeImages"
-            ReferencedContainer = "container:BoxOfficeImages.xcodeproj">
+            BuildableName = "BoxOfficeMedia.framework"
+            BlueprintName = "BoxOfficeMedia"
+            ReferencedContainer = "container:BoxOfficeMedia.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
