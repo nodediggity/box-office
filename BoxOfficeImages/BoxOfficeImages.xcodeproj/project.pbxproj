@@ -11,6 +11,8 @@
 		6A4983BE24F18E6400111B62 /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4983BD24F18E6400111B62 /* BoxOfficeNetworking.framework */; };
 		6A4983BF24F18E6400111B62 /* BoxOfficeNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4983BD24F18E6400111B62 /* BoxOfficeNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A4983C424F18F3D00111B62 /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983C324F18F3D00111B62 /* XCTestCase+Ext.swift */; };
+		6A4983C724F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983C624F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift */; };
+		6A4983C924F18FDA00111B62 /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4983C824F18FDA00111B62 /* HTTPClientSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		6A4983B224F18B6400111B62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A4983BD24F18E6400111B62 /* BoxOfficeNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4983C324F18F3D00111B62 /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
+		6A4983C624F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageDataFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
+		6A4983C824F18FDA00111B62 /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				6A4983B224F18B6400111B62 /* Info.plist */,
+				6A4983C824F18FDA00111B62 /* HTTPClientSpy.swift */,
 				6A4983C324F18F3D00111B62 /* XCTestCase+Ext.swift */,
+				6A4983C524F18F7400111B62 /* ImageDataLoader */,
 			);
 			path = BoxOfficeImagesTests;
 			sourceTree = "<group>";
@@ -108,6 +114,14 @@
 				6A4983BD24F18E6400111B62 /* BoxOfficeNetworking.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6A4983C524F18F7400111B62 /* ImageDataLoader */ = {
+			isa = PBXGroup;
+			children = (
+				6A4983C624F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift */,
+			);
+			path = ImageDataLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +242,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A4983C424F18F3D00111B62 /* XCTestCase+Ext.swift in Sources */,
+				6A4983C924F18FDA00111B62 /* HTTPClientSpy.swift in Sources */,
+				6A4983C724F18FA000111B62 /* LoadImageDataFromRemoteUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
