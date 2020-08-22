@@ -87,6 +87,12 @@ class NowPlayingViewControllerTests: XCTestCase {
 
     loader.loadFeedCompletes(with: .success(.init(items: [], page: 1, totalPages: 1)))
     XCTAssertFalse(sut.loadingIndicatorIsVisible)
+
+    sut.simulateUserRefresh()
+    XCTAssertTrue(sut.loadingIndicatorIsVisible)
+
+    loader.loadFeedCompletes(with: .failure(makeError()))
+    XCTAssertFalse(sut.loadingIndicatorIsVisible)
   }
 
 }
