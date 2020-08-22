@@ -60,7 +60,7 @@ class NowPlayingViewControllerTests: XCTestCase {
 private extension NowPlayingViewControllerTests {
   func makeSUT(file: StaticString = #file, line: UInt = #line) -> (NowPlayingViewController, LoaderSpy) {
     let loader = LoaderSpy()
-    let sut = NowPlayingViewController(loader: loader)
+    let sut = NowPlayingUIComposer.compose(loader: loader)
 
     checkForMemoryLeaks(loader, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
