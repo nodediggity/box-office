@@ -28,7 +28,6 @@ class NowPlayingViewControllerTests: XCTestCase {
 
   func test_loading_indicator_is_visible_during_loading_state() {
     let (sut, loader) = makeSUT()
-    XCTAssertFalse(sut.loadingIndicatorIsVisible)
 
     sut.loadViewIfNeeded()
     XCTAssertTrue(sut.loadingIndicatorIsVisible)
@@ -114,12 +113,12 @@ private extension NowPlayingViewControllerTests {
 
 extension NowPlayingViewController {
   func simulateUserRefresh() {
-    refreshControl.beginRefreshing()
-    refreshControl.simulatePullToRefresh()
+    collectionView.refreshControl?.beginRefreshing()
+    scrollViewDidEndDragging(collectionView, willDecelerate: true)
   }
 
   var loadingIndicatorIsVisible: Bool {
-    return refreshControl.isRefreshing
+    return collectionView.refreshControl?.isRefreshing == true
   }
 
   var numberOfItems: Int {

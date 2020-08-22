@@ -9,68 +9,43 @@
 import UIKit
 import BoxOfficeNowPlaying
 
-public final class NowPlayingViewController: UIViewController {
+public final class NowPlayingViewController: UICollectionViewController {
 
-  public let refreshControl = UIRefreshControl(frame: .zero)
-  private(set) public lazy var collectionView: UICollectionView = {
-    let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
-    collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    collectionView.backgroundColor = .systemBackground
-    collectionView.dataSource = self
-    collectionView.delegate = self
-
-    collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")
-
-    refreshControl.addTarget(self, action: #selector(load), for: .valueChanged)
-
-    collectionView.refreshControl = refreshControl
-    return collectionView
-  }()
-
-  private var loader: NowPlayingLoader?
+  private var refreshController: NowPlayingRefreshController?
 
   private var items: [NowPlayingCard] = [] {
     didSet { collectionView.reloadData() }
   }
 
-  public convenience init(loader: NowPlayingLoader) {
-    self.init()
-    self.loader = loader
+  convenience init(refreshController: NowPlayingRefreshController) {
+    self.init(collectionViewLayout: UICollectionViewFlowLayout())
+    self.refreshController = refreshController
+
+    refreshController.onRefresh = { [weak self] items in
+      self?.items = items
+    }
   }
 
   public override func viewDidLoad() {
     super.viewDidLoad()
-    view.addSubview(collectionView)
-    load()
-  }
-}
+    
+    collectionView.refreshControl = refreshController?.view
+    collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")
 
-private extension NowPlayingViewController {
-  @objc func load() {
-    refreshControl.beginRefreshing()
-    loader?.execute(PagedNowPlayingRequest(page: 1), completion: { [weak self] result in
-      if let page = try? result.get() {
-        self?.items = page.items
-      }
-      self?.refreshControl.endRefreshing()
-    })
+    refreshController?.load()
   }
-}
 
-extension NowPlayingViewController: UICollectionViewDelegateFlowLayout {
-  public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    guard refreshControl.isRefreshing == true else { return }
-    load()
+  public override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    guard collectionView.refreshControl?.isRefreshing == true else { return }
+    refreshController?.load()
   }
-}
 
-extension NowPlayingViewController: UICollectionViewDataSource {
-  public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  public override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return items.count
   }
 
-  public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NowPlayingCardFeedCell", for: indexPath)
+  public override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NowPlayingCardFeedCell", for: indexPath) as! NowPlayingCardFeedCell
     return cell
   }
 }

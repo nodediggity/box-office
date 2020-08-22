@@ -27,6 +27,7 @@
 		6AFD449524F13D7500E7A1F7 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD449424F13D7500E7A1F7 /* NowPlayingViewController.swift */; };
 		6AFD449C24F13F3800E7A1F7 /* NowPlayingCardFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD449B24F13F3800E7A1F7 /* NowPlayingCardFeedCell.swift */; };
 		6AFD449F24F13F7500E7A1F7 /* NowPlayingUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD449E24F13F7500E7A1F7 /* NowPlayingUIComposer.swift */; };
+		6AFD44A124F168AA00E7A1F7 /* NowPlayingRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFD44A024F168AA00E7A1F7 /* NowPlayingRefreshController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		6AFD449424F13D7500E7A1F7 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		6AFD449B24F13F3800E7A1F7 /* NowPlayingCardFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCardFeedCell.swift; sourceTree = "<group>"; };
 		6AFD449E24F13F7500E7A1F7 /* NowPlayingUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingUIComposer.swift; sourceTree = "<group>"; };
+		6AFD44A024F168AA00E7A1F7 /* NowPlayingRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingRefreshController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				6AFD449424F13D7500E7A1F7 /* NowPlayingViewController.swift */,
+				6AFD44A024F168AA00E7A1F7 /* NowPlayingRefreshController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AFD449524F13D7500E7A1F7 /* NowPlayingViewController.swift in Sources */,
+				6AFD44A124F168AA00E7A1F7 /* NowPlayingRefreshController.swift in Sources */,
 				6AFD449F24F13F7500E7A1F7 /* NowPlayingUIComposer.swift in Sources */,
 				6AFD449C24F13F3800E7A1F7 /* NowPlayingCardFeedCell.swift in Sources */,
 			);
