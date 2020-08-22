@@ -23,7 +23,10 @@ struct NowPlayingErrorViewModel: Equatable {
   static func error(message: String) -> NowPlayingErrorViewModel {
     return NowPlayingErrorViewModel(message: message)
   }
+}
 
+struct NowPlayingViewModel: Equatable {
+  let items: [NowPlayingCard]
 }
 
 protocol NowPlayingLoadingView {
@@ -34,12 +37,18 @@ protocol NowPlayingErrorView {
   func display(_ viewModel: NowPlayingErrorViewModel)
 }
 
+protocol NowPlayingView {
+  func display(_ viewModel: NowPlayingViewModel)
+}
+
 class NowPlayingPresenter {
 
+  private let view: NowPlayingView
   private let loadingView: NowPlayingLoadingView
   private let errorView: NowPlayingErrorView
 
-  init(loadingView: NowPlayingLoadingView, errorView: NowPlayingErrorView) {
+  init(view: NowPlayingView, loadingView: NowPlayingLoadingView, errorView: NowPlayingErrorView) {
+    self.view = view
     self.loadingView = loadingView
     self.errorView = errorView
   }
@@ -47,6 +56,11 @@ class NowPlayingPresenter {
   func didStartLoading() {
     loadingView.display(.init(isLoading: true))
     errorView.display(.noError)
+  }
+
+  func didFinishLoading(with feed: NowPlayingFeed) {
+    loadingView.display(.init(isLoading: false))
+    view.display(.init(items: feed.items))
   }
 
 }
@@ -64,23 +78,33 @@ class NowPlayingPresenterTests: XCTestCase {
     sut.didStartLoading()
     XCTAssertEqual(view.messages, [.display(isLoading: true), .display(message: nil)])
   }
+
+  func test_did_finish_loading_success_displays_feed_and_stops_loading() {
+    let (sut, view) = makeSUT()
+    let items = Array(0..<5).map { index in NowPlayingCard(id: index, title: "Card #\(index)", imagePath: "image-\(index).png") }
+    let feed = NowPlayingFeed(items: items, page: 1, totalPages: 1)
+
+    sut.didFinishLoading(with: feed)
+    XCTAssertEqual(view.messages, [.display(isLoading: false), .display(items: items)])
+  }
 }
 
 private extension NowPlayingPresenterTests {
 
   func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: NowPlayingPresenter, view: ViewSpy) {
     let view = ViewSpy()
-    let sut = NowPlayingPresenter(loadingView: view, errorView: view)
+    let sut = NowPlayingPresenter(view: view, loadingView: view, errorView: view)
     checkForMemoryLeaks(view, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
     return (sut, view)
   }
 
-  class ViewSpy: NowPlayingLoadingView, NowPlayingErrorView {
+  class ViewSpy: NowPlayingLoadingView, NowPlayingErrorView, NowPlayingView {
 
     enum Message: Equatable {
       case display(isLoading: Bool)
       case display(message: String?)
+      case display(items: [NowPlayingCard])
     }
 
     private(set) var messages: [Message] = []
@@ -91,6 +115,10 @@ private extension NowPlayingPresenterTests {
 
     func display(_ viewModel: NowPlayingErrorViewModel) {
       messages.append(.display(message: viewModel.message))
+    }
+
+    func display(_ viewModel: NowPlayingViewModel) {
+      messages.append(.display(items: viewModel.items))
     }
   }
 
