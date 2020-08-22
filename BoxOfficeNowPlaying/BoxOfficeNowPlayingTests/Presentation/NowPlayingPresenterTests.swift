@@ -63,6 +63,11 @@ class NowPlayingPresenter {
     view.display(.init(items: feed.items))
   }
 
+  func didFinishLoading(with error: Error) {
+    loadingView.display(.init(isLoading: false))
+    errorView.display(.error(message: error.localizedDescription))
+  }
+
 }
 
 class NowPlayingPresenterTests: XCTestCase {
@@ -86,6 +91,15 @@ class NowPlayingPresenterTests: XCTestCase {
 
     sut.didFinishLoading(with: feed)
     XCTAssertEqual(view.messages, [.display(isLoading: false), .display(items: items)])
+  }
+
+  func test_did_finish_loading_error_displays_error_and_stops_loading() {
+    let (sut, view) = makeSUT()
+    let errorDesc = "uh oh, could not update feed"
+    let error = makeError(errorDesc)
+
+    sut.didFinishLoading(with: error)
+    XCTAssertEqual(view.messages, [.display(isLoading: false), .display(message: errorDesc)])
   }
 }
 
