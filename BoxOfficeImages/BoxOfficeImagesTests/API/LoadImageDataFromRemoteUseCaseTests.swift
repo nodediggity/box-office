@@ -81,6 +81,22 @@ class LoadImageDataFromRemoteUseCaseTests: XCTestCase {
     task.cancel()
     XCTAssertEqual(client.cancelledURLs, [requestURL])
   }
+
+  func test_load_does_not_deliver_data_after_cancelling_task() {
+    let requestURL = makeURL("https://some-remote-image.com")
+    let (sut, client) = makeSUT()
+    let imageData = makeData()
+
+    var output: [Any] = []
+    let task = sut.load(from: requestURL, completion: { output.append($0) })
+    task.cancel()
+
+    client.completes(withStatusCode: 418, data: imageData)
+    client.completes(withStatusCode: 200, data: imageData)
+    client.completes(with: makeError())
+
+    XCTAssertTrue(output.isEmpty)
+  }
 }
 
 private extension LoadImageDataFromRemoteUseCaseTests {
