@@ -41,7 +41,9 @@ final class NowPlayingViewController: UIViewController {
 private extension NowPlayingViewController {
   @objc func load() {
     refreshControl.beginRefreshing()
-    loader?.execute(PagedNowPlayingRequest(page: 1), completion: { _ in })
+    loader?.execute(PagedNowPlayingRequest(page: 1), completion: { [weak self] _ in
+      self?.refreshControl.endRefreshing()
+    })
   }
 }
 
@@ -82,6 +84,9 @@ class NowPlayingViewControllerTests: XCTestCase {
 
     sut.loadViewIfNeeded()
     XCTAssertTrue(sut.loadingIndicatorIsVisible)
+
+    loader.loadFeedCompletes(with: .success(.init(items: [], page: 1, totalPages: 1)))
+    XCTAssertFalse(sut.loadingIndicatorIsVisible)
   }
 
 }
@@ -97,6 +102,14 @@ private extension NowPlayingViewControllerTests {
     return (sut, loader)
   }
 
+  func makeNowPlayingFeed(items: [NowPlayingCard] = [], pageNumber: Int = 0, totalPages: Int = 1) -> NowPlayingFeed {
+    return NowPlayingFeed(items: items, page: pageNumber, totalPages: totalPages)
+  }
+
+  func makeNowPlayingCard(id: Int, title: String? = nil, imagePath: String? = nil ) -> NowPlayingCard {
+    return NowPlayingCard(id: id, title: title ?? UUID().uuidString, imagePath: imagePath ?? "\(UUID().uuidString).jpg")
+  }
+
   class LoaderSpy: NowPlayingLoader {
 
     enum Message: Equatable {
@@ -104,9 +117,15 @@ private extension NowPlayingViewControllerTests {
     }
 
     private(set) var messages: [Message] = []
+    private var loadCompletions: [(NowPlayingLoader.Result) -> Void] = []
 
     func execute(_ req: PagedNowPlayingRequest, completion: @escaping (NowPlayingLoader.Result) -> Void) {
       messages.append(.load(req))
+      loadCompletions.append(completion)
+    }
+
+    func loadFeedCompletes(with result: NowPlayingLoader.Result, at index: Int = 0) {
+      loadCompletions[index](result)
     }
   }
 }
