@@ -11,13 +11,13 @@ import BoxOfficeNowPlaying
 
 final class NowPlayingViewController: UIViewController {
 
+  let refreshControl = UIRefreshControl(frame: .zero)
   private(set) lazy var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
     collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     collectionView.backgroundColor = .systemBackground
     collectionView.delegate = self
 
-    let refreshControl = UIRefreshControl(frame: .zero)
     refreshControl.addTarget(self, action: #selector(load), for: .valueChanged)
 
     collectionView.refreshControl = refreshControl
@@ -40,13 +40,14 @@ final class NowPlayingViewController: UIViewController {
 
 private extension NowPlayingViewController {
   @objc func load() {
+    refreshControl.beginRefreshing()
     loader?.execute(PagedNowPlayingRequest(page: 1), completion: { _ in })
   }
 }
 
 extension NowPlayingViewController: UICollectionViewDelegateFlowLayout {
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    guard collectionView.refreshControl?.isRefreshing == true else { return }
+    guard refreshControl.isRefreshing == true else { return }
     load()
   }
 }
@@ -73,6 +74,14 @@ class NowPlayingViewControllerTests: XCTestCase {
       .load(PagedNowPlayingRequest(page: 1)),
       .load(PagedNowPlayingRequest(page: 1))
     ])
+  }
+
+  func test_loading_indicator_is_visible_during_loading_state() {
+    let (sut, loader) = makeSUT()
+    XCTAssertFalse(sut.loadingIndicatorIsVisible)
+
+    sut.loadViewIfNeeded()
+    XCTAssertTrue(sut.loadingIndicatorIsVisible)
   }
 
 }
@@ -104,8 +113,12 @@ private extension NowPlayingViewControllerTests {
 
 extension NowPlayingViewController {
   func simulateUserRefresh() {
-    collectionView.refreshControl?.beginRefreshing()
-    collectionView.refreshControl?.simulatePullToRefresh()
+    refreshControl.beginRefreshing()
+    refreshControl.simulatePullToRefresh()
+  }
+
+  var loadingIndicatorIsVisible: Bool {
+    return refreshControl.isRefreshing
   }
 }
 
