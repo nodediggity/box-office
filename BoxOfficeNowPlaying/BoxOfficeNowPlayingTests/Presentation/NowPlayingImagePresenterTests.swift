@@ -7,8 +7,30 @@
 //
 
 import XCTest
+import BoxOfficeNowPlaying
 
-final class NowPlayingImagePresenter {
+struct NowPlayingImageViewModel<Image> {
+  let image: Image?
+  let title: String
+  let isLoading: Bool
+}
+
+protocol NowPlayingImageView {
+  associatedtype Image
+  func display(_ model: NowPlayingImageViewModel<Image>)
+}
+
+final class NowPlayingImagePresenter<View: NowPlayingImageView, Image> where View.Image == Image {
+
+  private let view: View
+
+  init(view: View) {
+    self.view = view
+  }
+
+  func didStartLoadingImageData(for model: NowPlayingCard) {
+    view.display(NowPlayingImageViewModel<Image>(image: nil, title: model.title, isLoading: true))
+  }
 
 }
 
@@ -18,19 +40,43 @@ class NowPlayingImagePresenterTests: XCTestCase {
     let (_, view) = makeSUT()
     XCTAssertTrue(view.messages.isEmpty)
   }
+
+  func test_did_start_loading_image_data_and_starts_loading_state() {
+    let (sut, view) = makeSUT()
+    let item = makeNowPlayingCard(id: 123)
+
+    sut.didStartLoadingImageData(for: item)
+
+    let message = view.messages.first
+    XCTAssertEqual(view.messages.count, 1)
+    XCTAssertEqual(message?.isLoading, true)
+    XCTAssertEqual(message?.title, item.title)
+    XCTAssertNil(message?.image)
+  }
 }
 
 private extension NowPlayingImagePresenterTests {
-  func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: NowPlayingImagePresenter, view: ViewSpy) {
+
+  func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: NowPlayingImagePresenter<ViewSpy, SomeImage>, view: ViewSpy) {
     let view = ViewSpy()
-    let sut = NowPlayingImagePresenter()
+    let sut = NowPlayingImagePresenter(view: view)
     checkForMemoryLeaks(view, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
     return (sut, view)
   }
 
-  class ViewSpy {
+  func makeNowPlayingCard(id: Int) -> NowPlayingCard {
+    return NowPlayingCard(id: id, title: "Card #\(id)", imagePath: "image-for-card-\(id).png")
+  }
 
-    private(set) var messages: [Any] = []
+  struct SomeImage: Equatable { }
+
+  class ViewSpy: NowPlayingImageView {
+
+    private(set) var messages: [NowPlayingImageViewModel<SomeImage>] = []
+
+    func display(_ model: NowPlayingImageViewModel<SomeImage>) {
+      messages.append(model)
+    }
   }
 }
