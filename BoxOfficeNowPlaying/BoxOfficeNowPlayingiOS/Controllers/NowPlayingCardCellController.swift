@@ -32,10 +32,17 @@ final class NowPlayingCardCellController {
 
   func cancelLoad() {
     delegate.didRequestCancelLoadImage()
+    relaseCellForReuse()
   }
 
   func prefetch() {
     delegate.didRequestLoadImage()
+  }
+}
+
+private extension NowPlayingCardCellController {
+  func relaseCellForReuse() {
+    cell = nil
   }
 }
 

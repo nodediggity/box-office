@@ -127,14 +127,14 @@ class NowPlayingViewControllerTests: XCTestCase {
     loader.loadFeedCompletes(with: .success(feedPage))
 
     let imageZeroData = makeImageData(withColor: .purple)
-    let viewZero = sut.simulateItemNotVisible(at: 0) as? NowPlayingCardFeedCell
+    let viewZero = sut.simulateItemVisible(at: 0) as? NowPlayingCardFeedCell
     XCTAssertEqual(viewZero?.renderedImage, .none)
 
     loader.completeImageLoading(with: imageZeroData, at: 0)
     XCTAssertEqual(viewZero?.renderedImage, imageZeroData)
 
     let imageOneData = makeImageData(withColor: .darkGray)
-    let viewOne = sut.simulateItemNotVisible(at: 1) as? NowPlayingCardFeedCell
+    let viewOne = sut.simulateItemVisible(at: 1) as? NowPlayingCardFeedCell
     XCTAssertEqual(viewOne?.renderedImage, .none)
 
     loader.completeImageLoading(with: imageOneData, at: 1)
@@ -179,7 +179,20 @@ class NowPlayingViewControllerTests: XCTestCase {
 
     sut.simulateItemNoLongerNearVisible(at: 1)
     XCTAssertEqual(loader.cancelledImageURLs, [expectedURLZero, expectedURLOne])
-  }  
+  }
+
+  func test_now_playing_card_does_not_render_image_when_no_longer_visible() {
+    let (sut, loader) = makeSUT()
+    let item = makeNowPlayingCard(id: 0)
+    let feedPage = makeNowPlayingFeed(items: [item], pageNumber: 1, totalPages: 1)
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+
+    let view = sut.simulateItemNotVisible(at: 0) as? NowPlayingCardFeedCell
+    loader.completeImageLoading(with: makeImageData(), at: 0)
+    XCTAssertNil(view?.renderedImage)
+  }
 }
 
 private extension NowPlayingViewControllerTests {
