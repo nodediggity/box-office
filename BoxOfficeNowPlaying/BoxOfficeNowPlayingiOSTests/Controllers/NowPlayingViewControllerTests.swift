@@ -141,6 +141,26 @@ class NowPlayingViewControllerTests: XCTestCase {
     XCTAssertEqual(viewOne?.renderedImage, imageOneData)
   }
 
+  func test_now_playing_card_preloads_image_when_near_visible() {
+    let (sut, loader) = makeSUT()
+    let itemZero = makeNowPlayingCard(id: 0)
+    let itemOne = makeNowPlayingCard(id: 1)
+    let feedPage = makeNowPlayingFeed(items: [itemZero, itemOne], pageNumber: 1, totalPages: 1)
+
+    let expectedURLZero = makeURL("https://image.tmdb.org/t/p/w500/\(itemZero.imagePath)")
+    let expectedURLOne = makeURL("https://image.tmdb.org/t/p/w500/\(itemOne.imagePath)")
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+    XCTAssertTrue(loader.loadedImageURLs.isEmpty)
+
+    sut.simulateItemNearVisible(at: 0)
+    XCTAssertEqual(loader.loadedImageURLs, [expectedURLZero])
+
+    sut.simulateItemNearVisible(at: 1)
+    XCTAssertEqual(loader.loadedImageURLs, [expectedURLZero, expectedURLOne])
+  }
+
   
 }
 
@@ -270,6 +290,12 @@ extension NowPlayingViewController {
     delegate?.collectionView?(collectionView, didEndDisplaying: view!, forItemAt: indexPath)
 
     return view
+  }
+
+  func simulateItemNearVisible(at index: Int) {
+    let prefetchDataSource = collectionView.prefetchDataSource
+    let indexPath = IndexPath(item: index, section: 0)
+    prefetchDataSource?.collectionView(collectionView, prefetchItemsAt: [indexPath])
   }
 }
 
