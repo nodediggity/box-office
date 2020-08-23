@@ -54,7 +54,6 @@ class NowPlayingViewControllerTests: XCTestCase {
     loader.loadFeedCompletes(with: .success(feedPage))
     assertThat(sut, isRendering: items)
   }
-
 }
 
 private extension NowPlayingViewControllerTests {
@@ -159,6 +158,11 @@ extension NowPlayingViewController {
     let dataSource = collectionView.dataSource
     let indexPath = IndexPath(item: item, section: section)
     return dataSource?.collectionView(collectionView, cellForItemAt: indexPath)
+  }
+
+  @discardableResult
+  func simulateItemVisible(at index: Int) -> UICollectionViewCell? {
+    return itemAt(index)
   }
 }
 

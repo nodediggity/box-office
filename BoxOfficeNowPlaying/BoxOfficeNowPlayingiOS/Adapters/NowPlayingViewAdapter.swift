@@ -24,6 +24,12 @@ final class NowPlayingViewAdapter {
 
 extension NowPlayingViewAdapter: NowPlayingView {
   func display(_ viewModel: NowPlayingViewModel) {
-    controller?.items = viewModel.items
+    controller?.items = viewModel.items.map(makeCellController(for:))
+  }
+}
+
+private extension NowPlayingViewAdapter {
+  func makeCellController(for model: NowPlayingCard) -> NowPlayingCardCellController {
+    return NowPlayingCardCellController()
   }
 }

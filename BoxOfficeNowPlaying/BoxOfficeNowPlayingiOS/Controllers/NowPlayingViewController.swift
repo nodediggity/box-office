@@ -11,7 +11,7 @@ import BoxOfficeNowPlaying
 
 public final class NowPlayingViewController: UICollectionViewController {
 
-  var items: [NowPlayingCard] = [] {
+  var items: [NowPlayingCardCellController] = [] {
     didSet { collectionView.reloadData() }
   }
 
@@ -41,8 +41,15 @@ public final class NowPlayingViewController: UICollectionViewController {
   }
 
   public override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NowPlayingCardFeedCell", for: indexPath) as! NowPlayingCardFeedCell
-    return cell
+    let controller = cellController(forItemAt: indexPath)
+    return controller.view(in: collectionView, forItemAt: indexPath)
+  }
+}
+
+private extension NowPlayingViewController {
+  func cellController(forItemAt indexPath: IndexPath) -> NowPlayingCardCellController {
+    let controller = items[indexPath.row]
+    return controller
   }
 }
 
