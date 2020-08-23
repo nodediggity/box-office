@@ -23,13 +23,20 @@ protocol NowPlayingImageView {
 final class NowPlayingImagePresenter<View: NowPlayingImageView, Image> where View.Image == Image {
 
   private let view: View
+  private let imageTransformer: (Data) -> Image?
 
-  init(view: View) {
+  init(view: View, imageTransformer: @escaping (Data) -> Image?) {
     self.view = view
+    self.imageTransformer = imageTransformer
   }
 
   func didStartLoadingImageData(for model: NowPlayingCard) {
     view.display(NowPlayingImageViewModel<Image>(image: nil, title: model.title, isLoading: true))
+  }
+
+  func didFinishLoadingImageData(with data: Data, for model: NowPlayingCard) {
+    let image = imageTransformer(data)
+    view.display(NowPlayingImageViewModel<Image>(image: image, title: model.title, isLoading: false))
   }
 
 }
@@ -53,13 +60,28 @@ class NowPlayingImagePresenterTests: XCTestCase {
     XCTAssertEqual(message?.title, item.title)
     XCTAssertNil(message?.image)
   }
+
+  func test_finish_loading_image_data_success_set_image_on_transform_success() {
+    let transformedData = SomeImage()
+    let item = makeNowPlayingCard(id: 123)
+    let imageData = makeData()
+    let (sut, view) = makeSUT(imageTransformer: { _ in transformedData })
+
+    sut.didFinishLoadingImageData(with: imageData, for: item)
+
+    let message = view.messages.first
+    XCTAssertEqual(view.messages.count, 1)
+    XCTAssertEqual(message?.isLoading, false)
+    XCTAssertEqual(message?.title, item.title)
+    XCTAssertEqual(message?.image, transformedData)
+  }
 }
 
 private extension NowPlayingImagePresenterTests {
 
-  func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: NowPlayingImagePresenter<ViewSpy, SomeImage>, view: ViewSpy) {
+  func makeSUT(imageTransformer: @escaping (Data) -> SomeImage? = { _ in nil }, file: StaticString = #file, line: UInt = #line) -> (sut: NowPlayingImagePresenter<ViewSpy, SomeImage>, view: ViewSpy) {
     let view = ViewSpy()
-    let sut = NowPlayingImagePresenter(view: view)
+    let sut = NowPlayingImagePresenter(view: view, imageTransformer: imageTransformer)
     checkForMemoryLeaks(view, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
     return (sut, view)
