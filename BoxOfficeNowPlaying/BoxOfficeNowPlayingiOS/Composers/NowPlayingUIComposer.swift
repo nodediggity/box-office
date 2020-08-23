@@ -23,6 +23,8 @@ public enum NowPlayingUIComposer {
       errorView: WeakRefVirtualProxy(viewController)
     )
 
+    viewController.title = NowPlayingPresenter.title
+
     return viewController
   }
 }

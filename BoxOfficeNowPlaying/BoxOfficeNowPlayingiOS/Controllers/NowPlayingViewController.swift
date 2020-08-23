@@ -36,25 +36,8 @@ public final class NowPlayingViewController: UIViewController {
 
   public override func viewDidLoad() {
     super.viewDidLoad()
-
-    view.addSubview(collectionView)
-
-    navigationItem.title = "Now Playing"
-    navigationController?.navigationBar.prefersLargeTitles = true
-
-    navigationController?.navigationBar.largeTitleTextAttributes = [
-      NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8784313725, alpha: 1),
-      NSAttributedString.Key.font: UIFont.custom(.bold, size: 34),
-    ]
-
-    navigationController?.navigationBar.titleTextAttributes = [
-      NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8784313725, alpha: 1),
-      NSAttributedString.Key.font: UIFont.custom(.medium, size: 20)
-    ]
-
-    navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1019607843, green: 0.1254901961, blue: 0.1882352941, alpha: 1)
-
-
+    configureUI()
+    configureNavigation()
     refreshController?.load()
   }
 }
@@ -94,6 +77,26 @@ extension NowPlayingViewController: UICollectionViewDataSourcePrefetching {
 }
 
 private extension NowPlayingViewController {
+
+  func configureUI() {
+    view.addSubview(collectionView)
+  }
+
+  func configureNavigation() {
+    navigationController?.navigationBar.prefersLargeTitles = true
+
+    navigationController?.navigationBar.largeTitleTextAttributes = [
+      NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8784313725, alpha: 1),
+      NSAttributedString.Key.font: UIFont.custom(.bold, size: 34),
+    ]
+
+    navigationController?.navigationBar.titleTextAttributes = [
+      NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8784313725, alpha: 1),
+      NSAttributedString.Key.font: UIFont.custom(.medium, size: 20)
+    ]
+
+    navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1019607843, green: 0.1254901961, blue: 0.1882352941, alpha: 1)
+  }
 
   func cellController(forItemAt indexPath: IndexPath) -> NowPlayingCardCellController {
     let controller = items[indexPath.row]

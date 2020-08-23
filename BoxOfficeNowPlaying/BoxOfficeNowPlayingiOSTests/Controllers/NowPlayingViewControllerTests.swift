@@ -13,6 +13,11 @@ import BoxOfficeNowPlayingiOS
 
 class NowPlayingViewControllerTests: XCTestCase {
 
+  func test_on_init_sets_title() {
+    let (sut, _) = makeSUT()
+    XCTAssertEqual(sut.title, NowPlayingPresenter.title)
+  }
+
   func test_load_actions_request_now_playing_from_loader() {
     let (sut, loader) = makeSUT()
     XCTAssertTrue(loader.messages.isEmpty)
