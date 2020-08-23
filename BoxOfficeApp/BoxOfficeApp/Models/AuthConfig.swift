@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AuthConfig: Decodable {
+public struct AuthConfig: Decodable {
   public let secret: String
 
   public init(secret: String) {
