@@ -7,28 +7,23 @@
 //
 
 import Foundation
+import BoxOfficeMedia
 import BoxOfficeNowPlaying
 
 public enum NowPlayingUIComposer {
-  public static func compose(loader: NowPlayingLoader) -> NowPlayingViewController {
+  public static func compose(loader: NowPlayingLoader, imageLoader: ImageDataLoader) -> NowPlayingViewController {
 
     let adapter = NowPlayingPresentationAdapter(loader: loader)
     let refreshController = NowPlayingRefreshController(delegate: adapter)
     let viewController = NowPlayingViewController(refreshController: refreshController)
 
     adapter.presenter = NowPlayingPresenter(
-      view: WeakRefVirtualProxy(viewController),
+      view: NowPlayingViewAdapter(controller: viewController, imageLoader: imageLoader),
       loadingView: WeakRefVirtualProxy(refreshController),
       errorView: WeakRefVirtualProxy(viewController)
     )
 
     return viewController
-  }
-}
-
-extension WeakRefVirtualProxy: NowPlayingView where T: NowPlayingView {
-  public func display(_ viewModel: NowPlayingViewModel) {
-    object?.display(viewModel)
   }
 }
 
