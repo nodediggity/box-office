@@ -38,5 +38,6 @@ final class NowPlayingCardCellController {
 extension NowPlayingCardCellController: NowPlayingImageView {
   func display(_ model: NowPlayingImageViewModel<UIImage>) {
     cell?.imageContainer.isShimmering = model.isLoading
+    cell?.imageView.image = model.image
   }
 }

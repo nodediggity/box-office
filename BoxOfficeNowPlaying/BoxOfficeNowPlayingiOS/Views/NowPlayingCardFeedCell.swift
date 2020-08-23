@@ -16,4 +16,10 @@ public final class NowPlayingCardFeedCell: UICollectionViewCell {
     return view
   }()
 
+  public let imageView: UIImageView = {
+    let view = UIImageView(frame: .zero)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
 }

@@ -117,6 +117,30 @@ class NowPlayingViewControllerTests: XCTestCase {
     XCTAssertEqual(viewTwo?.loadingIndicatorIsVisible, false)
   }
 
+  func test_now_playing_card_renders_image_from_remote() {
+    let (sut, loader) = makeSUT()
+    let itemZero = makeNowPlayingCard(id: 0)
+    let itemOne = makeNowPlayingCard(id: 1)
+    let feedPage = makeNowPlayingFeed(items: [itemZero, itemOne], pageNumber: 1, totalPages: 1)
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+
+    let imageZeroData = makeImageData(withColor: .purple)
+    let viewZero = sut.simulateItemNotVisible(at: 0) as? NowPlayingCardFeedCell
+    XCTAssertEqual(viewZero?.renderedImage, .none)
+
+    loader.completeImageLoading(with: imageZeroData, at: 0)
+    XCTAssertEqual(viewZero?.renderedImage, imageZeroData)
+
+    let imageOneData = makeImageData(withColor: .darkGray)
+    let viewOne = sut.simulateItemNotVisible(at: 1) as? NowPlayingCardFeedCell
+    XCTAssertEqual(viewOne?.renderedImage, .none)
+
+    loader.completeImageLoading(with: imageOneData, at: 1)
+    XCTAssertEqual(viewOne?.renderedImage, imageOneData)
+  }
+
   
 }
 
@@ -202,6 +226,14 @@ private extension NowPlayingViewControllerTests {
       imageRequests[index].completion(.failure(error))
     }
   }
+
+  func makeImageData(withColor color: UIColor = .systemTeal) -> Data {
+    return makeImage(withColor: color).pngData()!
+  }
+
+  func makeImage(withColor color: UIColor = .systemTeal) -> UIImage {
+    return UIImage.make(withColor: color)
+  }
 }
 
 extension NowPlayingViewController {
@@ -242,6 +274,11 @@ extension NowPlayingViewController {
 }
 
 extension NowPlayingCardFeedCell {
+
+  var renderedImage: Data? {
+    return imageView.image?.pngData()
+  }
+
   var loadingIndicatorIsVisible: Bool {
     return imageContainer.isShimmering
   }
@@ -258,5 +295,18 @@ extension UIControl {
 extension UIRefreshControl {
   func simulatePullToRefresh() {
     simulate(event: .valueChanged)
+  }
+}
+
+private extension UIImage {
+  static func make(withColor color: UIColor) -> UIImage {
+    let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+    UIGraphicsBeginImageContext(rect.size)
+    let context = UIGraphicsGetCurrentContext()!
+    context.setFillColor(color.cgColor)
+    context.fill(rect)
+    let img = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return img!
   }
 }
