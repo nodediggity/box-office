@@ -13,6 +13,14 @@
 		6AEE43E224F275A7006BDEC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AEE43E024F275A7006BDEC2 /* LaunchScreen.storyboard */; };
 		6AEE43ED24F275A8006BDEC2 /* BoxOfficeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43EC24F275A8006BDEC2 /* BoxOfficeAppTests.swift */; };
 		6AEE43F824F275A8006BDEC2 /* BoxOfficeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43F724F275A8006BDEC2 /* BoxOfficeAppUITests.swift */; };
+		6AF211BB24F27785004BC7C2 /* BoxOfficeMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B724F27785004BC7C2 /* BoxOfficeMedia.framework */; };
+		6AF211BC24F27785004BC7C2 /* BoxOfficeMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B724F27785004BC7C2 /* BoxOfficeMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AF211BD24F27785004BC7C2 /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B824F27785004BC7C2 /* BoxOfficeNetworking.framework */; };
+		6AF211BE24F27785004BC7C2 /* BoxOfficeNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B824F27785004BC7C2 /* BoxOfficeNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AF211BF24F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B924F27785004BC7C2 /* BoxOfficeNowPlaying.framework */; };
+		6AF211C024F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B924F27785004BC7C2 /* BoxOfficeNowPlaying.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AF211C124F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211BA24F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework */; };
+		6AF211C224F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211BA24F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +40,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6AF211C324F27785004BC7C2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6AF211C224F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Embed Frameworks */,
+				6AF211C024F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Embed Frameworks */,
+				6AF211BE24F27785004BC7C2 /* BoxOfficeNetworking.framework in Embed Frameworks */,
+				6AF211BC24F27785004BC7C2 /* BoxOfficeMedia.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6AEE43D224F275A6006BDEC2 /* BoxOfficeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxOfficeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +70,10 @@
 		6AEE43F324F275A8006BDEC2 /* BoxOfficeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEE43F724F275A8006BDEC2 /* BoxOfficeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeAppUITests.swift; sourceTree = "<group>"; };
 		6AEE43F924F275A8006BDEC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AF211B724F27785004BC7C2 /* BoxOfficeMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF211B824F27785004BC7C2 /* BoxOfficeNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF211B924F27785004BC7C2 /* BoxOfficeNowPlaying.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNowPlaying.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF211BA24F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNowPlayingiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +81,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AF211C124F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Frameworks */,
+				6AF211BF24F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Frameworks */,
+				6AF211BD24F27785004BC7C2 /* BoxOfficeNetworking.framework in Frameworks */,
+				6AF211BB24F27785004BC7C2 /* BoxOfficeMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +112,7 @@
 				6AEE43EB24F275A8006BDEC2 /* BoxOfficeAppTests */,
 				6AEE43F624F275A8006BDEC2 /* BoxOfficeAppUITests */,
 				6AEE43D324F275A6006BDEC2 /* Products */,
+				6AF211B624F27785004BC7C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +180,17 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		6AF211B624F27785004BC7C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AF211B724F27785004BC7C2 /* BoxOfficeMedia.framework */,
+				6AF211B824F27785004BC7C2 /* BoxOfficeNetworking.framework */,
+				6AF211B924F27785004BC7C2 /* BoxOfficeNowPlaying.framework */,
+				6AF211BA24F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,6 +201,7 @@
 				6AEE43CE24F275A6006BDEC2 /* Sources */,
 				6AEE43CF24F275A6006BDEC2 /* Frameworks */,
 				6AEE43D024F275A6006BDEC2 /* Resources */,
+				6AF211C324F27785004BC7C2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
