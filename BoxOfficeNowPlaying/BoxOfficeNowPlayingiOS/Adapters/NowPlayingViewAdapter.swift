@@ -6,7 +6,7 @@
 //  Copyright © 2020 Gordon Smith. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import BoxOfficeMedia
 import BoxOfficeNowPlaying
 
@@ -30,6 +30,19 @@ extension NowPlayingViewAdapter: NowPlayingView {
 
 private extension NowPlayingViewAdapter {
   func makeCellController(for model: NowPlayingCard) -> NowPlayingCardCellController {
-    return NowPlayingCardCellController()
+    let adapter = NowPlayingImageDataLoaderPresentationAdapter<WeakRefVirtualProxy<NowPlayingCardCellController>, UIImage>(
+      baseURL: URL(string: "https://image.tmdb.org/t/p/w500/")!, // TODO: Create URL factory
+      model: model,
+      imageLoader: imageLoader
+    )
+    let view = NowPlayingCardCellController(delegate: adapter)
+
+    return view
+  }
+}
+
+extension WeakRefVirtualProxy: NowPlayingImageView where T: NowPlayingImageView, T.Image == UIImage {
+  public func display(_ model: NowPlayingImageViewModel<UIImage>) {
+    object?.display(model)
   }
 }

@@ -54,6 +54,27 @@ class NowPlayingViewControllerTests: XCTestCase {
     loader.loadFeedCompletes(with: .success(feedPage))
     assertThat(sut, isRendering: items)
   }
+
+  func test_now_playing_card_loads_image_url_when_visible() {
+    let (sut, loader) = makeSUT()
+    let itemZero = makeNowPlayingCard(id: 0)
+    let itemOne = makeNowPlayingCard(id: 1)
+    let feedPage = makeNowPlayingFeed(items: [itemZero, itemOne], pageNumber: 1, totalPages: 1)
+
+    let expectedURLZero = makeURL("https://image.tmdb.org/t/p/w500/\(itemZero.imagePath)")
+    let expectedURLOne = makeURL("https://image.tmdb.org/t/p/w500/\(itemOne.imagePath)")
+
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+    XCTAssertTrue(loader.loadedImageURLs.isEmpty)
+
+    sut.simulateItemVisible(at: 0)
+    XCTAssertEqual(loader.loadedImageURLs, [expectedURLZero])
+
+    sut.simulateItemVisible(at: 1)
+    XCTAssertEqual(loader.loadedImageURLs, [expectedURLZero, expectedURLOne])
+  }
 }
 
 private extension NowPlayingViewControllerTests {
