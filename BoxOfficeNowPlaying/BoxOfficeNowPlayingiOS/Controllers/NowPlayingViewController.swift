@@ -25,6 +25,7 @@ public final class NowPlayingViewController: UICollectionViewController {
   public override func viewDidLoad() {
     super.viewDidLoad()
 
+    collectionView.backgroundColor = .lightGray
     collectionView.prefetchDataSource = self
     collectionView.refreshControl = refreshController?.view
     collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")

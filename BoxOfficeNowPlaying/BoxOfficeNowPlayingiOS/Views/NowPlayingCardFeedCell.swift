@@ -21,5 +21,20 @@ public final class NowPlayingCardFeedCell: UICollectionViewCell {
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
+
+  public override init(frame: CGRect) {
+    super.init(frame: frame)
+    configureUI()
+  }
+
+  public required init?(coder: NSCoder) {
+    return nil
+  }
   
+}
+
+private extension NowPlayingCardFeedCell {
+  func configureUI() {
+    backgroundColor = .darkGray
+  }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A22DA8024F28077007739B5 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DA7F24F28077007739B5 /* MainQueueDispatchDecorator.swift */; };
 		6A2D96A824F1A97C00F05CD6 /* BoxOfficeMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */; };
 		6A2D96A924F1A97C00F05CD6 /* BoxOfficeMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A2D96AB24F24CC000F05CD6 /* NowPlayingViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D96AA24F24CC000F05CD6 /* NowPlayingViewAdapter.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A22DA7F24F28077007739B5 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2D96AA24F24CC000F05CD6 /* NowPlayingViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewAdapter.swift; sourceTree = "<group>"; };
 		6A2D96AC24F24E0D00F05CD6 /* NowPlayingCardCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCardCellController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				6A3DF11E24F17B8200ACCA99 /* WeakRefVirtualProxy.swift */,
+				6A22DA7F24F28077007739B5 /* MainQueueDispatchDecorator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				6A5075E024F0591B00B25D4F /* HTTPURLResponse+Ext.swift in Sources */,
 				6AFD44AF24F175E500E7A1F7 /* NowPlayingViewModel.swift in Sources */,
 				6AFD44AD24F175D600E7A1F7 /* NowPlayingErrorViewModel.swift in Sources */,
+				6A22DA8024F28077007739B5 /* MainQueueDispatchDecorator.swift in Sources */,
 				6A5075DD24F058CD00B25D4F /* NowPlayingItemsMapper.swift in Sources */,
 				6A2D96B424F25B3500F05CD6 /* NowPlayingImageViewModel.swift in Sources */,
 				6A5075CE24F0408100B25D4F /* NowPlayingFeed.swift in Sources */,
