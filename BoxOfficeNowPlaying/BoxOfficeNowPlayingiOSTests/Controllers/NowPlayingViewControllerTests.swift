@@ -193,6 +193,21 @@ class NowPlayingViewControllerTests: XCTestCase {
     loader.completeImageLoading(with: makeImageData(), at: 0)
     XCTAssertNil(view?.renderedImage)
   }
+
+  func test_now_playing_loader_completes_from_background_to_main_thread() {
+    let (sut, loader) = makeSUT()
+    let item = makeNowPlayingCard(id: 0)
+    let feedPage = makeNowPlayingFeed(items: [item], pageNumber: 1, totalPages: 1)
+    sut.loadViewIfNeeded()
+
+    let exp = expectation(description: "await background queue")
+    DispatchQueue.global().async {
+      loader.loadFeedCompletes(with: .success(feedPage))
+      exp.fulfill()
+    }
+    wait(for: [exp], timeout: 1.0)
+  }
+
 }
 
 private extension NowPlayingViewControllerTests {
