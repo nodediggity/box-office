@@ -35,7 +35,9 @@ private extension NowPlayingViewAdapter {
       model: model,
       imageLoader: imageLoader
     )
+    
     let view = NowPlayingCardCellController(delegate: adapter)
+    adapter.presenter = NowPlayingImagePresenter(view: WeakRefVirtualProxy(view), imageTransformer: UIImage.init)
 
     return view
   }

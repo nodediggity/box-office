@@ -28,7 +28,13 @@ final class NowPlayingImageDataLoaderPresentationAdapter<View: NowPlayingImageVi
 
   func didRequestLoadImage() {
     presenter?.didStartLoadingImageData(for: model)
-    task = imageLoader.load(from: makeImageURL(withPath: model.imagePath), completion: { _ in })
+    task = imageLoader.load(from: makeImageURL(withPath: model.imagePath), completion: { [weak self, model] result in
+      guard let self = self else { return }
+      switch result {
+        case let .success(imageData): self.presenter?.didFinishLoadingImageData(with: imageData, for: model)
+        default: break
+      }
+    })
   }
 
   func didRequestCancelLoadImage() {

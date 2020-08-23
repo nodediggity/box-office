@@ -94,6 +94,30 @@ class NowPlayingViewControllerTests: XCTestCase {
     sut.simulateItemNotVisible(at: 1)
     XCTAssertEqual(loader.cancelledImageURLs, [expectedURLZero, expectedURLOne])
   }
+
+  func test_now_playing_card_shows_loading_indicator_when_image_is_loading() {
+    let (sut, loader) = makeSUT()
+    let itemZero = makeNowPlayingCard(id: 0)
+    let itemOne = makeNowPlayingCard(id: 1)
+    let feedPage = makeNowPlayingFeed(items: [itemZero, itemOne], pageNumber: 1, totalPages: 1)
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+
+    let viewOne = sut.simulateItemVisible(at: 0) as? NowPlayingCardFeedCell
+    XCTAssertEqual(viewOne?.loadingIndicatorIsVisible, true)
+
+    loader.completeImageLoading(with: makeData(), at: 0)
+    XCTAssertEqual(viewOne?.loadingIndicatorIsVisible, false)
+
+    let viewTwo = sut.simulateItemVisible(at: 1) as? NowPlayingCardFeedCell
+    XCTAssertEqual(viewTwo?.loadingIndicatorIsVisible, true)
+
+    loader.completeImageLoading(with: makeData(), at: 1)
+    XCTAssertEqual(viewTwo?.loadingIndicatorIsVisible, false)
+  }
+
+  
 }
 
 private extension NowPlayingViewControllerTests {
@@ -214,6 +238,12 @@ extension NowPlayingViewController {
     delegate?.collectionView?(collectionView, didEndDisplaying: view!, forItemAt: indexPath)
 
     return view
+  }
+}
+
+extension NowPlayingCardFeedCell {
+  var loadingIndicatorIsVisible: Bool {
+    return imageContainer.isShimmering
   }
 }
 
