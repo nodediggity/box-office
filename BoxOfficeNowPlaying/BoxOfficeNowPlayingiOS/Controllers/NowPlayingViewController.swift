@@ -55,6 +55,10 @@ extension NowPlayingViewController: UICollectionViewDataSourcePrefetching {
   public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
     indexPaths.forEach(prefetchCellController)
   }
+
+  public func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+    indexPaths.forEach(removeCellController)
+  }
 }
 
 private extension NowPlayingViewController {

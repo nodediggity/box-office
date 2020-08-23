@@ -161,7 +161,25 @@ class NowPlayingViewControllerTests: XCTestCase {
     XCTAssertEqual(loader.loadedImageURLs, [expectedURLZero, expectedURLOne])
   }
 
-  
+  func test_now_playing_card_cancels_preload_when_no_longer_near_visible() {
+    let (sut, loader) = makeSUT()
+    let itemZero = makeNowPlayingCard(id: 0)
+    let itemOne = makeNowPlayingCard(id: 1)
+    let feedPage = makeNowPlayingFeed(items: [itemZero, itemOne], pageNumber: 1, totalPages: 1)
+
+    let expectedURLZero = makeURL("https://image.tmdb.org/t/p/w500/\(itemZero.imagePath)")
+    let expectedURLOne = makeURL("https://image.tmdb.org/t/p/w500/\(itemOne.imagePath)")
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+    XCTAssertTrue(loader.loadedImageURLs.isEmpty)
+
+    sut.simulateItemNoLongerNearVisible(at: 0)
+    XCTAssertEqual(loader.cancelledImageURLs, [expectedURLZero])
+
+    sut.simulateItemNoLongerNearVisible(at: 1)
+    XCTAssertEqual(loader.cancelledImageURLs, [expectedURLZero, expectedURLOne])
+  }  
 }
 
 private extension NowPlayingViewControllerTests {
@@ -296,6 +314,13 @@ extension NowPlayingViewController {
     let prefetchDataSource = collectionView.prefetchDataSource
     let indexPath = IndexPath(item: index, section: 0)
     prefetchDataSource?.collectionView(collectionView, prefetchItemsAt: [indexPath])
+  }
+
+  func simulateItemNoLongerNearVisible(at index: Int) {
+    simulateItemNearVisible(at: index)
+    let prefetchDataSource = collectionView.prefetchDataSource
+    let indexPath = IndexPath(item: index, section: 0)
+    prefetchDataSource?.collectionView?(collectionView, cancelPrefetchingForItemsAt: [indexPath])
   }
 }
 
