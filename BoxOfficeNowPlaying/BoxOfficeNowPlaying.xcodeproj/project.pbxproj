@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A22DA8024F28077007739B5 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DA7F24F28077007739B5 /* MainQueueDispatchDecorator.swift */; };
+		6A22DA8224F29697007739B5 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DA8124F29697007739B5 /* UIImageView+Ext.swift */; };
 		6A2D96A824F1A97C00F05CD6 /* BoxOfficeMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */; };
 		6A2D96A924F1A97C00F05CD6 /* BoxOfficeMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A2D96AB24F24CC000F05CD6 /* NowPlayingViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D96AA24F24CC000F05CD6 /* NowPlayingViewAdapter.swift */; };
@@ -100,6 +101,7 @@
 
 /* Begin PBXFileReference section */
 		6A22DA7F24F28077007739B5 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
+		6A22DA8124F29697007739B5 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2D96AA24F24CC000F05CD6 /* NowPlayingViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewAdapter.swift; sourceTree = "<group>"; };
 		6A2D96AC24F24E0D00F05CD6 /* NowPlayingCardCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCardCellController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				6A2D96B824F2685E00F05CD6 /* UIView+Ext.swift */,
+				6A22DA8124F29697007739B5 /* UIImageView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				6A2D96AD24F24E0D00F05CD6 /* NowPlayingCardCellController.swift in Sources */,
 				6AFD44A124F168AA00E7A1F7 /* NowPlayingRefreshController.swift in Sources */,
 				6A2D96B924F2685E00F05CD6 /* UIView+Ext.swift in Sources */,
+				6A22DA8224F29697007739B5 /* UIImageView+Ext.swift in Sources */,
 				6AFD449F24F13F7500E7A1F7 /* NowPlayingUIComposer.swift in Sources */,
 				6A2D96B624F25D9D00F05CD6 /* NowPlayingImageDataLoaderPresentationAdapter.swift in Sources */,
 				6AFD449C24F13F3800E7A1F7 /* NowPlayingCardFeedCell.swift in Sources */,
