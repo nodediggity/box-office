@@ -102,6 +102,9 @@
 /* Begin PBXFileReference section */
 		6A22DA7F24F28077007739B5 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		6A22DA8124F29697007739B5 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		6A22DA8A24F29B1F007739B5 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		6A22DA8B24F29B1F007739B5 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		6A22DA8C24F29B1F007739B5 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2D96AA24F24CC000F05CD6 /* NowPlayingViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewAdapter.swift; sourceTree = "<group>"; };
 		6A2D96AC24F24E0D00F05CD6 /* NowPlayingCardCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCardCellController.swift; sourceTree = "<group>"; };
@@ -180,6 +183,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A22DA8824F29B0B007739B5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				6A22DA8924F29B14007739B5 /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		6A22DA8924F29B14007739B5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6A22DA8B24F29B1F007739B5 /* Montserrat-Bold.ttf */,
+				6A22DA8C24F29B1F007739B5 /* Montserrat-Medium.ttf */,
+				6A22DA8A24F29B1F007739B5 /* Montserrat-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		6A2D96B724F2684F00F05CD6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +335,7 @@
 			children = (
 				6AFD447724F1144100E7A1F7 /* Info.plist */,
 				6A3DF12024F181A300ACCA99 /* Adapters */,
+				6A22DA8824F29B0B007739B5 /* Assets */,
 				6AFD449D24F13F6A00E7A1F7 /* Composers */,
 				6AFD449324F13D6C00E7A1F7 /* Controllers */,
 				6AFD449A24F13F2B00E7A1F7 /* Views */,
