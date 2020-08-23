@@ -64,7 +64,6 @@ class NowPlayingViewControllerTests: XCTestCase {
     let expectedURLZero = makeURL("https://image.tmdb.org/t/p/w500/\(itemZero.imagePath)")
     let expectedURLOne = makeURL("https://image.tmdb.org/t/p/w500/\(itemOne.imagePath)")
 
-
     sut.loadViewIfNeeded()
     loader.loadFeedCompletes(with: .success(feedPage))
     XCTAssertTrue(loader.loadedImageURLs.isEmpty)
@@ -74,6 +73,26 @@ class NowPlayingViewControllerTests: XCTestCase {
 
     sut.simulateItemVisible(at: 1)
     XCTAssertEqual(loader.loadedImageURLs, [expectedURLZero, expectedURLOne])
+  }
+
+  func test_now_playing_card_cancels_image_load_when_no_longer_visible() {
+    let (sut, loader) = makeSUT()
+    let itemZero = makeNowPlayingCard(id: 0)
+    let itemOne = makeNowPlayingCard(id: 1)
+    let feedPage = makeNowPlayingFeed(items: [itemZero, itemOne], pageNumber: 1, totalPages: 1)
+
+    let expectedURLZero = makeURL("https://image.tmdb.org/t/p/w500/\(itemZero.imagePath)")
+    let expectedURLOne = makeURL("https://image.tmdb.org/t/p/w500/\(itemOne.imagePath)")
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+    XCTAssertTrue(loader.loadedImageURLs.isEmpty)
+
+    sut.simulateItemNotVisible(at: 0)
+    XCTAssertEqual(loader.cancelledImageURLs, [expectedURLZero])
+
+    sut.simulateItemNotVisible(at: 1)
+    XCTAssertEqual(loader.cancelledImageURLs, [expectedURLZero, expectedURLOne])
   }
 }
 
@@ -184,6 +203,17 @@ extension NowPlayingViewController {
   @discardableResult
   func simulateItemVisible(at index: Int) -> UICollectionViewCell? {
     return itemAt(index)
+  }
+
+  @discardableResult
+  func simulateItemNotVisible(at index: Int) -> UICollectionViewCell? {
+    let view = simulateItemVisible(at: index)
+
+    let delegate = collectionView.delegate
+    let indexPath = IndexPath(item: index, section: 0)
+    delegate?.collectionView?(collectionView, didEndDisplaying: view!, forItemAt: indexPath)
+
+    return view
   }
 }
 

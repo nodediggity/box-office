@@ -11,6 +11,7 @@ import BoxOfficeNowPlaying
 
 protocol NowPlayingCardCellControllerDelegate {
   func didRequestLoadImage()
+  func didRequestCancelLoadImage()
 }
 
 final class NowPlayingCardCellController {
@@ -27,6 +28,10 @@ final class NowPlayingCardCellController {
     cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NowPlayingCardFeedCell", for: indexPath) as? NowPlayingCardFeedCell
     delegate.didRequestLoadImage()
     return cell!
+  }
+
+  func cancelLoad() {
+    delegate.didRequestCancelLoadImage()
   }
 }
 
