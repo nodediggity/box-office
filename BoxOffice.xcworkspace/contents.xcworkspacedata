@@ -10,4 +10,7 @@
    <FileRef
       location = "container:BoxOfficeNowPlaying/BoxOfficeNowPlaying.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
+   </FileRef>
 </Workspace>
