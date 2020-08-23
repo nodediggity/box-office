@@ -25,6 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let window = UIWindow(windowScene: windowScene)
     window.rootViewController = UINavigationController(rootViewController: makeNowPlayingScene())
 
+    UIFont.loadCustomFonts
+
     self.window = window
     self.window?.makeKeyAndVisible()
   }
