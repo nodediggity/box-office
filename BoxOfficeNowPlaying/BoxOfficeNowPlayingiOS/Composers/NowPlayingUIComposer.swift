@@ -18,7 +18,7 @@ public enum NowPlayingUIComposer {
     let viewController = NowPlayingViewController(refreshController: refreshController)
 
     adapter.presenter = NowPlayingPresenter(
-      view: NowPlayingViewAdapter(controller: viewController, imageLoader: imageLoader),
+      view: NowPlayingViewAdapter(controller: viewController, imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
       loadingView: WeakRefVirtualProxy(refreshController),
       errorView: WeakRefVirtualProxy(viewController)
     )
@@ -46,6 +46,14 @@ extension WeakRefVirtualProxy: NowPlayingErrorView where T: NowPlayingErrorView 
 extension MainQueueDispatchDecorator: NowPlayingLoader where T == NowPlayingLoader {
   public func execute(_ req: PagedNowPlayingRequest, completion: @escaping (NowPlayingLoader.Result) -> Void) {
     decoratee.execute(req, completion: { [weak self] result in
+      self?.dispatch { completion(result) }
+    })
+  }
+}
+
+extension MainQueueDispatchDecorator: ImageDataLoader where T == ImageDataLoader {
+  public func load(from imageURL: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
+    decoratee.load(from: imageURL, completion: { [weak self] result in
       self?.dispatch { completion(result) }
     })
   }
