@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/gordonsmith/Desktop/box-office/BoxOfficeImages/BoxOfficeMedia.xcodeproj">
+      location = "group:BoxOfficeApp/BoxOfficeApp.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:BoxOfficeNetworking/BoxOfficeNetworking.xcodeproj">
