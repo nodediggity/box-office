@@ -9,42 +9,6 @@
 import XCTest
 import BoxOfficeNowPlaying
 
-struct NowPlayingImageViewModel<Image> {
-  let image: Image?
-  let title: String
-  let isLoading: Bool
-}
-
-protocol NowPlayingImageView {
-  associatedtype Image
-  func display(_ model: NowPlayingImageViewModel<Image>)
-}
-
-final class NowPlayingImagePresenter<View: NowPlayingImageView, Image> where View.Image == Image {
-
-  private let view: View
-  private let imageTransformer: (Data) -> Image?
-
-  init(view: View, imageTransformer: @escaping (Data) -> Image?) {
-    self.view = view
-    self.imageTransformer = imageTransformer
-  }
-
-  func didStartLoadingImageData(for model: NowPlayingCard) {
-    view.display(NowPlayingImageViewModel<Image>(image: nil, title: model.title, isLoading: true))
-  }
-
-  func didFinishLoadingImageData(with data: Data, for model: NowPlayingCard) {
-    let image = imageTransformer(data)
-    view.display(NowPlayingImageViewModel<Image>(image: image, title: model.title, isLoading: false))
-  }
-
-  func didFinishLoadingImageData(with error: Error, for model: NowPlayingCard) {
-    view.display(NowPlayingImageViewModel<Image>(image: nil, title: model.title, isLoading: false))
-  }
-
-}
-
 class NowPlayingImagePresenterTests: XCTestCase {
 
   func test_on_init_does_not_message_view() {
