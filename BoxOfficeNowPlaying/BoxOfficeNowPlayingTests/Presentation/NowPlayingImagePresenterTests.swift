@@ -39,6 +39,10 @@ final class NowPlayingImagePresenter<View: NowPlayingImageView, Image> where Vie
     view.display(NowPlayingImageViewModel<Image>(image: image, title: model.title, isLoading: false))
   }
 
+  func didFinishLoadingImageData(with error: Error, for model: NowPlayingCard) {
+    view.display(NowPlayingImageViewModel<Image>(image: nil, title: model.title, isLoading: false))
+  }
+
 }
 
 class NowPlayingImagePresenterTests: XCTestCase {
@@ -74,6 +78,20 @@ class NowPlayingImagePresenterTests: XCTestCase {
     XCTAssertEqual(message?.isLoading, false)
     XCTAssertEqual(message?.title, item.title)
     XCTAssertEqual(message?.image, transformedData)
+  }
+
+  func test_finish_loading_image_data_failure_ends_loading_state() {
+    let (sut, view) = makeSUT()
+    let item = makeNowPlayingCard(id: 123)
+    let error = makeError()
+
+    sut.didFinishLoadingImageData(with: error, for: item)
+
+    let message = view.messages.first
+    XCTAssertEqual(view.messages.count, 1)
+    XCTAssertEqual(message?.isLoading, false)
+    XCTAssertEqual(message?.title, item.title)
+    XCTAssertNil(message?.image)
   }
 }
 
