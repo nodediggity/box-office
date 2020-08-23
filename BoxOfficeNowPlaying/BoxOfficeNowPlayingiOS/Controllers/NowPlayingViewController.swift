@@ -11,11 +11,11 @@ import BoxOfficeNowPlaying
 
 public final class NowPlayingViewController: UICollectionViewController {
 
-  private var refreshController: NowPlayingRefreshController?
-
-  private var items: [NowPlayingCard] = [] {
+  var items: [NowPlayingCard] = [] {
     didSet { collectionView.reloadData() }
   }
+
+  private var refreshController: NowPlayingRefreshController?
 
   convenience init(refreshController: NowPlayingRefreshController) {
     self.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -43,12 +43,6 @@ public final class NowPlayingViewController: UICollectionViewController {
   public override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NowPlayingCardFeedCell", for: indexPath) as! NowPlayingCardFeedCell
     return cell
-  }
-}
-
-extension NowPlayingViewController: NowPlayingView {
-  public func display(_ viewModel: NowPlayingViewModel) {
-    items = viewModel.items
   }
 }
 
