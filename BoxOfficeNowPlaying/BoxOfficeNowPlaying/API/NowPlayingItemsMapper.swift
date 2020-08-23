@@ -17,7 +17,7 @@ struct RemoteNowPlayingFeed: Decodable {
   }
 
   let results: [RemoteNowPlayingCard]
-  let number: Int
+  let page: Int
   let total_pages: Int
 }
 
