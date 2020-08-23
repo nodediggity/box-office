@@ -45,7 +45,21 @@
                BlueprintIdentifier = "6A4983A124F18B6400111B62"
                BuildableName = "BoxOfficeMedia.framework"
                BlueprintName = "BoxOfficeMedia"
-               ReferencedContainer = "container:BoxOfficeImages/BoxOfficeMedia.xcodeproj">
+               ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6A4983AA24F18B6400111B62"
+               BuildableName = "BoxOfficeMediaTests.xctest"
+               BlueprintName = "BoxOfficeMediaTests"
+               ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -77,7 +91,7 @@
             BlueprintIdentifier = "6A4983A124F18B6400111B62"
             BuildableName = "BoxOfficeMedia.framework"
             BlueprintName = "BoxOfficeMedia"
-            ReferencedContainer = "container:BoxOfficeImages/BoxOfficeMedia.xcodeproj">
+            ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -111,7 +125,7 @@
                BlueprintIdentifier = "6A4983AA24F18B6400111B62"
                BuildableName = "BoxOfficeMediaTests.xctest"
                BlueprintName = "BoxOfficeMediaTests"
-               ReferencedContainer = "container:BoxOfficeImages/BoxOfficeMedia.xcodeproj">
+               ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

@@ -38,6 +38,7 @@ extension NowPlayingRefreshController: NowPlayingLoadingView {
 private extension NowPlayingRefreshController {
   func loadView() -> UIRefreshControl {
     let view = UIRefreshControl(frame: .zero)
+    view.tintColor = #colorLiteral(red: 0.6039215686, green: 0.6588235294, blue: 0.8039215686, alpha: 1)
     return view
   }
 }

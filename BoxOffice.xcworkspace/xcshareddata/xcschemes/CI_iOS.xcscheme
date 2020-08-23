@@ -59,7 +59,7 @@
                BlueprintIdentifier = "6A4983A124F18B6400111B62"
                BuildableName = "BoxOfficeMedia.framework"
                BlueprintName = "BoxOfficeMedia"
-               ReferencedContainer = "container:BoxOfficeImages/BoxOfficeMedia.xcodeproj">
+               ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -98,7 +98,14 @@
             BlueprintIdentifier = "6A4983A124F18B6400111B62"
             BuildableName = "BoxOfficeMedia.framework"
             BlueprintName = "BoxOfficeMedia"
-            ReferencedContainer = "container:BoxOfficeImages/BoxOfficeMedia.xcodeproj">
+            ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6AEE43D124F275A6006BDEC2"
+            BuildableName = "BoxOfficeApp.app"
+            BlueprintName = "BoxOfficeApp"
+            ReferencedContainer = "container:BoxOfficeApp/BoxOfficeApp.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -143,7 +150,29 @@
                BlueprintIdentifier = "6A4983AA24F18B6400111B62"
                BuildableName = "BoxOfficeMediaTests.xctest"
                BlueprintName = "BoxOfficeMediaTests"
-               ReferencedContainer = "container:BoxOfficeImages/BoxOfficeMedia.xcodeproj">
+               ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6AEE43E724F275A8006BDEC2"
+               BuildableName = "BoxOfficeAppTests.xctest"
+               BlueprintName = "BoxOfficeAppTests"
+               ReferencedContainer = "container:BoxOfficeApp/BoxOfficeApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "YES"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6AEE43F224F275A8006BDEC2"
+               BuildableName = "BoxOfficeAppUITests.xctest"
+               BlueprintName = "BoxOfficeAppUITests"
+               ReferencedContainer = "container:BoxOfficeApp/BoxOfficeApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

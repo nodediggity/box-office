@@ -1,0 +1,709 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A22DA7C24F27E0E007739B5 /* AuthConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A22DA7B24F27E0E007739B5 /* AuthConfig.plist */; };
+		6A22DA7E24F27E35007739B5 /* GetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DA7D24F27E35007739B5 /* GetConfig.swift */; };
+		6AEE43D624F275A6006BDEC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */; };
+		6AEE43D824F275A6006BDEC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43D724F275A6006BDEC2 /* SceneDelegate.swift */; };
+		6AEE43DF24F275A7006BDEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AEE43DE24F275A7006BDEC2 /* Assets.xcassets */; };
+		6AEE43E224F275A7006BDEC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AEE43E024F275A7006BDEC2 /* LaunchScreen.storyboard */; };
+		6AEE43F824F275A8006BDEC2 /* BoxOfficeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43F724F275A8006BDEC2 /* BoxOfficeAppUITests.swift */; };
+		6AF211BB24F27785004BC7C2 /* BoxOfficeMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B724F27785004BC7C2 /* BoxOfficeMedia.framework */; };
+		6AF211BC24F27785004BC7C2 /* BoxOfficeMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B724F27785004BC7C2 /* BoxOfficeMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AF211BD24F27785004BC7C2 /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B824F27785004BC7C2 /* BoxOfficeNetworking.framework */; };
+		6AF211BE24F27785004BC7C2 /* BoxOfficeNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B824F27785004BC7C2 /* BoxOfficeNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AF211BF24F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B924F27785004BC7C2 /* BoxOfficeNowPlaying.framework */; };
+		6AF211C024F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211B924F27785004BC7C2 /* BoxOfficeNowPlaying.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AF211C124F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211BA24F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework */; };
+		6AF211C224F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF211BA24F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AF211C524F27846004BC7C2 /* XCTestCase+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF211C424F27846004BC7C2 /* XCTestCase+Ext.swift */; };
+		6AF211C924F278C8004BC7C2 /* AuthenticatedHTTPClientDecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF211C824F278C8004BC7C2 /* AuthenticatedHTTPClientDecoratorTests.swift */; };
+		6AF211CC24F27BC5004BC7C2 /* AuthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF211CB24F27BC5004BC7C2 /* AuthConfig.swift */; };
+		6AF211CF24F27BF1004BC7C2 /* AuthenticatedHTTPClientDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF211CE24F27BF1004BC7C2 /* AuthenticatedHTTPClientDecorator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6AEE43E924F275A8006BDEC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AEE43CA24F275A6006BDEC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AEE43D124F275A6006BDEC2;
+			remoteInfo = BoxOfficeApp;
+		};
+		6AEE43F424F275A8006BDEC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AEE43CA24F275A6006BDEC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AEE43D124F275A6006BDEC2;
+			remoteInfo = BoxOfficeApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6AF211C324F27785004BC7C2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6AF211C224F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Embed Frameworks */,
+				6AF211C024F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Embed Frameworks */,
+				6AF211BE24F27785004BC7C2 /* BoxOfficeNetworking.framework in Embed Frameworks */,
+				6AF211BC24F27785004BC7C2 /* BoxOfficeMedia.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6A22DA7B24F27E0E007739B5 /* AuthConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AuthConfig.plist; sourceTree = "<group>"; };
+		6A22DA7D24F27E35007739B5 /* GetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConfig.swift; sourceTree = "<group>"; };
+		6AEE43D224F275A6006BDEC2 /* BoxOfficeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxOfficeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6AEE43D724F275A6006BDEC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6AEE43DE24F275A7006BDEC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AEE43E124F275A7006BDEC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6AEE43E324F275A7006BDEC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AEE43E824F275A8006BDEC2 /* BoxOfficeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AEE43EE24F275A8006BDEC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AEE43F324F275A8006BDEC2 /* BoxOfficeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AEE43F724F275A8006BDEC2 /* BoxOfficeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeAppUITests.swift; sourceTree = "<group>"; };
+		6AEE43F924F275A8006BDEC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AF211B724F27785004BC7C2 /* BoxOfficeMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF211B824F27785004BC7C2 /* BoxOfficeNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF211B924F27785004BC7C2 /* BoxOfficeNowPlaying.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNowPlaying.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF211BA24F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNowPlayingiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF211C424F27846004BC7C2 /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
+		6AF211C824F278C8004BC7C2 /* AuthenticatedHTTPClientDecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedHTTPClientDecoratorTests.swift; sourceTree = "<group>"; };
+		6AF211CB24F27BC5004BC7C2 /* AuthConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfig.swift; sourceTree = "<group>"; };
+		6AF211CE24F27BF1004BC7C2 /* AuthenticatedHTTPClientDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedHTTPClientDecorator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6AEE43CF24F275A6006BDEC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF211C124F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Frameworks */,
+				6AF211BF24F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Frameworks */,
+				6AF211BD24F27785004BC7C2 /* BoxOfficeNetworking.framework in Frameworks */,
+				6AF211BB24F27785004BC7C2 /* BoxOfficeMedia.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AEE43E524F275A8006BDEC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AEE43F024F275A8006BDEC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6AEE43C924F275A6006BDEC2 = {
+			isa = PBXGroup;
+			children = (
+				6AEE43D424F275A6006BDEC2 /* BoxOfficeApp */,
+				6AEE43EB24F275A8006BDEC2 /* BoxOfficeAppTests */,
+				6AEE43F624F275A8006BDEC2 /* BoxOfficeAppUITests */,
+				6AEE43D324F275A6006BDEC2 /* Products */,
+				6AF211B624F27785004BC7C2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6AEE43D324F275A6006BDEC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AEE43D224F275A6006BDEC2 /* BoxOfficeApp.app */,
+				6AEE43E824F275A8006BDEC2 /* BoxOfficeAppTests.xctest */,
+				6AEE43F324F275A8006BDEC2 /* BoxOfficeAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6AEE43D424F275A6006BDEC2 /* BoxOfficeApp */ = {
+			isa = PBXGroup;
+			children = (
+				6A22DA7B24F27E0E007739B5 /* AuthConfig.plist */,
+				6AEE43E324F275A7006BDEC2 /* Info.plist */,
+				6AEE43DE24F275A7006BDEC2 /* Assets.xcassets */,
+				6AEE440524F276A8006BDEC2 /* Application */,
+				6AF211CA24F27BBE004BC7C2 /* Models */,
+				6AF211CD24F27BEA004BC7C2 /* Utils */,
+				6AEE440624F276BE006BDEC2 /* Views */,
+			);
+			path = BoxOfficeApp;
+			sourceTree = "<group>";
+		};
+		6AEE43EB24F275A8006BDEC2 /* BoxOfficeAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				6AEE43EE24F275A8006BDEC2 /* Info.plist */,
+				6AF211C424F27846004BC7C2 /* XCTestCase+Ext.swift */,
+				6AF211C624F27884004BC7C2 /* Utils */,
+			);
+			path = BoxOfficeAppTests;
+			sourceTree = "<group>";
+		};
+		6AEE43F624F275A8006BDEC2 /* BoxOfficeAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6AEE43F724F275A8006BDEC2 /* BoxOfficeAppUITests.swift */,
+				6AEE43F924F275A8006BDEC2 /* Info.plist */,
+			);
+			path = BoxOfficeAppUITests;
+			sourceTree = "<group>";
+		};
+		6AEE440524F276A8006BDEC2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */,
+				6AEE43D724F275A6006BDEC2 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		6AEE440624F276BE006BDEC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6AEE440724F276C3006BDEC2 /* Launch */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6AEE440724F276C3006BDEC2 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				6AEE43E024F275A7006BDEC2 /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		6AF211B624F27785004BC7C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AF211B724F27785004BC7C2 /* BoxOfficeMedia.framework */,
+				6AF211B824F27785004BC7C2 /* BoxOfficeNetworking.framework */,
+				6AF211B924F27785004BC7C2 /* BoxOfficeNowPlaying.framework */,
+				6AF211BA24F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6AF211C624F27884004BC7C2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6AF211C724F27888004BC7C2 /* AuthenticatedHTTPClientDecorator */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		6AF211C724F27888004BC7C2 /* AuthenticatedHTTPClientDecorator */ = {
+			isa = PBXGroup;
+			children = (
+				6AF211C824F278C8004BC7C2 /* AuthenticatedHTTPClientDecoratorTests.swift */,
+			);
+			path = AuthenticatedHTTPClientDecorator;
+			sourceTree = "<group>";
+		};
+		6AF211CA24F27BBE004BC7C2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6AF211CB24F27BC5004BC7C2 /* AuthConfig.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6AF211CD24F27BEA004BC7C2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6AF211CE24F27BF1004BC7C2 /* AuthenticatedHTTPClientDecorator.swift */,
+				6A22DA7D24F27E35007739B5 /* GetConfig.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6AEE43D124F275A6006BDEC2 /* BoxOfficeApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AEE43FC24F275A8006BDEC2 /* Build configuration list for PBXNativeTarget "BoxOfficeApp" */;
+			buildPhases = (
+				6AEE43CE24F275A6006BDEC2 /* Sources */,
+				6AEE43CF24F275A6006BDEC2 /* Frameworks */,
+				6AEE43D024F275A6006BDEC2 /* Resources */,
+				6AF211C324F27785004BC7C2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BoxOfficeApp;
+			productName = BoxOfficeApp;
+			productReference = 6AEE43D224F275A6006BDEC2 /* BoxOfficeApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6AEE43E724F275A8006BDEC2 /* BoxOfficeAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AEE43FF24F275A8006BDEC2 /* Build configuration list for PBXNativeTarget "BoxOfficeAppTests" */;
+			buildPhases = (
+				6AEE43E424F275A8006BDEC2 /* Sources */,
+				6AEE43E524F275A8006BDEC2 /* Frameworks */,
+				6AEE43E624F275A8006BDEC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AEE43EA24F275A8006BDEC2 /* PBXTargetDependency */,
+			);
+			name = BoxOfficeAppTests;
+			productName = BoxOfficeAppTests;
+			productReference = 6AEE43E824F275A8006BDEC2 /* BoxOfficeAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6AEE43F224F275A8006BDEC2 /* BoxOfficeAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AEE440224F275A8006BDEC2 /* Build configuration list for PBXNativeTarget "BoxOfficeAppUITests" */;
+			buildPhases = (
+				6AEE43EF24F275A8006BDEC2 /* Sources */,
+				6AEE43F024F275A8006BDEC2 /* Frameworks */,
+				6AEE43F124F275A8006BDEC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AEE43F524F275A8006BDEC2 /* PBXTargetDependency */,
+			);
+			name = BoxOfficeAppUITests;
+			productName = BoxOfficeAppUITests;
+			productReference = 6AEE43F324F275A8006BDEC2 /* BoxOfficeAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6AEE43CA24F275A6006BDEC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Gordon Smith";
+				TargetAttributes = {
+					6AEE43D124F275A6006BDEC2 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					6AEE43E724F275A8006BDEC2 = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
+						TestTargetID = 6AEE43D124F275A6006BDEC2;
+					};
+					6AEE43F224F275A8006BDEC2 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 6AEE43D124F275A6006BDEC2;
+					};
+				};
+			};
+			buildConfigurationList = 6AEE43CD24F275A6006BDEC2 /* Build configuration list for PBXProject "BoxOfficeApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6AEE43C924F275A6006BDEC2;
+			productRefGroup = 6AEE43D324F275A6006BDEC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6AEE43D124F275A6006BDEC2 /* BoxOfficeApp */,
+				6AEE43E724F275A8006BDEC2 /* BoxOfficeAppTests */,
+				6AEE43F224F275A8006BDEC2 /* BoxOfficeAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6AEE43D024F275A6006BDEC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A22DA7C24F27E0E007739B5 /* AuthConfig.plist in Resources */,
+				6AEE43E224F275A7006BDEC2 /* LaunchScreen.storyboard in Resources */,
+				6AEE43DF24F275A7006BDEC2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AEE43E624F275A8006BDEC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AEE43F124F275A8006BDEC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6AEE43CE24F275A6006BDEC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AEE43D624F275A6006BDEC2 /* AppDelegate.swift in Sources */,
+				6AF211CC24F27BC5004BC7C2 /* AuthConfig.swift in Sources */,
+				6A22DA7E24F27E35007739B5 /* GetConfig.swift in Sources */,
+				6AF211CF24F27BF1004BC7C2 /* AuthenticatedHTTPClientDecorator.swift in Sources */,
+				6AEE43D824F275A6006BDEC2 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AEE43E424F275A8006BDEC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF211C924F278C8004BC7C2 /* AuthenticatedHTTPClientDecoratorTests.swift in Sources */,
+				6AF211C524F27846004BC7C2 /* XCTestCase+Ext.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AEE43EF24F275A8006BDEC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AEE43F824F275A8006BDEC2 /* BoxOfficeAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6AEE43EA24F275A8006BDEC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6AEE43D124F275A6006BDEC2 /* BoxOfficeApp */;
+			targetProxy = 6AEE43E924F275A8006BDEC2 /* PBXContainerItemProxy */;
+		};
+		6AEE43F524F275A8006BDEC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6AEE43D124F275A6006BDEC2 /* BoxOfficeApp */;
+			targetProxy = 6AEE43F424F275A8006BDEC2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6AEE43E024F275A7006BDEC2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AEE43E124F275A7006BDEC2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6AEE43FA24F275A8006BDEC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6AEE43FB24F275A8006BDEC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6AEE43FD24F275A8006BDEC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CBUNS24C9F;
+				INFOPLIST_FILE = BoxOfficeApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.app.ios.dev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6AEE43FE24F275A8006BDEC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = BoxOfficeApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.app.ios.release";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6AEE440024F275A8006BDEC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CBUNS24C9F;
+				INFOPLIST_FILE = BoxOfficeAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoxOfficeApp.app/BoxOfficeApp";
+			};
+			name = Debug;
+		};
+		6AEE440124F275A8006BDEC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CBUNS24C9F;
+				INFOPLIST_FILE = BoxOfficeAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoxOfficeApp.app/BoxOfficeApp";
+			};
+			name = Release;
+		};
+		6AEE440324F275A8006BDEC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CBUNS24C9F;
+				INFOPLIST_FILE = BoxOfficeAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BoxOfficeApp;
+			};
+			name = Debug;
+		};
+		6AEE440424F275A8006BDEC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CBUNS24C9F;
+				INFOPLIST_FILE = BoxOfficeAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BoxOfficeApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6AEE43CD24F275A6006BDEC2 /* Build configuration list for PBXProject "BoxOfficeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AEE43FA24F275A8006BDEC2 /* Debug */,
+				6AEE43FB24F275A8006BDEC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AEE43FC24F275A8006BDEC2 /* Build configuration list for PBXNativeTarget "BoxOfficeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AEE43FD24F275A8006BDEC2 /* Debug */,
+				6AEE43FE24F275A8006BDEC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AEE43FF24F275A8006BDEC2 /* Build configuration list for PBXNativeTarget "BoxOfficeAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AEE440024F275A8006BDEC2 /* Debug */,
+				6AEE440124F275A8006BDEC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AEE440224F275A8006BDEC2 /* Build configuration list for PBXNativeTarget "BoxOfficeAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AEE440324F275A8006BDEC2 /* Debug */,
+				6AEE440424F275A8006BDEC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6AEE43CA24F275A6006BDEC2 /* Project object */;
+}

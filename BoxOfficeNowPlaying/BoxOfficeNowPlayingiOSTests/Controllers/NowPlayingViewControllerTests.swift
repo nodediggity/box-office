@@ -13,6 +13,11 @@ import BoxOfficeNowPlayingiOS
 
 class NowPlayingViewControllerTests: XCTestCase {
 
+  func test_on_init_sets_title() {
+    let (sut, _) = makeSUT()
+    XCTAssertEqual(sut.title, NowPlayingPresenter.title)
+  }
+
   func test_load_actions_request_now_playing_from_loader() {
     let (sut, loader) = makeSUT()
     XCTAssertTrue(loader.messages.isEmpty)
@@ -193,6 +198,39 @@ class NowPlayingViewControllerTests: XCTestCase {
     loader.completeImageLoading(with: makeImageData(), at: 0)
     XCTAssertNil(view?.renderedImage)
   }
+
+  func test_now_playing_loader_completes_from_background_to_main_thread() {
+    let (sut, loader) = makeSUT()
+    let item = makeNowPlayingCard(id: 0)
+    let feedPage = makeNowPlayingFeed(items: [item], pageNumber: 1, totalPages: 1)
+    sut.loadViewIfNeeded()
+
+    let exp = expectation(description: "await background queue")
+    DispatchQueue.global().async {
+      loader.loadFeedCompletes(with: .success(feedPage))
+      exp.fulfill()
+    }
+    wait(for: [exp], timeout: 1.0)
+  }
+
+  func test_now_playing_image_loader_completes_from_background_to_main_thread() {
+    let (sut, loader) = makeSUT()
+    let item = makeNowPlayingCard(id: 0)
+    let feedPage = makeNowPlayingFeed(items: [item], pageNumber: 1, totalPages: 1)
+    let imageData = makeImageData()
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+
+    sut.simulateItemVisible(at: 0)
+
+    let exp = expectation(description: "await background queue")
+    DispatchQueue.global().async {
+      loader.completeImageLoading(with: imageData, at: 0)
+      exp.fulfill()
+    }
+    wait(for: [exp], timeout: 1.0)
+  }
+
 }
 
 private extension NowPlayingViewControllerTests {
@@ -344,7 +382,7 @@ extension NowPlayingCardFeedCell {
   }
 
   var loadingIndicatorIsVisible: Bool {
-    return imageContainer.isShimmering
+    return isShimmering
   }
 }
 

@@ -22,6 +22,10 @@ public protocol NowPlayingView {
 
 public class NowPlayingPresenter {
 
+  public static var title: String {
+    return  "Now Playing"
+  }
+
   private let view: NowPlayingView
   private let loadingView: NowPlayingLoadingView
   private let errorView: NowPlayingErrorView
