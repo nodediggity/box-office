@@ -20,6 +20,21 @@ final class MovieDetailsViewController: UIViewController {
     return view
   }()
 
+  private(set) public var titleLabel: UILabel = {
+    let view = UILabel(frame: .zero)
+    return view
+  }()
+
+  private(set) public var metaLabel: UILabel = {
+    let view = UILabel(frame: .zero)
+    return view
+  }()
+
+  private(set) public var overviewLabel: UILabel = {
+    let view = UILabel(frame: .zero)
+    return view
+  }()
+
   convenience init(id: Int, loader: MovieLoader) {
     self.init(nibName: nil, bundle: nil)
     self.id = id
@@ -30,9 +45,39 @@ final class MovieDetailsViewController: UIViewController {
     super.viewDidLoad()
 
     loadingIndicator.startAnimating()
-    loader?.load(id: id!, completion: { [weak self] _ in
+    loader?.load(id: id!, completion: { [weak self] result in
+
+      if let movie = try? result.get() {
+        self?.titleLabel.text = movie.title
+
+        let runTime = Double(movie.length * 60).asString(style: .short)
+        let genres = movie.genres.map { $0.capitalizingFirstLetter() }.joined(separator: ", ")
+        self?.metaLabel.text = "\(runTime) | \(genres)"
+        self?.overviewLabel.text = movie.overview
+      }
+
       self?.loadingIndicator.stopAnimating()
     })
+  }
+}
+
+extension Double {
+  func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.hour, .minute, .second, .nanosecond]
+    formatter.unitsStyle = style
+    guard let formattedString = formatter.string(from: self) else { return "" }
+    return formattedString
+  }
+}
+
+extension String {
+  func capitalizingFirstLetter() -> String {
+    return prefix(1).capitalized + dropFirst()
+  }
+
+  mutating func capitalizeFirstLetter() {
+    self = self.capitalizingFirstLetter()
   }
 }
 
@@ -58,6 +103,16 @@ class MovieDetailsViewControllerTests: XCTestCase {
     XCTAssertFalse(sut.loadingIndicatorIsVisible)
   }
 
+  func test_on_load_success_renders_details() {
+    let (sut, loader) = makeSUT()
+    let movie = makeMovie()
+
+    sut.loadViewIfNeeded()
+    loader.loadCompletes(with: .success(movie))
+
+    assertThat(sut, hasViewConfiguredFor: movie)
+  }
+
 }
 
 private extension MovieDetailsViewControllerTests {
@@ -81,6 +136,12 @@ private extension MovieDetailsViewControllerTests {
       overview: "An action movie",
       backdropImagePath: "some-action-movie-background.png"
     )
+  }
+
+  func assertThat(_ sut: MovieDetailsViewController, hasViewConfiguredFor item: Movie, file: StaticString = #file, line: UInt = #line) {
+    XCTAssertEqual(sut.titleText, item.title, file: file, line: line)
+    XCTAssertEqual(sut.metaText, "2 hr, 10 min | Action", file: file, line: line)
+    XCTAssertEqual(sut.overviewText, item.overview, file: file, line: line)
   }
 
   class LoaderSpy: MovieLoader {
@@ -110,5 +171,17 @@ extension MovieDetailsViewController {
 
   var loadingIndicatorIsVisible: Bool {
     return loadingIndicator.isAnimating
+  }
+
+  var titleText: String? {
+    return titleLabel.text
+  }
+
+  var metaText: String? {
+    return metaLabel.text
+  }
+
+  var overviewText: String? {
+    return overviewLabel.text
   }
 }
