@@ -15,6 +15,7 @@ class RemoteMovieLoader {
 
   enum Error: Swift.Error {
     case connectivity
+    case invalidResponse
   }
 
   private let baseURL: URL
@@ -26,8 +27,11 @@ class RemoteMovieLoader {
   }
 
   func load(id: Int, completion: @escaping (Result) -> Void) {
-    client.dispatch(URLRequest(url: enrich(baseURL, with: id)), completion: { _ in
-      completion(.failure(.connectivity))
+    client.dispatch(URLRequest(url: enrich(baseURL, with: id)), completion: { [weak self] result in
+      switch result {
+        case .success: completion(.failure(.invalidResponse))
+        case .failure: completion(.failure(.connectivity))
+      }
     })
   }
 }
@@ -80,6 +84,16 @@ class LoadMovieFromRemoteUseCaseTests: XCTestCase {
     })
   }
 
+  func test_execute_delivers_error_on_non_success_response() {
+    let (sut, client) = makeSUT()
+    let samples = [299, 300, 399, 400, 418, 499, 500]
+    let data = makeData()
+    samples.indices.forEach { index in
+      expect(sut, toCompleteWith: failure(.invalidResponse), when: {
+        client.completes(withStatusCode: samples[index], data: data, at: index)
+      })
+    }
+  }
 }
 
 private extension LoadMovieFromRemoteUseCaseTests {
