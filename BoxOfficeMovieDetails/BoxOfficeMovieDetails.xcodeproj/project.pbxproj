@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6A58392624F41AB90095D84E /* BoxOfficeMovieDetailsiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A58391D24F41AB90095D84E /* BoxOfficeMovieDetailsiOS.framework */; };
-		6A58392B24F41AB90095D84E /* BoxOfficeMovieDetailsiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58392A24F41AB90095D84E /* BoxOfficeMovieDetailsiOSTests.swift */; };
-		6A58392D24F41AB90095D84E /* BoxOfficeMovieDetailsiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A58391F24F41AB90095D84E /* BoxOfficeMovieDetailsiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A58393424F41CA20095D84E /* BoxOfficeMovieDetails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF8CCAA24F3D939006FBFCA /* BoxOfficeMovieDetails.framework */; platformFilter = ios; };
+		6A58393524F41CA20095D84E /* BoxOfficeMovieDetails.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF8CCAA24F3D939006FBFCA /* BoxOfficeMovieDetails.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A9DC62524F4182700919E9C /* RemoteMovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9DC62424F4182700919E9C /* RemoteMovieLoader.swift */; };
 		6A9DC62724F4186E00919E9C /* MovieMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9DC62624F4186E00919E9C /* MovieMapper.swift */; };
 		6AF8CCB424F3D939006FBFCA /* BoxOfficeMovieDetails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF8CCAA24F3D939006FBFCA /* BoxOfficeMovieDetails.framework */; };
@@ -30,6 +30,13 @@
 			remoteGlobalIDString = 6A58391C24F41AB90095D84E;
 			remoteInfo = BoxOfficeMovieDetailsiOS;
 		};
+		6A58393624F41CA20095D84E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AF8CCA124F3D939006FBFCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AF8CCA924F3D939006FBFCA;
+			remoteInfo = BoxOfficeMovieDetails;
+		};
 		6AF8CCB524F3D939006FBFCA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6AF8CCA124F3D939006FBFCA /* Project object */;
@@ -40,6 +47,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		6A58393824F41CA20095D84E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6A58393524F41CA20095D84E /* BoxOfficeMovieDetails.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6AF8CCD324F3E0CD006FBFCA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -55,10 +73,8 @@
 
 /* Begin PBXFileReference section */
 		6A58391D24F41AB90095D84E /* BoxOfficeMovieDetailsiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxOfficeMovieDetailsiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A58391F24F41AB90095D84E /* BoxOfficeMovieDetailsiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxOfficeMovieDetailsiOS.h; sourceTree = "<group>"; };
 		6A58392024F41AB90095D84E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A58392524F41AB90095D84E /* BoxOfficeMovieDetailsiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeMovieDetailsiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A58392A24F41AB90095D84E /* BoxOfficeMovieDetailsiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeMovieDetailsiOSTests.swift; sourceTree = "<group>"; };
 		6A58392C24F41AB90095D84E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A9DC62424F4182700919E9C /* RemoteMovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMovieLoader.swift; sourceTree = "<group>"; };
 		6A9DC62624F4186E00919E9C /* MovieMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapper.swift; sourceTree = "<group>"; };
@@ -79,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A58393424F41CA20095D84E /* BoxOfficeMovieDetails.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +129,6 @@
 		6A58391E24F41AB90095D84E /* BoxOfficeMovieDetailsiOS */ = {
 			isa = PBXGroup;
 			children = (
-				6A58391F24F41AB90095D84E /* BoxOfficeMovieDetailsiOS.h */,
 				6A58392024F41AB90095D84E /* Info.plist */,
 			);
 			path = BoxOfficeMovieDetailsiOS;
@@ -121,7 +137,6 @@
 		6A58392924F41AB90095D84E /* BoxOfficeMovieDetailsiOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				6A58392A24F41AB90095D84E /* BoxOfficeMovieDetailsiOSTests.swift */,
 				6A58392C24F41AB90095D84E /* Info.plist */,
 			);
 			path = BoxOfficeMovieDetailsiOSTests;
@@ -212,7 +227,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A58392D24F41AB90095D84E /* BoxOfficeMovieDetailsiOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,10 +248,12 @@
 				6A58391924F41AB90095D84E /* Sources */,
 				6A58391A24F41AB90095D84E /* Frameworks */,
 				6A58391B24F41AB90095D84E /* Resources */,
+				6A58393824F41CA20095D84E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6A58393724F41CA20095D84E /* PBXTargetDependency */,
 			);
 			name = BoxOfficeMovieDetailsiOS;
 			productName = BoxOfficeMovieDetailsiOS;
@@ -389,7 +405,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A58392B24F41AB90095D84E /* BoxOfficeMovieDetailsiOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +436,12 @@
 			isa = PBXTargetDependency;
 			target = 6A58391C24F41AB90095D84E /* BoxOfficeMovieDetailsiOS */;
 			targetProxy = 6A58392724F41AB90095D84E /* PBXContainerItemProxy */;
+		};
+		6A58393724F41CA20095D84E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 6AF8CCA924F3D939006FBFCA /* BoxOfficeMovieDetails */;
+			targetProxy = 6A58393624F41CA20095D84E /* PBXContainerItemProxy */;
 		};
 		6AF8CCB624F3D939006FBFCA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
