@@ -14,6 +14,7 @@
 		6AF8CCCE24F3E0B8006FBFCA /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF8CCCD24F3E0B8006FBFCA /* HTTPClientSpy.swift */; };
 		6AF8CCD124F3E0CD006FBFCA /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF8CCD024F3E0CD006FBFCA /* BoxOfficeNetworking.framework */; };
 		6AF8CCD224F3E0CD006FBFCA /* BoxOfficeNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF8CCD024F3E0CD006FBFCA /* BoxOfficeNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AF8CCD624F3E148006FBFCA /* LoadMovieFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF8CCD524F3E148006FBFCA /* LoadMovieFromRemoteUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		6AF8CCCB24F3E0A3006FBFCA /* XCTestCase+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Ext.swift"; sourceTree = "<group>"; };
 		6AF8CCCD24F3E0B8006FBFCA /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		6AF8CCD024F3E0CD006FBFCA /* BoxOfficeNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF8CCD524F3E148006FBFCA /* LoadMovieFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMovieFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		6AF8CCB724F3D939006FBFCA /* BoxOfficeMovieDetailsTests */ = {
 			isa = PBXGroup;
 			children = (
+				6AF8CCD424F3E12F006FBFCA /* API */,
 				6AF8CCBA24F3D939006FBFCA /* Info.plist */,
 				6AF8CCCD24F3E0B8006FBFCA /* HTTPClientSpy.swift */,
 				6AF8CCCB24F3E0A3006FBFCA /* XCTestCase+Ext.swift */,
@@ -125,6 +128,14 @@
 				6AF8CCD024F3E0CD006FBFCA /* BoxOfficeNetworking.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6AF8CCD424F3E12F006FBFCA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6AF8CCD524F3E148006FBFCA /* LoadMovieFromRemoteUseCaseTests.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AF8CCCC24F3E0A3006FBFCA /* XCTestCase+Ext.swift in Sources */,
+				6AF8CCD624F3E148006FBFCA /* LoadMovieFromRemoteUseCaseTests.swift in Sources */,
 				6AF8CCCE24F3E0B8006FBFCA /* HTTPClientSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
