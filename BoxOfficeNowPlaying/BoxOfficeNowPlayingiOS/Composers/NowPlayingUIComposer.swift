@@ -9,6 +9,7 @@
 import Foundation
 import BoxOfficeMedia
 import BoxOfficeNowPlaying
+import BoxOfficeCommon
 
 public enum NowPlayingUIComposer {
   public static func compose(loader: NowPlayingLoader, imageLoader: ImageDataLoader, onSelectCallback: @escaping (Int) -> Void) -> NowPlayingViewController {

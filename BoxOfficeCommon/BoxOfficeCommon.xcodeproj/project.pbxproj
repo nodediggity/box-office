@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A970F5D24F4439E0057AD81 /* BoxOfficeCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F5324F4439E0057AD81 /* BoxOfficeCommon.framework */; };
+		6A970F6F24F444570057AD81 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A970F6E24F444570057AD81 /* MainQueueDispatchDecorator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +26,7 @@
 		6A970F5724F4439E0057AD81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A970F5C24F4439E0057AD81 /* BoxOfficeCommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeCommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A970F6324F4439E0057AD81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A970F6E24F444570057AD81 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				6A970F5724F4439E0057AD81 /* Info.plist */,
+				6A970F6D24F444490057AD81 /* Utils */,
 			);
 			path = BoxOfficeCommon;
 			sourceTree = "<group>";
@@ -78,6 +81,14 @@
 				6A970F6324F4439E0057AD81 /* Info.plist */,
 			);
 			path = BoxOfficeCommonTests;
+			sourceTree = "<group>";
+		};
+		6A970F6D24F444490057AD81 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6A970F6E24F444570057AD81 /* MainQueueDispatchDecorator.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 				TargetAttributes = {
 					6A970F5224F4439E0057AD81 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					6A970F5B24F4439E0057AD81 = {
 						CreatedOnToolsVersion = 11.6;
@@ -188,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A970F6F24F444570057AD81 /* MainQueueDispatchDecorator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +348,7 @@
 		6A970F6824F4439E0057AD81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -353,6 +367,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.common";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -360,6 +375,7 @@
 		6A970F6924F4439E0057AD81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -385,6 +401,7 @@
 		6A970F6B24F4439E0057AD81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
@@ -404,6 +421,7 @@
 		6A970F6C24F4439E0057AD81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
