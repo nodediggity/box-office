@@ -5,12 +5,15 @@
       location = "group:BoxOfficeApp/BoxOfficeApp.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:BoxOfficeMovieDetails/BoxOfficeMovieDetails.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:BoxOfficeNetworking/BoxOfficeNetworking.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:BoxOfficeNowPlaying/BoxOfficeNowPlaying.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
    </FileRef>
 </Workspace>

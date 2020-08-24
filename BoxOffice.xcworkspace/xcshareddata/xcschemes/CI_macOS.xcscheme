@@ -62,6 +62,20 @@
                ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6AF8CCA924F3D939006FBFCA"
+               BuildableName = "BoxOfficeMovieDetails.framework"
+               BlueprintName = "BoxOfficeMovieDetails"
+               ReferencedContainer = "container:BoxOfficeMovieDetails/BoxOfficeMovieDetails.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -92,6 +106,13 @@
             BuildableName = "BoxOfficeMedia.framework"
             BlueprintName = "BoxOfficeMedia"
             ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6AF8CCA924F3D939006FBFCA"
+            BuildableName = "BoxOfficeMovieDetails.framework"
+            BlueprintName = "BoxOfficeMovieDetails"
+            ReferencedContainer = "container:BoxOfficeMovieDetails/BoxOfficeMovieDetails.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -126,6 +147,17 @@
                BuildableName = "BoxOfficeMediaTests.xctest"
                BlueprintName = "BoxOfficeMediaTests"
                ReferencedContainer = "container:BoxOfficeMedia/BoxOfficeMedia.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6AF8CCB224F3D939006FBFCA"
+               BuildableName = "BoxOfficeMovieDetailsTests.xctest"
+               BlueprintName = "BoxOfficeMovieDetailsTests"
+               ReferencedContainer = "container:BoxOfficeMovieDetails/BoxOfficeMovieDetails.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
