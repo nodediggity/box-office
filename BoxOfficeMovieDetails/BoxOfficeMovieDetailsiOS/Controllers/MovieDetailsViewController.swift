@@ -52,6 +52,8 @@ public final class MovieDetailsViewController: UIViewController {
   public override func viewDidLoad() {
     super.viewDidLoad()
 
+    view.backgroundColor = #colorLiteral(red: 0.1019607843, green: 0.1254901961, blue: 0.1882352941, alpha: 1)
+
     buyTicketButton.addTarget(self, action: #selector(didTapBuyTicket), for: .touchUpInside)
 
     loadingIndicator.startAnimating()
