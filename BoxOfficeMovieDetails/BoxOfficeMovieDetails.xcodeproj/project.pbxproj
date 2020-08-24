@@ -141,8 +141,8 @@
 		6A58392924F41AB90095D84E /* BoxOfficeMovieDetailsiOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				6A58393924F41D0C0095D84E /* Controllers */,
 				6A58392C24F41AB90095D84E /* Info.plist */,
+				6A58393924F41D0C0095D84E /* Controllers */,
 			);
 			path = BoxOfficeMovieDetailsiOSTests;
 			sourceTree = "<group>";
