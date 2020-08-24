@@ -59,9 +59,7 @@ class MovieDetailsViewControllerTests: XCTestCase {
 private extension MovieDetailsViewControllerTests {
   func makeSUT(id: Int = 0, onBuyTicketSpy: @escaping () -> Void = { }, file: StaticString = #file, line: UInt = #line) -> (MovieDetailsViewController, LoaderSpy) {
     let loader = LoaderSpy()
-    let sut = MovieDetailsViewController(id: id, loader: loader)
-
-    sut.onBuyTicket = onBuyTicketSpy
+    let sut = MovieDetailsUIComposer.compose(id: id, loader: loader, onPurchaseCallback: onBuyTicketSpy)
 
     checkForMemoryLeaks(loader, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
