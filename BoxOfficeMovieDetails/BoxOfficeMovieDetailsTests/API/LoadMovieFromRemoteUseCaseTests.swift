@@ -13,6 +13,10 @@ class RemoteMovieLoader {
 
   typealias Result = Swift.Result<Void, Error>
 
+  enum Error: Swift.Error {
+    case connectivity
+  }
+
   private let baseURL: URL
   private let client: HTTPClient
 
@@ -22,7 +26,9 @@ class RemoteMovieLoader {
   }
 
   func load(id: Int, completion: @escaping (Result) -> Void) {
-    client.dispatch(URLRequest(url: enrich(baseURL, with: id)), completion: { _ in })
+    client.dispatch(URLRequest(url: enrich(baseURL, with: id)), completion: { _ in
+      completion(.failure(.connectivity))
+    })
   }
 }
 
@@ -65,6 +71,15 @@ class LoadMovieFromRemoteUseCaseTests: XCTestCase {
 
     XCTAssertEqual(client.requestedURLs, [expectedURL, expectedURL])
   }
+
+  func test_load_delivers_error_on_client_error() {
+    let (sut, client) = makeSUT()
+    let error = makeError()
+    expect(sut, toCompleteWith: failure(.connectivity), when: {
+      client.completes(with: error)
+    })
+  }
+
 }
 
 private extension LoadMovieFromRemoteUseCaseTests {
@@ -76,5 +91,24 @@ private extension LoadMovieFromRemoteUseCaseTests {
     checkForMemoryLeaks(sut, file: file, line: line)
 
     return (sut, client)
+  }
+
+  func expect(_ sut: RemoteMovieLoader, toCompleteWith expectedResult: RemoteMovieLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    let exp = expectation(description: "Wait for load completion")
+    sut.load(id: 0, completion: { receivedResult in
+      switch (receivedResult, expectedResult) {
+        case let (.failure(receivedError as RemoteMovieLoader.Error), .failure(expectedError as RemoteMovieLoader.Error)):
+          XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+        default:
+          XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
+      }
+      exp.fulfill()
+    })
+    action()
+    wait(for: [exp], timeout: 1.0)
+  }
+
+  func failure(_ error: RemoteMovieLoader.Error) -> RemoteMovieLoader.Result {
+    return .failure(error)
   }
 }
