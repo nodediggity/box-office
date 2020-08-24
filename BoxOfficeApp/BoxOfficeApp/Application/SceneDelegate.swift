@@ -7,12 +7,11 @@
 //
 
 import UIKit
+import BoxOfficeCommoniOS
 import BoxOfficeNetworking
 import BoxOfficeMedia
-
 import BoxOfficeNowPlaying
 import BoxOfficeNowPlayingiOS
-
 import BoxOfficeMovieDetails
 import BoxOfficeMovieDetailsiOS
 

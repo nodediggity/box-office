@@ -8,6 +8,7 @@
 
 import UIKit
 import BoxOfficeNowPlaying
+import BoxOfficeCommoniOS
 
 public final class NowPlayingViewController: UIViewController {
 

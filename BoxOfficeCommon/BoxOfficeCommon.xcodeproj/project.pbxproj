@@ -14,6 +14,10 @@
 		6A970F8C24F447300057AD81 /* BoxOfficeCommoniOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F8324F447300057AD81 /* BoxOfficeCommoniOS.framework */; };
 		6A970F9B24F447460057AD81 /* BoxOfficeCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F5324F4439E0057AD81 /* BoxOfficeCommon.framework */; platformFilter = ios; };
 		6A970F9C24F447460057AD81 /* BoxOfficeCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F5324F4439E0057AD81 /* BoxOfficeCommon.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6A970FA224F447B10057AD81 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A970FA124F447B10057AD81 /* UIFont+Ext.swift */; };
+		6A970FA824F448000057AD81 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A970FA524F447FF0057AD81 /* Montserrat-Regular.ttf */; };
+		6A970FA924F448000057AD81 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A970FA624F447FF0057AD81 /* Montserrat-Bold.ttf */; };
+		6A970FAA24F448000057AD81 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A970FA724F447FF0057AD81 /* Montserrat-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,10 @@
 		6A970F8624F447300057AD81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A970F8B24F447300057AD81 /* BoxOfficeCommoniOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeCommoniOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A970F9224F447300057AD81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A970FA124F447B10057AD81 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
+		6A970FA524F447FF0057AD81 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		6A970FA624F447FF0057AD81 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		6A970FA724F447FF0057AD81 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				6A970F8624F447300057AD81 /* Info.plist */,
+				6A970FA324F447F30057AD81 /* Assets */,
+				6A970FA024F447A80057AD81 /* Extensions */,
 			);
 			path = BoxOfficeCommoniOS;
 			sourceTree = "<group>";
@@ -182,6 +192,32 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6A970FA024F447A80057AD81 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6A970FA124F447B10057AD81 /* UIFont+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6A970FA324F447F30057AD81 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				6A970FA424F447F60057AD81 /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		6A970FA424F447F60057AD81 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6A970FA624F447FF0057AD81 /* Montserrat-Bold.ttf */,
+				6A970FA724F447FF0057AD81 /* Montserrat-Medium.ttf */,
+				6A970FA524F447FF0057AD81 /* Montserrat-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +334,7 @@
 					};
 					6A970F8224F447300057AD81 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					6A970F8A24F447300057AD81 = {
 						CreatedOnToolsVersion = 11.6;
@@ -344,6 +381,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A970FA924F448000057AD81 /* Montserrat-Bold.ttf in Resources */,
+				6A970FAA24F448000057AD81 /* Montserrat-Medium.ttf in Resources */,
+				6A970FA824F448000057AD81 /* Montserrat-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A970FA224F447B10057AD81 /* UIFont+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +673,7 @@
 		6A970F9524F447300057AD81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
@@ -651,6 +693,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -659,6 +702,7 @@
 		6A970F9624F447300057AD81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
@@ -687,6 +731,7 @@
 		6A970F9824F447300057AD81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
 				INFOPLIST_FILE = BoxOfficeCommoniOSTests/Info.plist;
@@ -707,6 +752,7 @@
 		6A970F9924F447300057AD81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
 				INFOPLIST_FILE = BoxOfficeCommoniOSTests/Info.plist;
