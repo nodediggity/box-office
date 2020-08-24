@@ -8,10 +8,11 @@
 
 import XCTest
 import BoxOfficeNetworking
+import BoxOfficeMovieDetails
 
 class RemoteMovieLoader {
 
-  typealias Result = Swift.Result<Void, Error>
+  typealias Result = Swift.Result<Movie, Error>
 
   enum Error: Swift.Error {
     case connectivity
@@ -28,9 +29,10 @@ class RemoteMovieLoader {
 
   func load(id: Int, completion: @escaping (Result) -> Void) {
     client.dispatch(URLRequest(url: enrich(baseURL, with: id)), completion: { [weak self] result in
+      guard self != nil else { return }
       switch result {
-        case .success: completion(.failure(.invalidResponse))
-        case .failure: completion(.failure(.connectivity))
+        case let .success((data, response)): completion(RemoteMovieLoader.map(data, from: response))
+        case .failure: completion(.failure(Error.connectivity))
       }
     })
   }
@@ -44,7 +46,50 @@ private extension RemoteMovieLoader {
       .appendingPathComponent("\(movieID)")
   }
 
+  static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
+    do {
+      let value = try MovieMapper.map(data, from: response)
+      return .success(value.asMovie)
+    } catch {
+      return .failure(.invalidResponse)
+    }
+  }
 }
+
+struct RemoteMovie: Decodable {
+
+  struct RemoteMovieGenre: Decodable {
+    let name: String
+  }
+
+  let id: Int
+  let original_title: String
+  let vote_average: CGFloat
+  let runtime: CGFloat
+  let genres: [RemoteMovieGenre]
+  let overview: String
+  let backdrop_path: String
+}
+
+final class MovieMapper {
+
+  private static var OK_200: Int { return 200 }
+
+  static func map(_ data: Data, from response: HTTPURLResponse) throws -> RemoteMovie {
+    guard response.statusCode == OK_200, let page = try? JSONDecoder().decode(RemoteMovie.self, from: data) else {
+      throw RemoteMovieLoader.Error.invalidResponse
+    }
+
+    return page
+  }
+}
+
+private extension RemoteMovie {
+  var asMovie: Movie {
+    return Movie(id: id, title: original_title, rating: vote_average, length: runtime, genres: genres.map { $0.name }, overview: overview, backdropImagePath: backdrop_path)
+  }
+}
+
 
 class LoadMovieFromRemoteUseCaseTests: XCTestCase {
 
@@ -102,6 +147,15 @@ class LoadMovieFromRemoteUseCaseTests: XCTestCase {
       client.completes(withStatusCode: 200, data: invalidJSONData)
     })
   }
+
+  func test_load_delivers_movie_on_success_response_with_valid_json() {
+    let (sut, client) = makeSUT()
+    let movie = makeMovie()
+    let movieData = makeMovieJSONData(for: movie.json)
+    expect(sut, toCompleteWith: .success(movie.model), when: {
+      client.completes(withStatusCode: 200, data: movieData)
+    })
+  }
 }
 
 private extension LoadMovieFromRemoteUseCaseTests {
@@ -119,6 +173,8 @@ private extension LoadMovieFromRemoteUseCaseTests {
     let exp = expectation(description: "Wait for load completion")
     sut.load(id: 0, completion: { receivedResult in
       switch (receivedResult, expectedResult) {
+        case let (.success(receivedMovie), .success(expectedMovie)):
+          XCTAssertEqual(receivedMovie, expectedMovie, file: file, line: line)
         case let (.failure(receivedError as RemoteMovieLoader.Error), .failure(expectedError as RemoteMovieLoader.Error)):
           XCTAssertEqual(receivedError, expectedError, file: file, line: line)
         default:
@@ -132,5 +188,35 @@ private extension LoadMovieFromRemoteUseCaseTests {
 
   func failure(_ error: RemoteMovieLoader.Error) -> RemoteMovieLoader.Result {
     return .failure(error)
+  }
+
+  func makeMovieJSONData(for items: [String: Any]) -> Data {
+    let data = try! JSONSerialization.data(withJSONObject: items)
+    return data
+  }
+
+  func makeMovie() -> (model: Movie, json: [String: Any]) {
+
+    let model = Movie(
+      id: 1,
+      title: "thrilling action movie",
+      rating: 8,
+      length: 139,
+      genres: ["action", "thriller"],
+      overview: "a thrilling movie with lots of action",
+      backdropImagePath: "some-cool-image.png"
+    )
+
+    let json = [
+      "id": model.id,
+      "original_title": model.title,
+      "vote_average": model.rating,
+      "runtime": model.length,
+      "genres": model.genres.map { ["name": $0] },
+      "overview": model.overview,
+      "backdrop_path": model.backdropImagePath
+    ] as [String: Any]
+
+    return (model, json)
   }
 }
