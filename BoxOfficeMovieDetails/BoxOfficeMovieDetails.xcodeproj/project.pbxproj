@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6AF8CCB424F3D939006FBFCA /* BoxOfficeMovieDetails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF8CCAA24F3D939006FBFCA /* BoxOfficeMovieDetails.framework */; };
+		6AF8CCC524F3DA0B006FBFCA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF8CCC424F3DA0B006FBFCA /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +26,7 @@
 		6AF8CCAE24F3D939006FBFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AF8CCB324F3D939006FBFCA /* BoxOfficeMovieDetailsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeMovieDetailsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AF8CCBA24F3D939006FBFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AF8CCC424F3DA0B006FBFCA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				6AF8CCAE24F3D939006FBFCA /* Info.plist */,
+				6AF8CCC624F3DA11006FBFCA /* Feature */,
 			);
 			path = BoxOfficeMovieDetails;
 			sourceTree = "<group>";
@@ -78,6 +81,14 @@
 				6AF8CCBA24F3D939006FBFCA /* Info.plist */,
 			);
 			path = BoxOfficeMovieDetailsTests;
+			sourceTree = "<group>";
+		};
+		6AF8CCC624F3DA11006FBFCA /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				6AF8CCC424F3DA0B006FBFCA /* Movie.swift */,
+			);
+			path = Feature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 				TargetAttributes = {
 					6AF8CCA924F3D939006FBFCA = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					6AF8CCB224F3D939006FBFCA = {
 						CreatedOnToolsVersion = 11.6;
@@ -188,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AF8CCC524F3DA0B006FBFCA /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +344,7 @@
 		6AF8CCBF24F3D939006FBFCA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -348,6 +362,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeMovieDetails;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -355,6 +370,7 @@
 		6AF8CCC024F3D939006FBFCA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -379,6 +395,7 @@
 		6AF8CCC224F3D939006FBFCA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
@@ -397,6 +414,7 @@
 		6AF8CCC324F3D939006FBFCA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBUNS24C9F;
