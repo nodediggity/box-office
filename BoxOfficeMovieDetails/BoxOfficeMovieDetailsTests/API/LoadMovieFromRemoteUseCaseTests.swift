@@ -11,6 +11,8 @@ import BoxOfficeNetworking
 
 class RemoteMovieLoader {
 
+  typealias Result = Swift.Result<Void, Error>
+
   private let baseURL: URL
   private let client: HTTPClient
 
@@ -19,15 +21,38 @@ class RemoteMovieLoader {
     self.client = client
   }
 
+  func load(id: Int, completion: @escaping (Result) -> Void) {
+    client.dispatch(URLRequest(url: enrich(baseURL, with: id)), completion: { _ in })
+  }
+}
+
+private extension RemoteMovieLoader {
+  func enrich(_ url: URL, with movieID: Int) -> URL {
+    return url
+      .appendingPathComponent("3")
+      .appendingPathComponent("movie")
+      .appendingPathComponent("\(movieID)")
+  }
+
 }
 
 class LoadMovieFromRemoteUseCaseTests: XCTestCase {
-  
+
   func test_on_init_does_not_request_data_from_remote() {
     let (_, client) = makeSUT()
     XCTAssertTrue(client.requestedURLs.isEmpty)
   }
 
+  func test_load_requests_data_from_remote() {
+    let movieID = 1
+    let expectedURL = makeURL("https://some-remote-svc.com/3/movie/\(movieID)")
+    let baseURL = makeURL("https://some-remote-svc.com")
+    let (sut, client) = makeSUT(baseURL: baseURL)
+
+    sut.load(id: movieID, completion: { _ in })
+
+    XCTAssertEqual(client.requestedURLs, [expectedURL])
+  }
 }
 
 private extension LoadMovieFromRemoteUseCaseTests {
