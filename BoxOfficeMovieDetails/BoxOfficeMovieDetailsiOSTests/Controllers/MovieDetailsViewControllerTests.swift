@@ -124,23 +124,23 @@ private extension MovieDetailsViewControllerTests {
 extension MovieDetailsViewController {
 
   var loadingIndicatorIsVisible: Bool {
-    return loadingIndicator.isAnimating
+    return customView.loadingIndicator.isAnimating
   }
 
   var titleText: String? {
-    return titleLabel.text
+    return customView.titleLabel.text
   }
 
   var metaText: String? {
-    return metaLabel.text
+    return customView.metaLabel.text
   }
 
   var overviewText: String? {
-    return overviewLabel.text
+    return customView.overviewLabel.text
   }
 
   func simulateBuyTicket() {
-    buyTicketButton.simulateTap()
+    customView.buyTicketButton.simulateTap()
   }
 }
 
