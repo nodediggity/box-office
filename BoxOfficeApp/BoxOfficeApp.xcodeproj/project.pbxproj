@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A22DA7C24F27E0E007739B5 /* AuthConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A22DA7B24F27E0E007739B5 /* AuthConfig.plist */; };
 		6A22DA7E24F27E35007739B5 /* GetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DA7D24F27E35007739B5 /* GetConfig.swift */; };
+		6A58391724F41A4B0095D84E /* AuthConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A58391624F41A4B0095D84E /* AuthConfig.plist */; };
 		6AEE43D624F275A6006BDEC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */; };
 		6AEE43D824F275A6006BDEC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43D724F275A6006BDEC2 /* SceneDelegate.swift */; };
 		6AEE43DF24F275A7006BDEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AEE43DE24F275A7006BDEC2 /* Assets.xcassets */; };
@@ -63,8 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6A22DA7B24F27E0E007739B5 /* AuthConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AuthConfig.plist; sourceTree = "<group>"; };
 		6A22DA7D24F27E35007739B5 /* GetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConfig.swift; sourceTree = "<group>"; };
+		6A58391624F41A4B0095D84E /* AuthConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AuthConfig.plist; sourceTree = "<group>"; };
 		6AEE43D224F275A6006BDEC2 /* BoxOfficeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxOfficeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AEE43D724F275A6006BDEC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		6AEE43D424F275A6006BDEC2 /* BoxOfficeApp */ = {
 			isa = PBXGroup;
 			children = (
-				6A22DA7B24F27E0E007739B5 /* AuthConfig.plist */,
+				6A58391624F41A4B0095D84E /* AuthConfig.plist */,
 				6AEE43E324F275A7006BDEC2 /* Info.plist */,
 				6AEE43DE24F275A7006BDEC2 /* Assets.xcassets */,
 				6AEE440524F276A8006BDEC2 /* Application */,
@@ -344,7 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A22DA7C24F27E0E007739B5 /* AuthConfig.plist in Resources */,
+				6A58391724F41A4B0095D84E /* AuthConfig.plist in Resources */,
 				6AEE43E224F275A7006BDEC2 /* LaunchScreen.storyboard in Resources */,
 				6AEE43DF24F275A7006BDEC2 /* Assets.xcassets in Resources */,
 			);
