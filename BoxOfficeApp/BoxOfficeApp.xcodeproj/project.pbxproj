@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		6A22DA7E24F27E35007739B5 /* GetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DA7D24F27E35007739B5 /* GetConfig.swift */; };
 		6A970F4824F4433D0057AD81 /* AuthConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A970F4724F4433D0057AD81 /* AuthConfig.plist */; };
+		6A970F7524F444CA0057AD81 /* BoxOfficeMovieDetails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7324F444CA0057AD81 /* BoxOfficeMovieDetails.framework */; };
+		6A970F7624F444CA0057AD81 /* BoxOfficeMovieDetails.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7324F444CA0057AD81 /* BoxOfficeMovieDetails.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6A970F7724F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7424F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework */; };
+		6A970F7824F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7424F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6AEE43D624F275A6006BDEC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */; };
 		6AEE43D824F275A6006BDEC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43D724F275A6006BDEC2 /* SceneDelegate.swift */; };
 		6AEE43DF24F275A7006BDEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AEE43DE24F275A7006BDEC2 /* Assets.xcassets */; };
@@ -54,6 +58,8 @@
 			files = (
 				6AF211C224F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Embed Frameworks */,
 				6AF211C024F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Embed Frameworks */,
+				6A970F7824F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework in Embed Frameworks */,
+				6A970F7624F444CA0057AD81 /* BoxOfficeMovieDetails.framework in Embed Frameworks */,
 				6AF211BE24F27785004BC7C2 /* BoxOfficeNetworking.framework in Embed Frameworks */,
 				6AF211BC24F27785004BC7C2 /* BoxOfficeMedia.framework in Embed Frameworks */,
 			);
@@ -65,6 +71,8 @@
 /* Begin PBXFileReference section */
 		6A22DA7D24F27E35007739B5 /* GetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConfig.swift; sourceTree = "<group>"; };
 		6A970F4724F4433D0057AD81 /* AuthConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AuthConfig.plist; sourceTree = "<group>"; };
+		6A970F7324F444CA0057AD81 /* BoxOfficeMovieDetails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMovieDetails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A970F7424F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMovieDetailsiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEE43D224F275A6006BDEC2 /* BoxOfficeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxOfficeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AEE43D724F275A6006BDEC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +101,8 @@
 			files = (
 				6AF211C124F27785004BC7C2 /* BoxOfficeNowPlayingiOS.framework in Frameworks */,
 				6AF211BF24F27785004BC7C2 /* BoxOfficeNowPlaying.framework in Frameworks */,
+				6A970F7724F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework in Frameworks */,
+				6A970F7524F444CA0057AD81 /* BoxOfficeMovieDetails.framework in Frameworks */,
 				6AF211BD24F27785004BC7C2 /* BoxOfficeNetworking.framework in Frameworks */,
 				6AF211BB24F27785004BC7C2 /* BoxOfficeMedia.framework in Frameworks */,
 			);
@@ -197,6 +207,8 @@
 		6AF211B624F27785004BC7C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A970F7324F444CA0057AD81 /* BoxOfficeMovieDetails.framework */,
+				6A970F7424F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework */,
 				6AF211B724F27785004BC7C2 /* BoxOfficeMedia.framework */,
 				6AF211B824F27785004BC7C2 /* BoxOfficeNetworking.framework */,
 				6AF211B924F27785004BC7C2 /* BoxOfficeNowPlaying.framework */,
