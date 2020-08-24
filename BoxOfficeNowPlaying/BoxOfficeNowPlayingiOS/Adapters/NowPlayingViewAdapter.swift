@@ -9,6 +9,7 @@
 import UIKit
 import BoxOfficeMedia
 import BoxOfficeNowPlaying
+import BoxOfficeCommon
 
 final class NowPlayingViewAdapter {
 
