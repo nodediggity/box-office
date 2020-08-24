@@ -41,8 +41,8 @@ private extension SceneDelegate {
     let loader = RemoteNowPlayingLoader(baseURL: URL(string: "https://api.themoviedb.org")!, client: authzClient)
     let imageLoader = RemoteImageDataLoader(client: client)
 
-    let viewController = NowPlayingUIComposer.compose(loader: loader, imageLoader: imageLoader)
+    let viewController = NowPlayingUIComposer.compose(loader: loader, imageLoader: imageLoader, onSelectCallback: { _ in })
+
     return viewController
   }
-
 }

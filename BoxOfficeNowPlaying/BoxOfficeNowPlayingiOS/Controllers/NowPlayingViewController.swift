@@ -65,6 +65,10 @@ extension NowPlayingViewController: UICollectionViewDataSource {
     let controller = cellController(forItemAt: indexPath)
     return controller.view(in: collectionView, forItemAt: indexPath)
   }
+
+  public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    cellController(forItemAt: indexPath).select()
+  }
 }
 
 extension NowPlayingViewController: UICollectionViewDataSourcePrefetching {
