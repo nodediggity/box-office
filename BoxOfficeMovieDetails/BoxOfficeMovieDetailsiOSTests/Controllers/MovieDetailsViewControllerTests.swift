@@ -42,12 +42,26 @@ class MovieDetailsViewControllerTests: XCTestCase {
     assertThat(sut, hasViewConfiguredFor: movie)
   }
 
+  func test_on_tap_buy_ticket_notifies_observer() {
+    var wasCalled = false
+    let (sut, loader) = makeSUT(onBuyTicketSpy: { wasCalled = true })
+    let movie = makeMovie()
+
+    sut.loadViewIfNeeded()
+    loader.loadCompletes(with: .success(movie))
+
+    sut.simulateBuyTicket()
+    XCTAssertTrue(wasCalled)
+  }
+
 }
 
 private extension MovieDetailsViewControllerTests {
-  func makeSUT(id: Int = 0, file: StaticString = #file, line: UInt = #line) -> (MovieDetailsViewController, LoaderSpy) {
+  func makeSUT(id: Int = 0, onBuyTicketSpy: @escaping () -> Void = { }, file: StaticString = #file, line: UInt = #line) -> (MovieDetailsViewController, LoaderSpy) {
     let loader = LoaderSpy()
     let sut = MovieDetailsViewController(id: id, loader: loader)
+
+    sut.onBuyTicket = onBuyTicketSpy
 
     checkForMemoryLeaks(loader, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
@@ -112,5 +126,23 @@ extension MovieDetailsViewController {
 
   var overviewText: String? {
     return overviewLabel.text
+  }
+
+  func simulateBuyTicket() {
+    buyTicketButton.simulateTap()
+  }
+}
+
+extension UIControl {
+  func simulate(event: UIControl.Event) {
+    allTargets.forEach { target in
+      actions(forTarget: target, forControlEvent: event)?.forEach { (target as NSObject).perform(Selector($0)) }
+    }
+  }
+}
+
+extension UIButton {
+  func simulateTap() {
+    simulate(event: .touchUpInside)
   }
 }

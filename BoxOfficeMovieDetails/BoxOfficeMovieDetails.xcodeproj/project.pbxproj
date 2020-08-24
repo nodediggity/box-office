@@ -139,9 +139,9 @@
 		6A58391E24F41AB90095D84E /* BoxOfficeMovieDetailsiOS */ = {
 			isa = PBXGroup;
 			children = (
-				6A58394124F430230095D84E /* Views */,
-				6A58393E24F42F570095D84E /* Controllers */,
 				6A58392024F41AB90095D84E /* Info.plist */,
+				6A58393E24F42F570095D84E /* Controllers */,
+				6A58394124F430230095D84E /* Views */,
 			);
 			path = BoxOfficeMovieDetailsiOS;
 			sourceTree = "<group>";
