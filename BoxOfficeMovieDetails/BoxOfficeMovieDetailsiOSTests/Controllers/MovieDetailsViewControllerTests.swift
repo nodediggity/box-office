@@ -14,6 +14,12 @@ final class MovieDetailsViewController: UIViewController {
   private var id: Int?
   private var loader: MovieLoader?
 
+  private(set) public var loadingIndicator: UIActivityIndicatorView = {
+    let view = UIActivityIndicatorView(style: .large)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+
   convenience init(id: Int, loader: MovieLoader) {
     self.init(nibName: nil, bundle: nil)
     self.id = id
@@ -23,6 +29,7 @@ final class MovieDetailsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    loadingIndicator.startAnimating()
     loader?.load(id: id!, completion: { _ in })
   }
 }
@@ -36,7 +43,13 @@ class MovieDetailsViewControllerTests: XCTestCase {
 
     sut.loadViewIfNeeded()
     XCTAssertEqual(loader.messages, [.load(movieID)])
+  }
 
+  func test_loading_indicator_is_visible_during_loading_state() {
+    let (sut, _) = makeSUT()
+
+    sut.loadViewIfNeeded()
+    XCTAssertTrue(sut.loadingIndicatorIsVisible)
   }
 
 }
@@ -65,5 +78,12 @@ private extension MovieDetailsViewControllerTests {
     func load(id: Int, completion: @escaping (Result) -> Void) {
       messages.append(.load(id))
     }
+  }
+}
+
+extension MovieDetailsViewController {
+
+  var loadingIndicatorIsVisible: Bool {
+    return loadingIndicator.isAnimating
   }
 }
