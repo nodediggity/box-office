@@ -156,6 +156,18 @@ class LoadMovieFromRemoteUseCaseTests: XCTestCase {
       client.completes(withStatusCode: 200, data: movieData)
     })
   }
+
+  func test_does_not_invoke_completion_once_instance_has_been_deallocated() {
+    let client = HTTPClientSpy()
+    var sut: RemoteMovieLoader? = RemoteMovieLoader(baseURL: makeURL(), client: client)
+
+    var output: Any? = nil
+    sut?.load(id: 1, completion: { output = $0 })
+    sut = nil
+
+    client.completes(withStatusCode: 200, data: makeData())
+    XCTAssertNil(output)
+  }
 }
 
 private extension LoadMovieFromRemoteUseCaseTests {
