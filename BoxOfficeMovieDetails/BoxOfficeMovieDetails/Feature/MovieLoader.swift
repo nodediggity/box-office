@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MovieLoader {
+public protocol MovieLoader {
   typealias Result = Swift.Result<Movie, Error>
-  func load(id: String, completion: @escaping (Result) -> Void)
+  func load(id: Int, completion: @escaping (Result) -> Void)
 }

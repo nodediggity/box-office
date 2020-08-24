@@ -10,9 +10,9 @@ import XCTest
 import BoxOfficeNetworking
 import BoxOfficeMovieDetails
 
-class RemoteMovieLoader {
+class RemoteMovieLoader: MovieLoader {
 
-  typealias Result = Swift.Result<Movie, Error>
+  typealias Result = MovieLoader.Result
 
   enum Error: Swift.Error {
     case connectivity
@@ -51,7 +51,7 @@ private extension RemoteMovieLoader {
       let value = try MovieMapper.map(data, from: response)
       return .success(value.asMovie)
     } catch {
-      return .failure(.invalidResponse)
+      return .failure(error)
     }
   }
 }
@@ -159,7 +159,7 @@ class LoadMovieFromRemoteUseCaseTests: XCTestCase {
 
   func test_does_not_invoke_completion_once_instance_has_been_deallocated() {
     let client = HTTPClientSpy()
-    var sut: RemoteMovieLoader? = RemoteMovieLoader(baseURL: makeURL(), client: client)
+    var sut: MovieLoader? = RemoteMovieLoader(baseURL: makeURL(), client: client)
 
     var output: Any? = nil
     sut?.load(id: 1, completion: { output = $0 })
@@ -171,7 +171,7 @@ class LoadMovieFromRemoteUseCaseTests: XCTestCase {
 }
 
 private extension LoadMovieFromRemoteUseCaseTests {
-  func makeSUT(baseURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> (RemoteMovieLoader, HTTPClientSpy) {
+  func makeSUT(baseURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> (MovieLoader, HTTPClientSpy) {
     let client = HTTPClientSpy()
     let sut = RemoteMovieLoader(baseURL: baseURL ?? makeURL(), client: client)
 
@@ -181,7 +181,7 @@ private extension LoadMovieFromRemoteUseCaseTests {
     return (sut, client)
   }
 
-  func expect(_ sut: RemoteMovieLoader, toCompleteWith expectedResult: RemoteMovieLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+  func expect(_ sut: MovieLoader, toCompleteWith expectedResult: MovieLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
     let exp = expectation(description: "Wait for load completion")
     sut.load(id: 0, completion: { receivedResult in
       switch (receivedResult, expectedResult) {
@@ -198,7 +198,7 @@ private extension LoadMovieFromRemoteUseCaseTests {
     wait(for: [exp], timeout: 1.0)
   }
 
-  func failure(_ error: RemoteMovieLoader.Error) -> RemoteMovieLoader.Result {
+  func failure(_ error: RemoteMovieLoader.Error) -> MovieLoader.Result {
     return .failure(error)
   }
 
