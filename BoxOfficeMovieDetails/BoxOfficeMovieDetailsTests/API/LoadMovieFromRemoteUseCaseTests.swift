@@ -187,7 +187,7 @@ private extension LoadMovieFromRemoteUseCaseTests {
       switch (receivedResult, expectedResult) {
         case let (.success(receivedMovie), .success(expectedMovie)):
           XCTAssertEqual(receivedMovie, expectedMovie, file: file, line: line)
-        case let (.failure(receivedError as RemoteMovieLoader.Error), .failure(expectedError as RemoteMovieLoader.Error)):
+        case let (.failure(receivedError as NSError?), .failure(expectedError as NSError?)):
           XCTAssertEqual(receivedError, expectedError, file: file, line: line)
         default:
           XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
