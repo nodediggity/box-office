@@ -236,6 +236,17 @@
                ReferencedContainer = "container:BoxOfficeCommon/BoxOfficeCommon.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6A970F8A24F447300057AD81"
+               BuildableName = "BoxOfficeCommoniOSTests.xctest"
+               BlueprintName = "BoxOfficeCommoniOSTests"
+               ReferencedContainer = "container:BoxOfficeCommon/BoxOfficeCommon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

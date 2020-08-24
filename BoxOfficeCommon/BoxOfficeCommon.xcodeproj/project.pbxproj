@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,9 @@
 		6A970F6F24F444570057AD81 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A970F6E24F444570057AD81 /* MainQueueDispatchDecorator.swift */; };
 		6A970F7A24F4452B0057AD81 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A970F7924F4452B0057AD81 /* WeakRefVirtualProxy.swift */; };
 		6A970F7D24F4454A0057AD81 /* WeakRefVirtualProxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A970F7C24F4454A0057AD81 /* WeakRefVirtualProxyTests.swift */; };
+		6A970F8C24F447300057AD81 /* BoxOfficeCommoniOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F8324F447300057AD81 /* BoxOfficeCommoniOS.framework */; };
+		6A970F9B24F447460057AD81 /* BoxOfficeCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F5324F4439E0057AD81 /* BoxOfficeCommon.framework */; platformFilter = ios; };
+		6A970F9C24F447460057AD81 /* BoxOfficeCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F5324F4439E0057AD81 /* BoxOfficeCommon.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,7 +24,35 @@
 			remoteGlobalIDString = 6A970F5224F4439E0057AD81;
 			remoteInfo = BoxOfficeCommon;
 		};
+		6A970F8D24F447300057AD81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A970F4A24F4439E0057AD81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A970F8224F447300057AD81;
+			remoteInfo = BoxOfficeCommoniOS;
+		};
+		6A970F9D24F447460057AD81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A970F4A24F4439E0057AD81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A970F5224F4439E0057AD81;
+			remoteInfo = BoxOfficeCommon;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6A970F9F24F447460057AD81 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6A970F9C24F447460057AD81 /* BoxOfficeCommon.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6A970F5324F4439E0057AD81 /* BoxOfficeCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxOfficeCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +62,10 @@
 		6A970F6E24F444570057AD81 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		6A970F7924F4452B0057AD81 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		6A970F7C24F4454A0057AD81 /* WeakRefVirtualProxyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxyTests.swift; sourceTree = "<group>"; };
+		6A970F8324F447300057AD81 /* BoxOfficeCommoniOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxOfficeCommoniOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A970F8624F447300057AD81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A970F8B24F447300057AD81 /* BoxOfficeCommoniOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeCommoniOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A970F9224F447300057AD81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +84,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6A970F8024F447300057AD81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A970F9B24F447460057AD81 /* BoxOfficeCommon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A970F8824F447300057AD81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A970F8C24F447300057AD81 /* BoxOfficeCommoniOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -57,7 +108,10 @@
 			children = (
 				6A970F5524F4439E0057AD81 /* BoxOfficeCommon */,
 				6A970F6024F4439E0057AD81 /* BoxOfficeCommonTests */,
+				6A970F8424F447300057AD81 /* BoxOfficeCommoniOS */,
+				6A970F8F24F447300057AD81 /* BoxOfficeCommoniOSTests */,
 				6A970F5424F4439E0057AD81 /* Products */,
+				6A970F9A24F447460057AD81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +120,8 @@
 			children = (
 				6A970F5324F4439E0057AD81 /* BoxOfficeCommon.framework */,
 				6A970F5C24F4439E0057AD81 /* BoxOfficeCommonTests.xctest */,
+				6A970F8324F447300057AD81 /* BoxOfficeCommoniOS.framework */,
+				6A970F8B24F447300057AD81 /* BoxOfficeCommoniOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,10 +161,40 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		6A970F8424F447300057AD81 /* BoxOfficeCommoniOS */ = {
+			isa = PBXGroup;
+			children = (
+				6A970F8624F447300057AD81 /* Info.plist */,
+			);
+			path = BoxOfficeCommoniOS;
+			sourceTree = "<group>";
+		};
+		6A970F8F24F447300057AD81 /* BoxOfficeCommoniOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				6A970F9224F447300057AD81 /* Info.plist */,
+			);
+			path = BoxOfficeCommoniOSTests;
+			sourceTree = "<group>";
+		};
+		6A970F9A24F447460057AD81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
 		6A970F4E24F4439E0057AD81 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A970F7E24F447300057AD81 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -154,6 +240,44 @@
 			productReference = 6A970F5C24F4439E0057AD81 /* BoxOfficeCommonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6A970F8224F447300057AD81 /* BoxOfficeCommoniOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A970F9424F447300057AD81 /* Build configuration list for PBXNativeTarget "BoxOfficeCommoniOS" */;
+			buildPhases = (
+				6A970F7E24F447300057AD81 /* Headers */,
+				6A970F7F24F447300057AD81 /* Sources */,
+				6A970F8024F447300057AD81 /* Frameworks */,
+				6A970F8124F447300057AD81 /* Resources */,
+				6A970F9F24F447460057AD81 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A970F9E24F447460057AD81 /* PBXTargetDependency */,
+			);
+			name = BoxOfficeCommoniOS;
+			productName = BoxOfficeCommoniOS;
+			productReference = 6A970F8324F447300057AD81 /* BoxOfficeCommoniOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6A970F8A24F447300057AD81 /* BoxOfficeCommoniOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A970F9724F447300057AD81 /* Build configuration list for PBXNativeTarget "BoxOfficeCommoniOSTests" */;
+			buildPhases = (
+				6A970F8724F447300057AD81 /* Sources */,
+				6A970F8824F447300057AD81 /* Frameworks */,
+				6A970F8924F447300057AD81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A970F8E24F447300057AD81 /* PBXTargetDependency */,
+			);
+			name = BoxOfficeCommoniOSTests;
+			productName = BoxOfficeCommoniOSTests;
+			productReference = 6A970F8B24F447300057AD81 /* BoxOfficeCommoniOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -172,6 +296,12 @@
 						CreatedOnToolsVersion = 11.6;
 						LastSwiftMigration = 1160;
 					};
+					6A970F8224F447300057AD81 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					6A970F8A24F447300057AD81 = {
+						CreatedOnToolsVersion = 11.6;
+					};
 				};
 			};
 			buildConfigurationList = 6A970F4D24F4439E0057AD81 /* Build configuration list for PBXProject "BoxOfficeCommon" */;
@@ -189,6 +319,8 @@
 			targets = (
 				6A970F5224F4439E0057AD81 /* BoxOfficeCommon */,
 				6A970F5B24F4439E0057AD81 /* BoxOfficeCommonTests */,
+				6A970F8224F447300057AD81 /* BoxOfficeCommoniOS */,
+				6A970F8A24F447300057AD81 /* BoxOfficeCommoniOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -202,6 +334,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6A970F5A24F4439E0057AD81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A970F8124F447300057AD81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A970F8924F447300057AD81 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -228,6 +374,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6A970F7F24F447300057AD81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A970F8724F447300057AD81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -235,6 +395,17 @@
 			isa = PBXTargetDependency;
 			target = 6A970F5224F4439E0057AD81 /* BoxOfficeCommon */;
 			targetProxy = 6A970F5E24F4439E0057AD81 /* PBXContainerItemProxy */;
+		};
+		6A970F8E24F447300057AD81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A970F8224F447300057AD81 /* BoxOfficeCommoniOS */;
+			targetProxy = 6A970F8D24F447300057AD81 /* PBXContainerItemProxy */;
+		};
+		6A970F9E24F447460057AD81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 6A970F5224F4439E0057AD81 /* BoxOfficeCommon */;
+			targetProxy = 6A970F9D24F447460057AD81 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -458,6 +629,102 @@
 			};
 			name = Release;
 		};
+		6A970F9524F447300057AD81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = BoxOfficeCommoniOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.common.ios";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6A970F9624F447300057AD81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = BoxOfficeCommoniOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.common.ios";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6A970F9824F447300057AD81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CBUNS24C9F;
+				INFOPLIST_FILE = BoxOfficeCommoniOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeCommoniOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6A970F9924F447300057AD81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CBUNS24C9F;
+				INFOPLIST_FILE = BoxOfficeCommoniOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nodediggity.BoxOfficeCommoniOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -484,6 +751,24 @@
 			buildConfigurations = (
 				6A970F6B24F4439E0057AD81 /* Debug */,
 				6A970F6C24F4439E0057AD81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A970F9424F447300057AD81 /* Build configuration list for PBXNativeTarget "BoxOfficeCommoniOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A970F9524F447300057AD81 /* Debug */,
+				6A970F9624F447300057AD81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A970F9724F447300057AD81 /* Build configuration list for PBXNativeTarget "BoxOfficeCommoniOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A970F9824F447300057AD81 /* Debug */,
+				6A970F9924F447300057AD81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
