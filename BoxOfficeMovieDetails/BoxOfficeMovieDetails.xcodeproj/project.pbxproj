@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6AF8CCB424F3D939006FBFCA /* BoxOfficeMovieDetails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF8CCAA24F3D939006FBFCA /* BoxOfficeMovieDetails.framework */; };
 		6AF8CCC524F3DA0B006FBFCA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF8CCC424F3DA0B006FBFCA /* Movie.swift */; };
+		6AF8CCC824F3DF76006FBFCA /* MovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF8CCC724F3DF76006FBFCA /* MovieLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		6AF8CCB324F3D939006FBFCA /* BoxOfficeMovieDetailsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxOfficeMovieDetailsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AF8CCBA24F3D939006FBFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AF8CCC424F3DA0B006FBFCA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		6AF8CCC724F3DF76006FBFCA /* MovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				6AF8CCC424F3DA0B006FBFCA /* Movie.swift */,
+				6AF8CCC724F3DF76006FBFCA /* MovieLoader.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AF8CCC524F3DA0B006FBFCA /* Movie.swift in Sources */,
+				6AF8CCC824F3DF76006FBFCA /* MovieLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
