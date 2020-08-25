@@ -36,6 +36,8 @@
 		6AB8EA9324F53F1A0028E197 /* UIRefreshControl+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8EA9224F53F1A0028E197 /* UIRefreshControl+Ext.swift */; };
 		6AB8EA9624F53F380028E197 /* NowPlayingCardFeedCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8EA9524F53F380028E197 /* NowPlayingCardFeedCell+Ext.swift */; };
 		6AB8EA9824F53F6D0028E197 /* NowPlayingViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8EA9724F53F6D0028E197 /* NowPlayingViewController+Ext.swift */; };
+		6AB8EA9C24F541CD0028E197 /* BoxOfficeCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB8EA9B24F541CD0028E197 /* BoxOfficeCommon.framework */; };
+		6AB8EA9D24F541CD0028E197 /* BoxOfficeCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB8EA9B24F541CD0028E197 /* BoxOfficeCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6AD4CBEC24F063BC001A400E /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */; };
 		6AD4CBED24F063BC001A400E /* BoxOfficeNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6AFD447D24F1144100E7A1F7 /* BoxOfficeNowPlayingiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFD447424F1144100E7A1F7 /* BoxOfficeNowPlayingiOS.framework */; };
@@ -87,6 +89,7 @@
 			files = (
 				6AD4CBED24F063BC001A400E /* BoxOfficeNetworking.framework in Embed Frameworks */,
 				6A2D96A924F1A97C00F05CD6 /* BoxOfficeMedia.framework in Embed Frameworks */,
+				6AB8EA9D24F541CD0028E197 /* BoxOfficeCommon.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +139,7 @@
 		6AB8EA9224F53F1A0028E197 /* UIRefreshControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Ext.swift"; sourceTree = "<group>"; };
 		6AB8EA9524F53F380028E197 /* NowPlayingCardFeedCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NowPlayingCardFeedCell+Ext.swift"; sourceTree = "<group>"; };
 		6AB8EA9724F53F6D0028E197 /* NowPlayingViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NowPlayingViewController+Ext.swift"; sourceTree = "<group>"; };
+		6AB8EA9B24F541CD0028E197 /* BoxOfficeCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFD447424F1144100E7A1F7 /* BoxOfficeNowPlayingiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxOfficeNowPlayingiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFD447724F1144100E7A1F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			files = (
 				6AD4CBEC24F063BC001A400E /* BoxOfficeNetworking.framework in Frameworks */,
 				6A2D96A824F1A97C00F05CD6 /* BoxOfficeMedia.framework in Frameworks */,
+				6AB8EA9C24F541CD0028E197 /* BoxOfficeCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +312,7 @@
 		6AD4CBEA24F063BC001A400E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AB8EA9B24F541CD0028E197 /* BoxOfficeCommon.framework */,
 				6A970FAE24F448A10057AD81 /* BoxOfficeCommoniOS.framework */,
 				6A970F7024F4447B0057AD81 /* BoxOfficeCommon.framework */,
 				6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */,
@@ -789,7 +795,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DEVELOPMENT_TEAM = N5LKAX3SQ9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -801,7 +807,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.now-playing";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.boxoffice.now-playing";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
@@ -817,7 +823,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DEVELOPMENT_TEAM = N5LKAX3SQ9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -829,7 +835,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.now-playing";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.boxoffice.now-playing";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
@@ -844,7 +850,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DEVELOPMENT_TEAM = N5LKAX3SQ9;
 				INFOPLIST_FILE = BoxOfficeNowPlayingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -867,7 +873,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DEVELOPMENT_TEAM = N5LKAX3SQ9;
 				INFOPLIST_FILE = BoxOfficeNowPlayingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -888,7 +894,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DEVELOPMENT_TEAM = N5LKAX3SQ9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -900,7 +906,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.now-playing.ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.boxoffice.now-playing.ios";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -916,7 +922,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DEVELOPMENT_TEAM = N5LKAX3SQ9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -928,7 +934,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.box-office.now-playing.ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.nodediggity.boxoffice.now-playing.ios";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -944,7 +950,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DEVELOPMENT_TEAM = N5LKAX3SQ9;
 				INFOPLIST_FILE = BoxOfficeNowPlayingiOSTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -967,7 +973,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CBUNS24C9F;
+				DEVELOPMENT_TEAM = N5LKAX3SQ9;
 				INFOPLIST_FILE = BoxOfficeNowPlayingiOSTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
