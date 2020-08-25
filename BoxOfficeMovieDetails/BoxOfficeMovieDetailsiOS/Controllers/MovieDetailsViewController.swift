@@ -10,19 +10,21 @@ import UIKit
 import BoxOfficeCommoniOS
 import BoxOfficeMovieDetails
 
+protocol MovieDetailsViewControllerDelegate {
+  func didRequestLoad()
+}
+
 public final class MovieDetailsViewController: UIViewController {
 
   public var onBuyTicket: (() -> Void)?
 
-  private var id: Int?
-  private var loader: MovieLoader?
+ private var delegate: MovieDetailsViewControllerDelegate?
 
   private(set) public lazy var customView = view as! MovieDetailsCustomView
 
-  public convenience init(id: Int, loader: MovieLoader) {
+  convenience init(delegate: MovieDetailsViewControllerDelegate) {
     self.init(nibName: nil, bundle: nil)
-    self.id = id
-    self.loader = loader
+    self.delegate = delegate
   }
 
 
@@ -34,18 +36,18 @@ public final class MovieDetailsViewController: UIViewController {
     super.viewDidLoad()
     configureUI()
     configureNavigation()
+    delegate?.didRequestLoad()
+  }
+}
 
-    loader?.load(id: id!, completion: { [weak self] result in
-      if let movie = try? result.get() {
-        self?.customView.titleLabel.text = movie.title
+extension MovieDetailsViewController: MovieDetailsView {
+  public func display(_ model: MovieDetailsViewModel<UIImage>) {
 
-        let runTime = Double(movie.length * 60).asString(style: .short)
-        let genres = movie.genres.map { $0.capitalizingFirstLetter() }.joined(separator: ", ")
-        self?.customView.metaLabel.text = "\(runTime) | \(genres)"
-        self?.customView.overviewLabel.text = movie.overview
-      }
-      self?.customView.isLoading = false
-    })
+    customView.titleLabel.text = model.title
+    customView.metaLabel.text = model.meta
+    customView.overviewLabel.text = model.overview
+
+    customView.isLoading = model.isLoading
   }
 }
 
