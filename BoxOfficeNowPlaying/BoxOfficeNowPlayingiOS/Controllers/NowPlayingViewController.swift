@@ -30,10 +30,12 @@ public final class NowPlayingViewController: UIViewController {
   }()
 
   private var refreshController: NowPlayingRefreshController?
+  private var pagingController: NowPlayingPagingController?
 
-  convenience init(refreshController: NowPlayingRefreshController) {
+  convenience init(refreshController: NowPlayingRefreshController, pagingController: NowPlayingPagingController) {
     self.init(nibName: nil, bundle: nil)
     self.refreshController = refreshController
+    self.pagingController = pagingController
   }
 
   public override func viewDidLoad() {
@@ -53,6 +55,14 @@ extension NowPlayingViewController: UICollectionViewDelegate {
 
   public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     removeCellController(forItemAt: indexPath)
+  }
+
+  public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let offsetY = scrollView.contentOffset.y
+    let contentHeight = scrollView.contentSize.height
+    if (offsetY > contentHeight - scrollView.frame.height) && !items.isEmpty {
+      pagingController?.load()
+    }
   }
 }
 
@@ -89,7 +99,8 @@ private extension NowPlayingViewController {
   }
 
   func configureNavigation() {
-    navigationController?.navigationBar.prefersLargeTitles = true
+
+    //navigationController?.navigationBar.prefersLargeTitles = true
 
     navigationController?.navigationBar.largeTitleTextAttributes = [
       NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8784313725, alpha: 1),

@@ -114,6 +114,20 @@
             BlueprintName = "BoxOfficeMovieDetails"
             ReferencedContainer = "container:BoxOfficeMovieDetails/BoxOfficeMovieDetails.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6A970F5224F4439E0057AD81"
+            BuildableName = "BoxOfficeCommon.framework"
+            BlueprintName = "BoxOfficeCommon"
+            ReferencedContainer = "container:BoxOfficeCommon/BoxOfficeCommon.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6A53217924F565CD00C2DBF4"
+            BuildableName = "BoxOfficeBooking.framework"
+            BlueprintName = "BoxOfficeBooking"
+            ReferencedContainer = "container:BoxOfficeBooking/BoxOfficeBooking.xcodeproj">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference

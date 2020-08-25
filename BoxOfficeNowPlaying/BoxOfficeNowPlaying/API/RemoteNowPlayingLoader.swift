@@ -44,7 +44,7 @@ private extension RemoteNowPlayingLoader {
     let requestURL = url
       .appendingPathComponent("3")
       .appendingPathComponent("movie")
-      .appendingPathComponent("now_playing")
+      .appendingPathComponent("popular")
 
     var urlComponents = URLComponents(url: requestURL, resolvingAgainstBaseURL: false)
     urlComponents?.queryItems = [
@@ -76,6 +76,6 @@ private extension RemoteNowPlayingFeed {
 
 private extension Array where Element == RemoteNowPlayingFeed.RemoteNowPlayingCard {
   var asCardDTO: [NowPlayingCard] {
-    return map { item in NowPlayingCard(id: item.id, title: item.original_title, imagePath: item.poster_path) }
+    return map { item in NowPlayingCard(id: item.id, title: item.original_title, imagePath: item.poster_path ?? "") }
   }
 }

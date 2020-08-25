@@ -245,6 +245,35 @@ class NowPlayingViewControllerTests: XCTestCase {
     XCTAssertEqual(output, item.id)
   }
 
+  func test_on_scroll_to_buttom_requests_next_page() {
+    let (sut, loader) = makeSUT()
+    let items = Array(0..<25).map { index in makeNowPlayingCard(id: index) }
+    let feedPage = makeNowPlayingFeed(items: items, pageNumber: 1, totalPages: 10)
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+
+    sut.simulatePagingRequest()
+    XCTAssertEqual(loader.messages, [
+      .load(PagedNowPlayingRequest(page: 1)),
+      .load(PagedNowPlayingRequest(page: 2))
+    ])
+  }
+
+  func test_on_scroll_to_buttom_does_not_request_if_on_last_page() {
+    let (sut, loader) = makeSUT()
+    let items = Array(0..<5).map { index in makeNowPlayingCard(id: index) }
+    let feedPage = makeNowPlayingFeed(items: items, pageNumber: 1, totalPages: 1)
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+
+    sut.simulatePagingRequest()
+    XCTAssertEqual(loader.messages, [
+      .load(PagedNowPlayingRequest(page: 1))
+    ])
+  }
+
 }
 
 private extension NowPlayingViewControllerTests {
@@ -336,87 +365,6 @@ private extension NowPlayingViewControllerTests {
 
   func makeImage(withColor color: UIColor = .systemTeal) -> UIImage {
     return UIImage.make(withColor: color)
-  }
-}
-
-extension NowPlayingViewController {
-  func simulateUserRefresh() {
-    collectionView.refreshControl?.beginRefreshing()
-    scrollViewDidEndDragging(collectionView, willDecelerate: true)
-  }
-
-  var loadingIndicatorIsVisible: Bool {
-    return collectionView.refreshControl?.isRefreshing == true
-  }
-
-  var numberOfItems: Int {
-    return collectionView.numberOfItems(inSection: 0)
-  }
-
-  func itemAt(_ item: Int, section: Int = 0) -> UICollectionViewCell? {
-    let dataSource = collectionView.dataSource
-    let indexPath = IndexPath(item: item, section: section)
-    return dataSource?.collectionView(collectionView, cellForItemAt: indexPath)
-  }
-
-  @discardableResult
-  func simulateItemVisible(at index: Int) -> UICollectionViewCell? {
-    return itemAt(index)
-  }
-
-  @discardableResult
-  func simulateItemNotVisible(at index: Int) -> UICollectionViewCell? {
-    let view = simulateItemVisible(at: index)
-
-    let delegate = collectionView.delegate
-    let indexPath = IndexPath(item: index, section: 0)
-    delegate?.collectionView?(collectionView, didEndDisplaying: view!, forItemAt: indexPath)
-
-    return view
-  }
-
-  func simulateItemNearVisible(at index: Int) {
-    let prefetchDataSource = collectionView.prefetchDataSource
-    let indexPath = IndexPath(item: index, section: 0)
-    prefetchDataSource?.collectionView(collectionView, prefetchItemsAt: [indexPath])
-  }
-
-  func simulateItemNoLongerNearVisible(at index: Int) {
-    simulateItemNearVisible(at: index)
-    let prefetchDataSource = collectionView.prefetchDataSource
-    let indexPath = IndexPath(item: index, section: 0)
-    prefetchDataSource?.collectionView?(collectionView, cancelPrefetchingForItemsAt: [indexPath])
-  }
-
-  func simulateSelectItem(at index: Int) {
-    let delegate = collectionView.delegate
-    let indexPath = IndexPath(item: index, section: 0)
-    delegate?.collectionView?(collectionView, didSelectItemAt: indexPath)
-  }
-}
-
-extension NowPlayingCardFeedCell {
-
-  var renderedImage: Data? {
-    return imageView.image?.pngData()
-  }
-
-  var loadingIndicatorIsVisible: Bool {
-    return isShimmering
-  }
-}
-
-extension UIControl {
-  func simulate(event: UIControl.Event) {
-    allTargets.forEach { target in
-      actions(forTarget: target, forControlEvent: event)?.forEach { (target as NSObject).perform(Selector($0)) }
-    }
-  }
-}
-
-extension UIRefreshControl {
-  func simulatePullToRefresh() {
-    simulate(event: .valueChanged)
   }
 }
 

@@ -12,7 +12,7 @@ public struct PagedNowPlayingRequest: Equatable {
   public let page: Int
   public let language: String
 
-  public init(page: Int, language: String = "en-US") {
+  public init(page: Int, language: String = "en-GB") {
     self.page = page
     self.language = language
   }

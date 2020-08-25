@@ -18,11 +18,7 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Montserrat-Bold.ttf</string>
-		<string>Montserrat-Medium.ttf</string>
-		<string>Montserrat-Regular.ttf</string>
-	</array>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2020 Gordon Smith. All rights reserved.</string>
 </dict>
 </plist>

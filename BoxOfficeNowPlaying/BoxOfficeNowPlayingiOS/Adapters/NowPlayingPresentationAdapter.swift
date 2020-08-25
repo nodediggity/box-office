@@ -23,7 +23,19 @@ final class NowPlayingPresentationAdapter {
 extension NowPlayingPresentationAdapter: NowPlayingRefreshControllerDelegate {
   func didRequestLoad() {
     presenter?.didStartLoading()
-    loader.execute(.init(page: 1), completion: { [weak self] result in
+    load(page: 1)
+  }
+}
+
+extension NowPlayingPresentationAdapter: NowPlayingPagingControllerDelegate {
+  func didRequestPage(page: Int) {
+    load(page: page)
+  }
+}
+
+private extension NowPlayingPresentationAdapter {
+  func load(page: Int) {
+    loader.execute(.init(page: page), completion: { [weak self] result in
       guard let self = self else { return }
       switch result {
         case let .success(feed): self.presenter?.didFinishLoading(with: feed)

@@ -18,7 +18,7 @@ public final class MovieDetailsViewController: UIViewController {
 
   public var onBuyTicket: (() -> Void)?
 
- private var delegate: MovieDetailsViewControllerDelegate?
+  private var delegate: MovieDetailsViewControllerDelegate?
 
   private(set) public lazy var customView = view as! MovieDetailsCustomView
 
@@ -46,7 +46,8 @@ extension MovieDetailsViewController: MovieDetailsView {
     customView.titleLabel.text = model.title
     customView.metaLabel.text = model.meta
     customView.overviewLabel.text = model.overview
-
+    customView.bakcgroundImageView.image = model.image
+    
     customView.isLoading = model.isLoading
   }
 }
