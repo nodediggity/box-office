@@ -69,7 +69,7 @@ private extension MovieLoaderPresentationAdapter {
   }
 
   func makeImageURL(withPath path: String) -> URL {
-    return URL(string: "https://image.tmdb.org/t/p/w500/")!.appendingPathComponent(path)
+    return URL(string: "https://image.tmdb.org/t/p/w1280/")!.appendingPathComponent(path)
   }
 }
 

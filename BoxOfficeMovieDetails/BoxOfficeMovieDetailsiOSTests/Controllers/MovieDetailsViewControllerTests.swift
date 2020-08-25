@@ -70,6 +70,33 @@ class MovieDetailsViewControllerTests: XCTestCase {
     wait(for: [exp], timeout: 1.0)
   }
 
+  func test_image_loader_completes_from_background_to_main_thread() {
+    let (sut, loader) = makeSUT()
+    let movie = makeMovie()
+    sut.loadViewIfNeeded()
+    loader.loadCompletes(with: .success(movie))
+
+    let exp = expectation(description: "await background queue")
+    DispatchQueue.global().async {
+      loader.completeImageLoading()
+      exp.fulfill()
+    }
+    wait(for: [exp], timeout: 1.0)
+  }
+
+  func test_renders_image_from_remote() {
+    let (sut, loader) = makeSUT()
+    let movie = makeMovie()
+    let imageData = makeImageData()
+
+    sut.loadViewIfNeeded()
+    loader.loadCompletes(with: .success(movie))
+    XCTAssertEqual(sut.renderedImage, .none)
+
+    loader.completeImageLoading(with: imageData)
+    XCTAssertEqual(sut.renderedImage, imageData)
+  }
+
 }
 
 private extension MovieDetailsViewControllerTests {
@@ -99,6 +126,14 @@ private extension MovieDetailsViewControllerTests {
     XCTAssertEqual(sut.titleText, item.title, file: file, line: line)
     XCTAssertEqual(sut.metaText, "2 hr, 10 min | Action", file: file, line: line)
     XCTAssertEqual(sut.overviewText, item.overview, file: file, line: line)
+  }
+
+  func makeImageData(withColor color: UIColor = .systemTeal) -> Data {
+    return makeImage(withColor: color).pngData()!
+  }
+
+  func makeImage(withColor color: UIColor = .systemTeal) -> UIImage {
+    return UIImage.make(withColor: color)
   }
 
   class LoaderSpy: MovieLoader, ImageDataLoader {
@@ -172,6 +207,10 @@ extension MovieDetailsViewController {
   func simulateBuyTicket() {
     customView.buyTicketButton.simulateTap()
   }
+
+  var renderedImage: Data? {
+    return customView.bakcgroundImageView.image?.pngData()
+  }
 }
 
 extension UIControl {
@@ -185,5 +224,18 @@ extension UIControl {
 extension UIButton {
   func simulateTap() {
     simulate(event: .touchUpInside)
+  }
+}
+
+private extension UIImage {
+  static func make(withColor color: UIColor) -> UIImage {
+    let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+    UIGraphicsBeginImageContext(rect.size)
+    let context = UIGraphicsGetCurrentContext()!
+    context.setFillColor(color.cgColor)
+    context.fill(rect)
+    let img = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return img!
   }
 }

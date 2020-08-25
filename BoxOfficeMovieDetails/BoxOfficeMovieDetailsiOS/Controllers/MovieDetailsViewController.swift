@@ -46,7 +46,8 @@ extension MovieDetailsViewController: MovieDetailsView {
     customView.titleLabel.text = model.title
     customView.metaLabel.text = model.meta
     customView.overviewLabel.text = model.overview
-
+    customView.bakcgroundImageView.image = model.image
+    
     customView.isLoading = model.isLoading
   }
 }

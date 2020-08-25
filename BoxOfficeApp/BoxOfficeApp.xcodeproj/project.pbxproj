@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6A22DA7E24F27E35007739B5 /* GetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DA7D24F27E35007739B5 /* GetConfig.swift */; };
-		6A970F4824F4433D0057AD81 /* AuthConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A970F4724F4433D0057AD81 /* AuthConfig.plist */; };
 		6A970F7524F444CA0057AD81 /* BoxOfficeMovieDetails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7324F444CA0057AD81 /* BoxOfficeMovieDetails.framework */; };
 		6A970F7624F444CA0057AD81 /* BoxOfficeMovieDetails.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7324F444CA0057AD81 /* BoxOfficeMovieDetails.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A970F7724F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7424F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework */; };
 		6A970F7824F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7424F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A970FAC24F448400057AD81 /* BoxOfficeCommoniOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970FAB24F448400057AD81 /* BoxOfficeCommoniOS.framework */; };
 		6A970FAD24F448400057AD81 /* BoxOfficeCommoniOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970FAB24F448400057AD81 /* BoxOfficeCommoniOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AB8EA8624F53C620028E197 /* AuthConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AB8EA8524F53C620028E197 /* AuthConfig.plist */; };
 		6AEE43D624F275A6006BDEC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */; };
 		6AEE43D824F275A6006BDEC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE43D724F275A6006BDEC2 /* SceneDelegate.swift */; };
 		6AEE43DF24F275A7006BDEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AEE43DE24F275A7006BDEC2 /* Assets.xcassets */; };
@@ -73,10 +73,10 @@
 
 /* Begin PBXFileReference section */
 		6A22DA7D24F27E35007739B5 /* GetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConfig.swift; sourceTree = "<group>"; };
-		6A970F4724F4433D0057AD81 /* AuthConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AuthConfig.plist; sourceTree = "<group>"; };
 		6A970F7324F444CA0057AD81 /* BoxOfficeMovieDetails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMovieDetails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A970F7424F444CA0057AD81 /* BoxOfficeMovieDetailsiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMovieDetailsiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A970FAB24F448400057AD81 /* BoxOfficeCommoniOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeCommoniOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AB8EA8524F53C620028E197 /* AuthConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AuthConfig.plist; sourceTree = "<group>"; };
 		6AEE43D224F275A6006BDEC2 /* BoxOfficeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxOfficeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEE43D524F275A6006BDEC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AEE43D724F275A6006BDEC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 		6AEE43D424F275A6006BDEC2 /* BoxOfficeApp */ = {
 			isa = PBXGroup;
 			children = (
-				6A970F4724F4433D0057AD81 /* AuthConfig.plist */,
+				6AB8EA8524F53C620028E197 /* AuthConfig.plist */,
 				6AEE43E324F275A7006BDEC2 /* Info.plist */,
 				6AEE43DE24F275A7006BDEC2 /* Assets.xcassets */,
 				6AEE440524F276A8006BDEC2 /* Application */,
@@ -362,7 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A970F4824F4433D0057AD81 /* AuthConfig.plist in Resources */,
+				6AB8EA8624F53C620028E197 /* AuthConfig.plist in Resources */,
 				6AEE43E224F275A7006BDEC2 /* LaunchScreen.storyboard in Resources */,
 				6AEE43DF24F275A7006BDEC2 /* Assets.xcassets in Resources */,
 			);
