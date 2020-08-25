@@ -63,6 +63,18 @@ class MovieDetailsPresenter<View: MovieDetailsView, Image> where View.Image == I
       )
     )
   }
+
+  func didFinishLoadingImageData(with data: Data, for movie: Movie) {
+    view.display(MovieDetailsViewModel<Image>(
+      image: imageTransformer(data),
+      title: movie.title,
+      meta: makeMovieMeta(length: movie.length, genres: movie.genres),
+      overview: movie.overview,
+      isLoading: false,
+      error: nil
+      )
+    )
+  }
 }
 
 private extension MovieDetailsPresenter {
@@ -149,6 +161,24 @@ class MovieDetailsPresenterTests: XCTestCase {
     XCTAssertEqual(message?.meta, "2 hr, 19 min | Action, Romance")
     XCTAssertEqual(message?.overview, movie.overview)
     XCTAssertNil(message?.image)
+    XCTAssertNil(message?.error)
+  }
+
+  func test_on_load_movie_and_image_success_displays_image_on_successful_transformation() {
+    let transformedData = SomeImage()
+    let (sut, view) = makeSUT(imageTransformer: { _ in transformedData })
+    let movie = makeMovie()
+
+    sut.didFinishLoadingImageData(with: makeData(), for: movie)
+
+    let message = view.messages.first
+    XCTAssertEqual(view.messages.count, 1)
+
+    XCTAssertEqual(message?.isLoading, false)
+    XCTAssertEqual(message?.title, movie.title)
+    XCTAssertEqual(message?.meta, "2 hr, 19 min | Action, Romance")
+    XCTAssertEqual(message?.overview, movie.overview)
+    XCTAssertEqual(message?.image, transformedData)
     XCTAssertNil(message?.error)
   }
 }
