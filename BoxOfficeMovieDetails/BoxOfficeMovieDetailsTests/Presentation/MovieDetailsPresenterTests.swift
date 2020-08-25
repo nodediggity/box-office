@@ -21,6 +21,10 @@ struct MovieDetailsViewModel<Image> {
   static var showLoading: MovieDetailsViewModel<Image> {
     return MovieDetailsViewModel<Image>(image: nil, title: nil, meta: nil, overview: nil, isLoading: true, error: nil)
   }
+
+  static func showError(message: String?) -> MovieDetailsViewModel<Image> {
+    return MovieDetailsViewModel<Image>(image: nil, title: nil, meta: nil, overview: nil, isLoading: false, error: message)
+  }
 }
 
 protocol MovieDetailsView {
@@ -41,6 +45,10 @@ class MovieDetailsPresenter<View: MovieDetailsView, Image> where View.Image == I
 
   func didStartLoading() {
     view.display(.showLoading)
+  }
+
+  func didFinishLoading(with error: Error) {
+    view.display(.showError(message: error.localizedDescription))
   }
 }
 
@@ -64,6 +72,23 @@ class MovieDetailsPresenterTests: XCTestCase {
     XCTAssertNil(message?.meta)
     XCTAssertNil(message?.overview)
     XCTAssertNil(message?.error)
+    XCTAssertNil(message?.image)
+  }
+
+  func test_on_load_movie_error_sets_message_and_stops_loading() {
+    let (sut, view) = makeSUT()
+    let error = makeError("uh oh, could not find movie")
+
+    sut.didFinishLoading(with: error)
+
+    let message = view.messages.first
+    XCTAssertEqual(view.messages.count, 1)
+
+    XCTAssertEqual(message?.isLoading, false)
+    XCTAssertNil(message?.title)
+    XCTAssertNil(message?.meta)
+    XCTAssertNil(message?.overview)
+    XCTAssertEqual(message?.error, error.localizedDescription)
     XCTAssertNil(message?.image)
   }
 }
