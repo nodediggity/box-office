@@ -1,13 +1,13 @@
 //
 //  WeakRefVirtualProxyTests.swift
-//  BoxOfficeNowPlayingTests
+//  BoxOfficeCommonTests
 //
-//  Created by Gordon Smith on 22/08/2020.
+//  Created by Gordon Smith on 24/08/2020.
 //  Copyright © 2020 Gordon Smith. All rights reserved.
 //
 
 import XCTest
-import BoxOfficeNowPlaying
+import BoxOfficeCommon
 
 class WeakRefVirtualProxyTests: XCTestCase {
 

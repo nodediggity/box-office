@@ -1,16 +1,16 @@
 //
 //  UIFont+Ext.swift
-//  BoxOfficeNowPlayingiOS
+//  BoxOfficeCommoniOS
 //
-//  Created by Gordon Smith on 23/08/2020.
+//  Created by Gordon Smith on 24/08/2020.
 //  Copyright © 2020 Gordon Smith. All rights reserved.
 //
 
 import UIKit
 
-extension UIFont {
+public extension UIFont {
 
-  public static let loadCustomFonts: () = {
+  static let loadCustomFonts: () = {
     loadFontWith(name: "Montserrat-Regular")
     loadFontWith(name: "Montserrat-Medium")
     loadFontWith(name: "Montserrat-Bold")

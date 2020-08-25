@@ -16,6 +16,8 @@ protocol NowPlayingCardCellControllerDelegate {
 
 final class NowPlayingCardCellController {
 
+  var didSelect: (() -> Void)?
+
   private var cell: NowPlayingCardFeedCell?
 
   private let delegate: NowPlayingCardCellControllerDelegate
@@ -37,6 +39,10 @@ final class NowPlayingCardCellController {
 
   func prefetch() {
     delegate.didRequestLoadImage()
+  }
+
+  func select() {
+    didSelect?()
   }
 }
 

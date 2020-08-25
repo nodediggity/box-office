@@ -160,6 +160,17 @@
                ReferencedContainer = "container:BoxOfficeMovieDetails/BoxOfficeMovieDetails.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6A970F5B24F4439E0057AD81"
+               BuildableName = "BoxOfficeCommonTests.xctest"
+               BlueprintName = "BoxOfficeCommonTests"
+               ReferencedContainer = "container:BoxOfficeCommon/BoxOfficeCommon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

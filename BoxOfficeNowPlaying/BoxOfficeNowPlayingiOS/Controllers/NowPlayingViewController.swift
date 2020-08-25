@@ -8,6 +8,7 @@
 
 import UIKit
 import BoxOfficeNowPlaying
+import BoxOfficeCommoniOS
 
 public final class NowPlayingViewController: UIViewController {
 
@@ -64,6 +65,10 @@ extension NowPlayingViewController: UICollectionViewDataSource {
   public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let controller = cellController(forItemAt: indexPath)
     return controller.view(in: collectionView, forItemAt: indexPath)
+  }
+
+  public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    cellController(forItemAt: indexPath).select()
   }
 }
 
