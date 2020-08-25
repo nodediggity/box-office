@@ -32,6 +32,10 @@
 		6A970F7224F4447B0057AD81 /* BoxOfficeCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7024F4447B0057AD81 /* BoxOfficeCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A970FAF24F448A10057AD81 /* BoxOfficeCommoniOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970FAE24F448A10057AD81 /* BoxOfficeCommoniOS.framework */; };
 		6A970FB024F448A10057AD81 /* BoxOfficeCommoniOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970FAE24F448A10057AD81 /* BoxOfficeCommoniOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AB8EA9124F53F090028E197 /* UIControl+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8EA9024F53F090028E197 /* UIControl+Ext.swift */; };
+		6AB8EA9324F53F1A0028E197 /* UIRefreshControl+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8EA9224F53F1A0028E197 /* UIRefreshControl+Ext.swift */; };
+		6AB8EA9624F53F380028E197 /* NowPlayingCardFeedCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8EA9524F53F380028E197 /* NowPlayingCardFeedCell+Ext.swift */; };
+		6AB8EA9824F53F6D0028E197 /* NowPlayingViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8EA9724F53F6D0028E197 /* NowPlayingViewController+Ext.swift */; };
 		6AD4CBEC24F063BC001A400E /* BoxOfficeNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */; };
 		6AD4CBED24F063BC001A400E /* BoxOfficeNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6AFD447D24F1144100E7A1F7 /* BoxOfficeNowPlayingiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFD447424F1144100E7A1F7 /* BoxOfficeNowPlayingiOS.framework */; };
@@ -128,6 +132,10 @@
 		6A5075DF24F0591B00B25D4F /* HTTPURLResponse+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Ext.swift"; sourceTree = "<group>"; };
 		6A970F7024F4447B0057AD81 /* BoxOfficeCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A970FAE24F448A10057AD81 /* BoxOfficeCommoniOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeCommoniOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AB8EA9024F53F090028E197 /* UIControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Ext.swift"; sourceTree = "<group>"; };
+		6AB8EA9224F53F1A0028E197 /* UIRefreshControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Ext.swift"; sourceTree = "<group>"; };
+		6AB8EA9524F53F380028E197 /* NowPlayingCardFeedCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NowPlayingCardFeedCell+Ext.swift"; sourceTree = "<group>"; };
+		6AB8EA9724F53F6D0028E197 /* NowPlayingViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NowPlayingViewController+Ext.swift"; sourceTree = "<group>"; };
 		6AD4CBEB24F063BC001A400E /* BoxOfficeNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFD447424F1144100E7A1F7 /* BoxOfficeNowPlayingiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxOfficeNowPlayingiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFD447724F1144100E7A1F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -285,6 +293,17 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		6AB8EA8F24F53EFF0028E197 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6AB8EA9524F53F380028E197 /* NowPlayingCardFeedCell+Ext.swift */,
+				6AB8EA9724F53F6D0028E197 /* NowPlayingViewController+Ext.swift */,
+				6AB8EA9024F53F090028E197 /* UIControl+Ext.swift */,
+				6AB8EA9224F53F1A0028E197 /* UIRefreshControl+Ext.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		6AD4CBEA24F063BC001A400E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +332,7 @@
 			children = (
 				6AFD448324F1144100E7A1F7 /* Info.plist */,
 				6AFD449624F13EE200E7A1F7 /* Controllers */,
+				6AB8EA8F24F53EFF0028E197 /* Helpers */,
 			);
 			path = BoxOfficeNowPlayingiOSTests;
 			sourceTree = "<group>";
@@ -612,6 +632,10 @@
 			files = (
 				6AFD449224F120C300E7A1F7 /* XCTestCase+Ext.swift in Sources */,
 				6AFD449124F1207400E7A1F7 /* NowPlayingViewControllerTests.swift in Sources */,
+				6AB8EA9124F53F090028E197 /* UIControl+Ext.swift in Sources */,
+				6AB8EA9624F53F380028E197 /* NowPlayingCardFeedCell+Ext.swift in Sources */,
+				6AB8EA9824F53F6D0028E197 /* NowPlayingViewController+Ext.swift in Sources */,
+				6AB8EA9324F53F1A0028E197 /* UIRefreshControl+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

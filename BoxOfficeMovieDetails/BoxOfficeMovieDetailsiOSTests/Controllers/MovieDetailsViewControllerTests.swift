@@ -186,47 +186,6 @@ private extension MovieDetailsViewControllerTests {
   }
 }
 
-extension MovieDetailsViewController {
-
-  var loadingIndicatorIsVisible: Bool {
-    return customView.loadingIndicator.isAnimating
-  }
-
-  var titleText: String? {
-    return customView.titleLabel.text
-  }
-
-  var metaText: String? {
-    return customView.metaLabel.text
-  }
-
-  var overviewText: String? {
-    return customView.overviewLabel.text
-  }
-
-  func simulateBuyTicket() {
-    customView.buyTicketButton.simulateTap()
-  }
-
-  var renderedImage: Data? {
-    return customView.bakcgroundImageView.image?.pngData()
-  }
-}
-
-extension UIControl {
-  func simulate(event: UIControl.Event) {
-    allTargets.forEach { target in
-      actions(forTarget: target, forControlEvent: event)?.forEach { (target as NSObject).perform(Selector($0)) }
-    }
-  }
-}
-
-extension UIButton {
-  func simulateTap() {
-    simulate(event: .touchUpInside)
-  }
-}
-
 private extension UIImage {
   static func make(withColor color: UIColor) -> UIImage {
     let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
