@@ -63,5 +63,10 @@ extension NowPlayingViewController {
     let indexPath = IndexPath(item: index, section: 0)
     delegate?.collectionView?(collectionView, didSelectItemAt: indexPath)
   }
+
+  func simulatePagingRequest() {
+    collectionView.contentOffset.y = 1000
+    scrollViewDidScroll(collectionView)
+  }
 }
 

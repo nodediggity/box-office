@@ -28,6 +28,7 @@
 		6A5075DB24F0588B00B25D4F /* RemoteNowPlayingLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075DA24F0588B00B25D4F /* RemoteNowPlayingLoader.swift */; };
 		6A5075DD24F058CD00B25D4F /* NowPlayingItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075DC24F058CD00B25D4F /* NowPlayingItemsMapper.swift */; };
 		6A5075E024F0591B00B25D4F /* HTTPURLResponse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5075DF24F0591B00B25D4F /* HTTPURLResponse+Ext.swift */; };
+		6A53216C24F55E4800C2DBF4 /* NowPlayingPagingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53216B24F55E4800C2DBF4 /* NowPlayingPagingViewModel.swift */; };
 		6A970F7124F4447B0057AD81 /* BoxOfficeCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7024F4447B0057AD81 /* BoxOfficeCommon.framework */; };
 		6A970F7224F4447B0057AD81 /* BoxOfficeCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970F7024F4447B0057AD81 /* BoxOfficeCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A970FAF24F448A10057AD81 /* BoxOfficeCommoniOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A970FAE24F448A10057AD81 /* BoxOfficeCommoniOS.framework */; };
@@ -133,6 +134,7 @@
 		6A5075DA24F0588B00B25D4F /* RemoteNowPlayingLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNowPlayingLoader.swift; sourceTree = "<group>"; };
 		6A5075DC24F058CD00B25D4F /* NowPlayingItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingItemsMapper.swift; sourceTree = "<group>"; };
 		6A5075DF24F0591B00B25D4F /* HTTPURLResponse+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Ext.swift"; sourceTree = "<group>"; };
+		6A53216B24F55E4800C2DBF4 /* NowPlayingPagingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingPagingViewModel.swift; sourceTree = "<group>"; };
 		6A970F7024F4447B0057AD81 /* BoxOfficeCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A970FAE24F448A10057AD81 /* BoxOfficeCommoniOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeCommoniOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB8EA9024F53F090028E197 /* UIControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Ext.swift"; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				6A2D96B324F25B3500F05CD6 /* NowPlayingImageViewModel.swift */,
 				6AFD44AA24F175C800E7A1F7 /* NowPlayingLoadingViewModel.swift */,
 				6AFD44AE24F175E500E7A1F7 /* NowPlayingViewModel.swift */,
+				6A53216B24F55E4800C2DBF4 /* NowPlayingPagingViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				6A2D96B424F25B3500F05CD6 /* NowPlayingImageViewModel.swift in Sources */,
 				6A5075CE24F0408100B25D4F /* NowPlayingFeed.swift in Sources */,
 				6AFD44A824F175AF00E7A1F7 /* NowPlayingPresenter.swift in Sources */,
+				6A53216C24F55E4800C2DBF4 /* NowPlayingPagingViewModel.swift in Sources */,
 				6A5075DB24F0588B00B25D4F /* RemoteNowPlayingLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

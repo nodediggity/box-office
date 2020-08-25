@@ -245,6 +245,35 @@ class NowPlayingViewControllerTests: XCTestCase {
     XCTAssertEqual(output, item.id)
   }
 
+  func test_on_scroll_to_buttom_requests_next_page() {
+    let (sut, loader) = makeSUT()
+    let items = Array(0..<25).map { index in makeNowPlayingCard(id: index) }
+    let feedPage = makeNowPlayingFeed(items: items, pageNumber: 1, totalPages: 10)
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+
+    sut.simulatePagingRequest()
+    XCTAssertEqual(loader.messages, [
+      .load(PagedNowPlayingRequest(page: 1)),
+      .load(PagedNowPlayingRequest(page: 2))
+    ])
+  }
+
+  func test_on_scroll_to_buttom_does_not_request_if_on_last_page() {
+    let (sut, loader) = makeSUT()
+    let items = Array(0..<5).map { index in makeNowPlayingCard(id: index) }
+    let feedPage = makeNowPlayingFeed(items: items, pageNumber: 1, totalPages: 1)
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+
+    sut.simulatePagingRequest()
+    XCTAssertEqual(loader.messages, [
+      .load(PagedNowPlayingRequest(page: 1))
+    ])
+  }
+
 }
 
 private extension NowPlayingViewControllerTests {

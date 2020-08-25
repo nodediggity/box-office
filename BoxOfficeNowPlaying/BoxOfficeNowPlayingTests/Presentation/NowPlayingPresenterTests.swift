@@ -20,7 +20,7 @@ class NowPlayingPresenterTests: XCTestCase {
     let (sut, view) = makeSUT()
 
     sut.didStartLoading()
-    XCTAssertEqual(view.messages, [.display(isLoading: true), .display(message: nil)])
+    XCTAssertEqual(view.messages, [.display(isLoading: true), .display(message: nil), .display(page: .init(isLoading: true, isLast: true, pageNumber: 0))])
   }
 
   func test_did_finish_loading_success_displays_feed_and_stops_loading() {
@@ -29,7 +29,7 @@ class NowPlayingPresenterTests: XCTestCase {
     let feed = NowPlayingFeed(items: items, page: 1, totalPages: 1)
 
     sut.didFinishLoading(with: feed)
-    XCTAssertEqual(view.messages, [.display(isLoading: false), .display(items: items)])
+    XCTAssertEqual(view.messages, [.display(isLoading: false), .display(items: items), .display(page: .init(isLoading: false, isLast: true, pageNumber: 1))])
   }
 
   func test_did_finish_loading_error_displays_error_and_stops_loading() {
@@ -46,18 +46,19 @@ private extension NowPlayingPresenterTests {
 
   func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: NowPlayingPresenter, view: ViewSpy) {
     let view = ViewSpy()
-    let sut = NowPlayingPresenter(view: view, loadingView: view, errorView: view)
+    let sut = NowPlayingPresenter(view: view, loadingView: view, errorView: view, pagingView: view)
     checkForMemoryLeaks(view, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
     return (sut, view)
   }
 
-  class ViewSpy: NowPlayingLoadingView, NowPlayingErrorView, NowPlayingView {
+  class ViewSpy: NowPlayingLoadingView, NowPlayingErrorView, NowPlayingView, NowPlayingPagingView {
 
     enum Message: Equatable {
       case display(isLoading: Bool)
       case display(message: String?)
       case display(items: [NowPlayingCard])
+      case display(page: NowPlayingPagingViewModel)
     }
 
     private(set) var messages: [Message] = []
@@ -72,6 +73,10 @@ private extension NowPlayingPresenterTests {
 
     func display(_ viewModel: NowPlayingViewModel) {
       messages.append(.display(items: viewModel.items))
+    }
+
+    func display(_ viewModel: NowPlayingPagingViewModel) {
+      messages.append(.display(page: viewModel))
     }
   }
 
