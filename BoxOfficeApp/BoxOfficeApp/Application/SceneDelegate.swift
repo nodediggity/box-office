@@ -14,6 +14,7 @@ import BoxOfficeNowPlaying
 import BoxOfficeNowPlayingiOS
 import BoxOfficeMovieDetails
 import BoxOfficeMovieDetailsiOS
+import BoxOfficeBookingiOS
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -65,7 +66,16 @@ private extension SceneDelegate {
     let loader = RemoteMovieLoader(baseURL: baseURL, client: authzClient)
     let imageLoader = RemoteImageDataLoader(client: client)
 
-    let viewController = MovieDetailsUIComposer.compose(id: id, loader: loader, imageLoader: imageLoader, onPurchaseCallback: { })
+    let viewController = MovieDetailsUIComposer.compose(id: id, loader: loader, imageLoader: imageLoader, onPurchaseCallback: { [weak self] in
+      guard let self = self else { return }
+      let bookingViewController = self.makeDummyBookingScene()
+      bookingViewController.modalPresentationStyle = .overCurrentContext
+      self.navController.present(bookingViewController, animated: true, completion: nil)
+    })
     return viewController
+  }
+
+  func makeDummyBookingScene() -> BoxOfficeBookingViewController {
+    return BoxOfficeBookingViewController()
   }
 }

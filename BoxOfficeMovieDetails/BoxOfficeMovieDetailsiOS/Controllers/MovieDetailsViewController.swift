@@ -18,7 +18,7 @@ public final class MovieDetailsViewController: UIViewController {
 
   public var onBuyTicket: (() -> Void)?
 
- private var delegate: MovieDetailsViewControllerDelegate?
+  private var delegate: MovieDetailsViewControllerDelegate?
 
   private(set) public lazy var customView = view as! MovieDetailsCustomView
 

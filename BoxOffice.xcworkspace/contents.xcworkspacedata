@@ -5,6 +5,9 @@
       location = "group:BoxOfficeApp/BoxOfficeApp.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:BoxOfficeBooking/BoxOfficeBooking.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:BoxOfficeCommon/BoxOfficeCommon.xcodeproj">
    </FileRef>
    <FileRef
