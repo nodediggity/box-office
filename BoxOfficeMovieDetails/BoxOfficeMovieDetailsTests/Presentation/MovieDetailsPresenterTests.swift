@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import BoxOfficeMovieDetails
 
 struct MovieDetailsViewModel<Image> {
 
@@ -50,7 +51,48 @@ class MovieDetailsPresenter<View: MovieDetailsView, Image> where View.Image == I
   func didFinishLoading(with error: Error) {
     view.display(.showError(message: error.localizedDescription))
   }
+
+  func didFinishLoadingImageData(with error: Error, for movie: Movie) {
+    view.display(MovieDetailsViewModel<Image>(
+      image: nil,
+      title: movie.title,
+      meta: makeMovieMeta(length: movie.length, genres: movie.genres),
+      overview: movie.overview,
+      isLoading: false,
+      error: nil
+      )
+    )
+  }
 }
+
+private extension MovieDetailsPresenter {
+  func makeMovieMeta(length: CGFloat, genres: [String]) -> String {
+    let runTime = Double(length * 60).asString(style: .short)
+    let genres = genres.map { $0.capitalizingFirstLetter() }.joined(separator: ", ")
+    return "\(runTime) | \(genres)"
+  }
+}
+
+extension String {
+  func capitalizingFirstLetter() -> String {
+    return prefix(1).capitalized + dropFirst()
+  }
+
+  mutating func capitalizeFirstLetter() {
+    self = self.capitalizingFirstLetter()
+  }
+}
+
+extension Double {
+  func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.hour, .minute, .second]
+    formatter.unitsStyle = style
+    guard let formattedString = formatter.string(from: self) else { return "" }
+    return formattedString
+  }
+}
+
 
 class MovieDetailsPresenterTests: XCTestCase {
 
@@ -91,6 +133,24 @@ class MovieDetailsPresenterTests: XCTestCase {
     XCTAssertEqual(message?.error, error.localizedDescription)
     XCTAssertNil(message?.image)
   }
+
+  func test_on_load_movie_success_with_failed_image_download_renders_details_and_stops_loading() {
+    let (sut, view) = makeSUT()
+    let movie = makeMovie()
+    let error = makeError("uh oh, could not find image for movie")
+
+    sut.didFinishLoadingImageData(with: error, for: movie)
+
+    let message = view.messages.first
+    XCTAssertEqual(view.messages.count, 1)
+
+    XCTAssertEqual(message?.isLoading, false)
+    XCTAssertEqual(message?.title, movie.title)
+    XCTAssertEqual(message?.meta, "2 hr, 19 min | Action, Romance")
+    XCTAssertEqual(message?.overview, movie.overview)
+    XCTAssertNil(message?.image)
+    XCTAssertNil(message?.error)
+  }
 }
 
 private extension MovieDetailsPresenterTests {
@@ -100,6 +160,10 @@ private extension MovieDetailsPresenterTests {
     checkForMemoryLeaks(view, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
     return (sut, view)
+  }
+
+  func makeMovie() -> Movie {
+    return Movie(id: 1, title: "A movie", rating: 8.4, length: 139, genres: ["Action", "Romance"], overview: "A romantic action movie", backdropImagePath: "any.png")
   }
 
   struct SomeImage: Equatable { }
