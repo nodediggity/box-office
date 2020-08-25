@@ -8,8 +8,40 @@
 
 import XCTest
 
-class MovieDetailsPresenter {
+struct MovieDetailsViewModel<Image> {
 
+  let image: Image?
+  let title: String?
+  let meta: String?
+  let overview: String?
+
+  let isLoading: Bool
+  let error: String?
+
+  static var showLoading: MovieDetailsViewModel<Image> {
+    return MovieDetailsViewModel<Image>(image: nil, title: nil, meta: nil, overview: nil, isLoading: true, error: nil)
+  }
+}
+
+protocol MovieDetailsView {
+  associatedtype Image
+  func display(_ model: MovieDetailsViewModel<Image>)
+}
+
+
+class MovieDetailsPresenter<View: MovieDetailsView, Image> where View.Image == Image {
+
+  private let view: View
+  private let imageTransformer: (Data) -> Image?
+
+  init(view: View, imageTransformer: @escaping (Data) -> Image?) {
+    self.view = view
+    self.imageTransformer = imageTransformer
+  }
+
+  func didStartLoading() {
+    view.display(.showLoading)
+  }
 }
 
 class MovieDetailsPresenterTests: XCTestCase {
@@ -18,18 +50,41 @@ class MovieDetailsPresenterTests: XCTestCase {
     let (_, view) = makeSUT()
     XCTAssertTrue(view.messages.isEmpty)
   }
+
+  func test_on_start_loading_hides_error_and_starts_loading_state() {
+    let (sut, view) = makeSUT()
+
+    sut.didStartLoading()
+
+    let message = view.messages.first
+    XCTAssertEqual(view.messages.count, 1)
+
+    XCTAssertEqual(message?.isLoading, true)
+    XCTAssertNil(message?.title)
+    XCTAssertNil(message?.meta)
+    XCTAssertNil(message?.overview)
+    XCTAssertNil(message?.error)
+    XCTAssertNil(message?.image)
+  }
 }
 
 private extension MovieDetailsPresenterTests {
-  func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: MovieDetailsPresenter, view: ViewSpy) {
+  func makeSUT(imageTransformer: @escaping (Data) -> SomeImage? = { _ in nil }, file: StaticString = #file, line: UInt = #line) -> (sut: MovieDetailsPresenter<ViewSpy, SomeImage>, view: ViewSpy) {
     let view = ViewSpy()
-    let sut = MovieDetailsPresenter()
+    let sut = MovieDetailsPresenter<ViewSpy, SomeImage>(view: view, imageTransformer: imageTransformer)
     checkForMemoryLeaks(view, file: file, line: line)
     checkForMemoryLeaks(sut, file: file, line: line)
     return (sut, view)
   }
 
-  class ViewSpy {
-    private(set) var messages: [Any] = []
+  struct SomeImage: Equatable { }
+
+  class ViewSpy: MovieDetailsView {
+
+    private(set) var messages: [MovieDetailsViewModel<SomeImage>] = []
+
+    func display(_ model: MovieDetailsViewModel<SomeImage>) {
+      messages.append(model)
+    }
   }
 }
