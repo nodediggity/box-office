@@ -121,7 +121,9 @@
 				6A970F5424F4439E0057AD81 /* Products */,
 				6A970F9A24F447460057AD81 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6A970F5424F4439E0057AD81 /* Products */ = {
 			isa = PBXGroup;

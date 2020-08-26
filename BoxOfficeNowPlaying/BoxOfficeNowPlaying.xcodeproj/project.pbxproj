@@ -228,7 +228,9 @@
 				6A5075A624F028F800B25D4F /* Products */,
 				6AD4CBEA24F063BC001A400E /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6A5075A624F028F800B25D4F /* Products */ = {
 			isa = PBXGroup;
