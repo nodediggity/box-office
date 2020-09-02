@@ -12,8 +12,21 @@ import BoxOfficeCommoniOS
 
 public final class NowPlayingViewController: UIViewController {
 
-  var items: [NowPlayingCardCellController] = [] {
-    didSet { collectionView.reloadData() }
+  private var items: [NowPlayingCardCellController] = []
+  
+  func set(_ newItems: [NowPlayingCardCellController]) {
+    items = newItems
+    collectionView.reloadData()
+  }
+  
+  func append(_ newItems: [NowPlayingCardCellController]) {
+    let startIndex = items.count
+    let endIndex = startIndex + newItems.count
+    items = items + newItems
+    
+    collectionView.insertItems(at: (startIndex..<endIndex).map { item in
+      IndexPath(item: item, section: 0)
+    })
   }
 
   private(set) public lazy var collectionView: UICollectionView = {

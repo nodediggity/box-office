@@ -30,11 +30,9 @@ extension NowPlayingViewAdapter: NowPlayingView {
     let newItems = viewModel.items.map(makeCellController)
     
     if viewModel.pageNumber == 1 {
-      controller?.items = newItems
+      controller?.set(newItems)
     } else {
-      let source = controller?.items ?? []
-      let target = source + newItems
-      controller?.items = target
+      controller?.append(newItems)
     }
   }
 }

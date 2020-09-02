@@ -292,7 +292,7 @@ class NowPlayingViewControllerTests: XCTestCase {
     ])
   }
 
-  func test_onUserRefresh_afterPagingRequest_renderOnlyTheFirstPage() {
+  func test_onUserRefresh_afterPagingRequest_appendsNextPage() {
     let (sut, loader) = makeSUT()
     
     let items1 = (0..<10).map { index in makeNowPlayingCard(id: index, title: "Page 1 - Card #\(index)") }
@@ -310,6 +310,22 @@ class NowPlayingViewControllerTests: XCTestCase {
     sut.simulatePagingRequest()
     loader.loadFeedCompletes(with: .success(feedPage2))
     assertThat(sut, isRendering: items1 + items2)
+  }
+
+  func test_onUserRefresh_afterPagingRequest_rendersOnlyTheFirstPage() {
+    let (sut, loader) = makeSUT()
+    
+    let items1 = (0..<10).map { index in makeNowPlayingCard(id: index, title: "Page 1 - Card #\(index)") }
+    let feedPage1 = makeNowPlayingFeed(items: items1, pageNumber: 1, totalPages: 2)
+
+    let items2 = (0..<10).map { index in makeNowPlayingCard(id: index, title: "Page 2 - Card #\(index)") }
+    let feedPage2 = makeNowPlayingFeed(items: items2, pageNumber: 2, totalPages: 2)
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage1))
+    
+    sut.simulatePagingRequest()
+    loader.loadFeedCompletes(with: .success(feedPage2))
     
     sut.simulateUserRefresh()
     loader.loadFeedCompletes(with: .success(feedPage1))
