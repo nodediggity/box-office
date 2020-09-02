@@ -45,7 +45,7 @@ private extension NowPlayingViewAdapter {
       imageLoader: imageLoader
     )
     
-    let view = NowPlayingCardCellController(delegate: adapter)
+    let view = NowPlayingCardCellController(id: model.id, delegate: adapter)
 
     view.didSelect = { [weak self] in
       self?.onSelectCallback(model.id)
