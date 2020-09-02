@@ -58,6 +58,8 @@ extension NowPlayingViewController: UICollectionViewDelegate {
   }
 
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    guard scrollView.isDragging else { return }
+    
     let offsetY = scrollView.contentOffset.y
     let contentHeight = scrollView.contentSize.height
     if (offsetY > contentHeight - scrollView.frame.height) && !items.isEmpty {

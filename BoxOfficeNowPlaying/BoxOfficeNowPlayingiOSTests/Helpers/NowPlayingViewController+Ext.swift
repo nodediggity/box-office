@@ -65,8 +65,14 @@ extension NowPlayingViewController {
   }
 
   func simulatePagingRequest() {
-    collectionView.contentOffset.y = 1000
-    scrollViewDidScroll(collectionView)
+    let scrollView = DraggingScrollView()
+    scrollView.contentOffset.y = 1000
+    scrollViewDidScroll(scrollView)
   }
 }
 
+private class DraggingScrollView: UIScrollView {
+  override var isDragging: Bool {
+    true
+  }
+}
