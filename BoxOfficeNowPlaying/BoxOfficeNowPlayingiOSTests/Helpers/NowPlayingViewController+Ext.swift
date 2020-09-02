@@ -38,7 +38,11 @@ extension NowPlayingViewController {
 
   @discardableResult
   func simulateItemVisible(at index: Int) -> UICollectionViewCell? {
-    return itemAt(index)
+    let cell = itemAt(index)!
+    let delegate = collectionView.delegate
+    let indexPath = IndexPath(item: index, section: 0)
+    delegate?.collectionView?(collectionView, willDisplay: cell, forItemAt: indexPath)
+    return cell
   }
 
   @discardableResult

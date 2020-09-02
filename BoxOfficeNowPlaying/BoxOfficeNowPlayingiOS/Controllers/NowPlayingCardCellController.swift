@@ -38,7 +38,6 @@ final class NowPlayingCardCellController: Hashable {
 
   func view(in collectionView: UICollectionView, forItemAt indexPath: IndexPath) -> UICollectionViewCell {
     cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NowPlayingCardFeedCell", for: indexPath) as? NowPlayingCardFeedCell
-    delegate.didRequestLoadImage()
     return cell!
   }
 
