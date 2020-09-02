@@ -274,6 +274,47 @@ class NowPlayingViewControllerTests: XCTestCase {
     ])
   }
 
+  func test_onUserRefresh_afterPagingRequest_requestsFirstPageAgain() {
+    let (sut, loader) = makeSUT()
+    let items = Array(0..<25).map { index in makeNowPlayingCard(id: index) }
+    let feedPage = makeNowPlayingFeed(items: items, pageNumber: 1, totalPages: 10)
+
+    sut.loadViewIfNeeded()
+    loader.loadFeedCompletes(with: .success(feedPage))
+
+    sut.simulatePagingRequest()
+    sut.simulateUserRefresh()
+
+    XCTAssertEqual(loader.messages, [
+      .load(PagedNowPlayingRequest(page: 1)),
+      .load(PagedNowPlayingRequest(page: 2)),
+      .load(PagedNowPlayingRequest(page: 1))
+    ])
+  }
+
+  func test_onUserRefresh_afterPagingRequest_renderOnlyTheFirstPage() {
+    let (sut, loader) = makeSUT()
+    
+    let items1 = (0..<10).map { index in makeNowPlayingCard(id: index, title: "Page 1 - Card #\(index)") }
+    let feedPage1 = makeNowPlayingFeed(items: items1, pageNumber: 1, totalPages: 2)
+
+    let items2 = (0..<10).map { index in makeNowPlayingCard(id: index, title: "Page 2 - Card #\(index)") }
+    let feedPage2 = makeNowPlayingFeed(items: items2, pageNumber: 2, totalPages: 2)
+
+    sut.loadViewIfNeeded()
+    assertThat(sut, isRendering: [])
+
+    loader.loadFeedCompletes(with: .success(feedPage1))
+    assertThat(sut, isRendering: items1)
+    
+    sut.simulatePagingRequest()
+    loader.loadFeedCompletes(with: .success(feedPage2))
+    assertThat(sut, isRendering: items1 + items2)
+    
+    sut.simulateUserRefresh()
+    loader.loadFeedCompletes(with: .success(feedPage1))
+    assertThat(sut, isRendering: items1)
+  }
 }
 
 private extension NowPlayingViewControllerTests {
