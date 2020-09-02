@@ -10,7 +10,7 @@ import UIKit
 import BoxOfficeNowPlaying
 import BoxOfficeCommoniOS
 
-public final class NowPlayingViewController: UIViewController {
+public final class NowPlayingViewController: UICollectionViewController {
 
   func set(_ newItems: [NowPlayingCardCellController]) {
     var snapshot = NSDiffableDataSourceSnapshot<Int, NowPlayingCardCellController>()
@@ -31,23 +31,11 @@ public final class NowPlayingViewController: UIViewController {
     }
   }()
 
-  private(set) public lazy var collectionView: UICollectionView = {
-    let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: createLayout(size: view.bounds.size))
-    collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    collectionView.backgroundColor = #colorLiteral(red: 0.1019607843, green: 0.1254901961, blue: 0.1882352941, alpha: 1)
-    collectionView.prefetchDataSource = self
-    collectionView.delegate = self
-    collectionView.refreshControl = refreshController?.view
-    collectionView.showsVerticalScrollIndicator = false
-    collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")
-    return collectionView
-  }()
-
   private var refreshController: NowPlayingRefreshController?
   private var pagingController: NowPlayingPagingController?
 
   convenience init(refreshController: NowPlayingRefreshController, pagingController: NowPlayingPagingController) {
-    self.init(nibName: nil, bundle: nil)
+    self.init(collectionViewLayout: UICollectionViewFlowLayout())
     self.refreshController = refreshController
     self.pagingController = pagingController
   }
@@ -60,22 +48,22 @@ public final class NowPlayingViewController: UIViewController {
   }
 }
 
-extension NowPlayingViewController: UICollectionViewDelegate {
+extension NowPlayingViewController {
 
-  public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+  public override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     guard collectionView.refreshControl?.isRefreshing == true else { return }
     refreshController?.load()
   }
   
-  public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  public override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     prefetchCellController(forItemAt: indexPath)
   }
 
-  public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  public override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     removeCellController(forItemAt: indexPath)
   }
 
-  public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+  public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     guard scrollView.isDragging else { return }
     
     let offsetY = scrollView.contentOffset.y
@@ -85,7 +73,7 @@ extension NowPlayingViewController: UICollectionViewDelegate {
     }
   }
 
-  public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     cellController(forItemAt: indexPath)?.select()
   }
 }
@@ -103,8 +91,14 @@ extension NowPlayingViewController: UICollectionViewDataSourcePrefetching {
 private extension NowPlayingViewController {
 
   func configureUI() {
+    collectionView.collectionViewLayout = createLayout(size: view.bounds.size)
+    collectionView.backgroundColor = #colorLiteral(red: 0.1019607843, green: 0.1254901961, blue: 0.1882352941, alpha: 1)
+    collectionView.prefetchDataSource = self
     collectionView.dataSource = dataSource
-    view.addSubview(collectionView)
+    collectionView.delegate = self
+    collectionView.refreshControl = refreshController?.view
+    collectionView.showsVerticalScrollIndicator = false
+    collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")
   }
 
   func configureNavigation() {
