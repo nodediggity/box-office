@@ -63,7 +63,9 @@
 				6AC55BFF24F05BEB003F6056 /* BoxOfficeNetworkingTests */,
 				6AC55BF324F05BEB003F6056 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6AC55BF324F05BEB003F6056 /* Products */ = {
 			isa = PBXGroup;

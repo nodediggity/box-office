@@ -82,7 +82,9 @@
 				6A4983BC24F18E6400111B62 /* Frameworks */,
 				6A4983A324F18B6400111B62 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6A4983A324F18B6400111B62 /* Products */ = {
 			isa = PBXGroup;

@@ -50,7 +50,7 @@ public class NowPlayingPresenter {
 
   public func didFinishLoading(with feed: NowPlayingFeed) {
     loadingView.display(.init(isLoading: false))
-    view.display(.init(items: feed.items))
+    view.display(.init(pageNumber: feed.page, items: feed.items))
     pagingView.display(.init(isLoading: false, isLast: feed.page == feed.totalPages, pageNumber: feed.page))
 
   }

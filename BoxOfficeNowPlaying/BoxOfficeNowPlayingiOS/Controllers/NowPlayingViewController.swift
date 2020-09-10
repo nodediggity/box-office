@@ -10,30 +10,32 @@ import UIKit
 import BoxOfficeNowPlaying
 import BoxOfficeCommoniOS
 
-public final class NowPlayingViewController: UIViewController {
+public final class NowPlayingViewController: UICollectionViewController {
 
-  var items: [NowPlayingCardCellController] = [] {
-    didSet { collectionView.reloadData() }
+  func set(_ newItems: [NowPlayingCardCellController]) {
+    var snapshot = NSDiffableDataSourceSnapshot<Int, NowPlayingCardCellController>()
+    snapshot.appendSections([0])
+    snapshot.appendItems(newItems, toSection: 0)
+    dataSource.apply(snapshot, animatingDifferences: false)
   }
-
-  private(set) public lazy var collectionView: UICollectionView = {
-    let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: createLayout(size: view.bounds.size))
-    collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    collectionView.backgroundColor = #colorLiteral(red: 0.1019607843, green: 0.1254901961, blue: 0.1882352941, alpha: 1)
-    collectionView.prefetchDataSource = self
-    collectionView.delegate = self
-    collectionView.dataSource = self
-    collectionView.refreshControl = refreshController?.view
-    collectionView.showsVerticalScrollIndicator = false
-    collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")
-    return collectionView
+  
+  func append(_ newItems: [NowPlayingCardCellController]) {
+    var snapshot = dataSource.snapshot()
+    snapshot.appendItems(newItems, toSection: 0)
+    dataSource.apply(snapshot, animatingDifferences: true)
+  }
+  
+  private lazy var dataSource: UICollectionViewDiffableDataSource<Int, NowPlayingCardCellController> = {
+    .init(collectionView: collectionView) { collectionView, indexPath, controller in
+      controller.view(in: collectionView, forItemAt: indexPath)
+    }
   }()
 
   private var refreshController: NowPlayingRefreshController?
   private var pagingController: NowPlayingPagingController?
 
   convenience init(refreshController: NowPlayingRefreshController, pagingController: NowPlayingPagingController) {
-    self.init(nibName: nil, bundle: nil)
+    self.init(collectionViewLayout: UICollectionViewFlowLayout())
     self.refreshController = refreshController
     self.pagingController = pagingController
   }
@@ -46,39 +48,33 @@ public final class NowPlayingViewController: UIViewController {
   }
 }
 
-extension NowPlayingViewController: UICollectionViewDelegate {
+extension NowPlayingViewController {
 
-  public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+  public override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     guard collectionView.refreshControl?.isRefreshing == true else { return }
     refreshController?.load()
   }
+  
+  public override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    prefetchCellController(forItemAt: indexPath)
+  }
 
-  public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  public override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     removeCellController(forItemAt: indexPath)
   }
 
-  public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+  public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    guard scrollView.isDragging else { return }
+    
     let offsetY = scrollView.contentOffset.y
     let contentHeight = scrollView.contentSize.height
-    if (offsetY > contentHeight - scrollView.frame.height) && !items.isEmpty {
+    if (offsetY > contentHeight - scrollView.frame.height) {
       pagingController?.load()
     }
   }
-}
 
-extension NowPlayingViewController: UICollectionViewDataSource {
-
-  public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return items.count
-  }
-
-  public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let controller = cellController(forItemAt: indexPath)
-    return controller.view(in: collectionView, forItemAt: indexPath)
-  }
-
-  public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    cellController(forItemAt: indexPath).select()
+  public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    cellController(forItemAt: indexPath)?.select()
   }
 }
 
@@ -95,7 +91,14 @@ extension NowPlayingViewController: UICollectionViewDataSourcePrefetching {
 private extension NowPlayingViewController {
 
   func configureUI() {
-    view.addSubview(collectionView)
+    collectionView.collectionViewLayout = createLayout(size: view.bounds.size)
+    collectionView.backgroundColor = #colorLiteral(red: 0.1019607843, green: 0.1254901961, blue: 0.1882352941, alpha: 1)
+    collectionView.prefetchDataSource = self
+    collectionView.dataSource = dataSource
+    collectionView.delegate = self
+    collectionView.refreshControl = refreshController?.view
+    collectionView.showsVerticalScrollIndicator = false
+    collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")
   }
 
   func configureNavigation() {
@@ -115,17 +118,17 @@ private extension NowPlayingViewController {
     navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1019607843, green: 0.1254901961, blue: 0.1882352941, alpha: 1)
   }
 
-  func cellController(forItemAt indexPath: IndexPath) -> NowPlayingCardCellController {
-    let controller = items[indexPath.row]
+  func cellController(forItemAt indexPath: IndexPath) -> NowPlayingCardCellController? {
+    let controller = dataSource.itemIdentifier(for: indexPath)
     return controller
   }
 
   func removeCellController(forItemAt indexPath: IndexPath) {
-    cellController(forItemAt: indexPath).cancelLoad()
+    cellController(forItemAt: indexPath)?.cancelLoad()
   }
 
   func prefetchCellController(forItemAt indexPath: IndexPath) {
-    cellController(forItemAt: indexPath).prefetch()
+    cellController(forItemAt: indexPath)?.prefetch()
   }
 
   private func createLayout(isLandscape: Bool = false, size: CGSize) -> UICollectionViewLayout {

@@ -154,7 +154,9 @@
 				6AEE43D324F275A6006BDEC2 /* Products */,
 				6AF211B624F27785004BC7C2 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6AEE43D324F275A6006BDEC2 /* Products */ = {
 			isa = PBXGroup;

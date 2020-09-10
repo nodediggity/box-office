@@ -14,6 +14,10 @@ public struct NowPlayingPagingViewModel: Equatable {
   public let isLast: Bool
   public let pageNumber: Int
 
+  public var nextPage: Int? {
+    isLast ? nil : pageNumber + 1
+  }
+  
   public init(isLoading: Bool, isLast: Bool, pageNumber: Int) {
     self.isLoading = isLoading
     self.isLast = isLast

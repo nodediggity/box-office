@@ -80,7 +80,9 @@
 				6A53217B24F565CD00C2DBF4 /* Products */,
 				6A53219E24F5692500C2DBF4 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6A53217B24F565CD00C2DBF4 /* Products */ = {
 			isa = PBXGroup;

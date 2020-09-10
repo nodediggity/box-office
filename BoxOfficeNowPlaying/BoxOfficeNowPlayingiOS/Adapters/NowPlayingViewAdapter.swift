@@ -27,9 +27,13 @@ final class NowPlayingViewAdapter {
 
 extension NowPlayingViewAdapter: NowPlayingView {
   func display(_ viewModel: NowPlayingViewModel) {
-    let source = controller?.items ?? []
-    let target = source + viewModel.items.map(makeCellController)
-    controller?.items = target
+    let newItems = viewModel.items.map(makeCellController)
+    
+    if viewModel.pageNumber == 1 {
+      controller?.set(newItems)
+    } else {
+      controller?.append(newItems)
+    }
   }
 }
 
@@ -41,7 +45,7 @@ private extension NowPlayingViewAdapter {
       imageLoader: imageLoader
     )
     
-    let view = NowPlayingCardCellController(delegate: adapter)
+    let view = NowPlayingCardCellController(id: model.id, delegate: adapter)
 
     view.didSelect = { [weak self] in
       self?.onSelectCallback(model.id)

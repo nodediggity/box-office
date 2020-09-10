@@ -10,6 +10,13 @@ import UIKit
 import BoxOfficeNowPlayingiOS
 
 extension NowPlayingViewController {
+  public override func loadViewIfNeeded() {
+    super.loadViewIfNeeded()
+    
+    // make view small to prevent rendering cells
+    collectionView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
+  }
+  
   func simulateUserRefresh() {
     collectionView.refreshControl?.beginRefreshing()
     scrollViewDidEndDragging(collectionView, willDecelerate: true)
@@ -20,7 +27,7 @@ extension NowPlayingViewController {
   }
 
   var numberOfItems: Int {
-    return collectionView.numberOfItems(inSection: 0)
+    return collectionView.numberOfSections == 0 ? 0 : collectionView.numberOfItems(inSection: 0)
   }
 
   func itemAt(_ item: Int, section: Int = 0) -> UICollectionViewCell? {
@@ -31,7 +38,11 @@ extension NowPlayingViewController {
 
   @discardableResult
   func simulateItemVisible(at index: Int) -> UICollectionViewCell? {
-    return itemAt(index)
+    let cell = itemAt(index)!
+    let delegate = collectionView.delegate
+    let indexPath = IndexPath(item: index, section: 0)
+    delegate?.collectionView?(collectionView, willDisplay: cell, forItemAt: indexPath)
+    return cell
   }
 
   @discardableResult
@@ -65,8 +76,14 @@ extension NowPlayingViewController {
   }
 
   func simulatePagingRequest() {
-    collectionView.contentOffset.y = 1000
-    scrollViewDidScroll(collectionView)
+    let scrollView = DraggingScrollView()
+    scrollView.contentOffset.y = 1000
+    scrollViewDidScroll(scrollView)
   }
 }
 
+private class DraggingScrollView: UIScrollView {
+  override var isDragging: Bool {
+    true
+  }
+}

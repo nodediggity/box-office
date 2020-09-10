@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0870D28424FEA7B800727021 /* NowPlayingPagingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870D28324FEA7B800727021 /* NowPlayingPagingController.swift */; };
 		6A22DA8224F29697007739B5 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DA8124F29697007739B5 /* UIImageView+Ext.swift */; };
 		6A2D96A824F1A97C00F05CD6 /* BoxOfficeMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */; };
 		6A2D96A924F1A97C00F05CD6 /* BoxOfficeMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -111,6 +112,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0870D28324FEA7B800727021 /* NowPlayingPagingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingPagingController.swift; sourceTree = "<group>"; };
 		6A22DA8124F29697007739B5 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		6A2D96A724F1A97C00F05CD6 /* BoxOfficeMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxOfficeMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2D96AA24F24CC000F05CD6 /* NowPlayingViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewAdapter.swift; sourceTree = "<group>"; };
@@ -228,7 +230,9 @@
 				6A5075A624F028F800B25D4F /* Products */,
 				6AD4CBEA24F063BC001A400E /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6A5075A624F028F800B25D4F /* Products */ = {
 			isa = PBXGroup;
@@ -351,6 +355,7 @@
 				6AFD449424F13D7500E7A1F7 /* NowPlayingViewController.swift */,
 				6AFD44A024F168AA00E7A1F7 /* NowPlayingRefreshController.swift */,
 				6A2D96AC24F24E0D00F05CD6 /* NowPlayingCardCellController.swift */,
+				0870D28324FEA7B800727021 /* NowPlayingPagingController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -626,6 +631,7 @@
 				6A3DF12224F181AA00ACCA99 /* NowPlayingPresentationAdapter.swift in Sources */,
 				6AFD449524F13D7500E7A1F7 /* NowPlayingViewController.swift in Sources */,
 				6A2D96AB24F24CC000F05CD6 /* NowPlayingViewAdapter.swift in Sources */,
+				0870D28424FEA7B800727021 /* NowPlayingPagingController.swift in Sources */,
 				6A2D96AD24F24E0D00F05CD6 /* NowPlayingCardCellController.swift in Sources */,
 				6AFD44A124F168AA00E7A1F7 /* NowPlayingRefreshController.swift in Sources */,
 				6A2D96B924F2685E00F05CD6 /* UIView+Ext.swift in Sources */,

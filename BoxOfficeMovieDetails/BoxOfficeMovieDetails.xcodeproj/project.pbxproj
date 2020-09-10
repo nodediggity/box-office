@@ -271,7 +271,9 @@
 				6AF8CCAB24F3D939006FBFCA /* Products */,
 				6AF8CCCF24F3E0CD006FBFCA /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6AF8CCAB24F3D939006FBFCA /* Products */ = {
 			isa = PBXGroup;
