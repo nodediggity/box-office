@@ -25,7 +25,7 @@ public final class NowPlayingViewController: UICollectionViewController {
     dataSource.apply(snapshot, animatingDifferences: true)
   }
   
-  private lazy var dataSource: UICollectionViewDiffableDataSource<Int, NowPlayingCardCellController> = {
+  private lazy var dataSource: NowPlayingDiffableDataSource = {
     .init(collectionView: collectionView) { collectionView, indexPath, controller in
       controller.view(in: collectionView, forItemAt: indexPath)
     }
@@ -63,16 +63,6 @@ extension NowPlayingViewController {
     removeCellController(forItemAt: indexPath)
   }
 
-  public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    guard scrollView.isDragging else { return }
-    
-    let offsetY = scrollView.contentOffset.y
-    let contentHeight = scrollView.contentSize.height
-    if (offsetY > contentHeight - scrollView.frame.height) {
-      pagingController?.load()
-    }
-  }
-
   public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     cellController(forItemAt: indexPath)?.select()
   }
@@ -99,6 +89,7 @@ private extension NowPlayingViewController {
     collectionView.refreshControl = refreshController?.view
     collectionView.showsVerticalScrollIndicator = false
     collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")
+    collectionView.register(LoadMoreView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "LoadMoreView")
   }
 
   func configureNavigation() {
@@ -170,13 +161,28 @@ private extension NowPlayingViewController {
         layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(height)),
         subitems: [rightGroup, leftGroup]
       )
+      
+      let primarySection = NSCollectionLayoutSection(group: megaGroup)
+      let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50)), elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
+      primarySection.boundarySupplementaryItems = [footer]
 
-      return NSCollectionLayoutSection(group: megaGroup)
+      return primarySection
     }
   }
 
 }
 
+extension NowPlayingViewController: UICollectionViewDelegateFlowLayout {
+  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    guard section == 0 else { return .zero }
+    return CGSize(width: collectionView.frame.width, height: 50.0)
+  }
+  
+  public override func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+    guard elementKind == UICollectionView.elementKindSectionFooter else { return }
+    pagingController?.load()
+  }
+}
 extension NowPlayingViewController: NowPlayingErrorView {
   public func display(_ viewModel: NowPlayingErrorViewModel) { }
 }
