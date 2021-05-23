@@ -11,9 +11,6 @@ import BoxOfficeNowPlaying
 
 final class NowPlayingDiffableDataSource: UICollectionViewDiffableDataSource<Int, NowPlayingCardCellController> {
   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    guard kind == UICollectionView.elementKindSectionFooter else {
-      return UICollectionReusableView()
-    }
-    return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "LoadMoreView", for: indexPath) as! LoadMoreView
+    return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "LoadMoreView", for: indexPath)
   }
 }

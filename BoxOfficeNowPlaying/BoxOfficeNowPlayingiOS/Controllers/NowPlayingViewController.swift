@@ -89,7 +89,7 @@ private extension NowPlayingViewController {
     collectionView.refreshControl = refreshController?.view
     collectionView.showsVerticalScrollIndicator = false
     collectionView.register(NowPlayingCardFeedCell.self, forCellWithReuseIdentifier: "NowPlayingCardFeedCell")
-    collectionView.register(LoadMoreView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "LoadMoreView")
+    collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "LoadMoreView")
   }
 
   func configureNavigation() {
